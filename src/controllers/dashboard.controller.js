@@ -4,10 +4,30 @@ const controller = {};
 controller.listFollowingIllust = async (req, res) => {
   try {
     const LoginData = req.session.LoginSessionInfo;
-    let illusts = await Remote1.DashboardFollowsIllust(LoginData.author_id);
-    let globalranking = await Remote1.DashboardRankings();
-    let rec_artists = await Remote1.DashboardRecommendedArtists(
-      LoginData.author_id
+    let payload = {
+      DashboardFollowsIllust: {
+        codUser: LoginData.author_id,
+      },
+    };
+    let illusts = await Remote1.TheOnlyMethodUNeed(
+      payload,
+      "DashboardFollowsIllust"
+    );
+    payload = {
+      DashboardRankings: {},
+    };
+    let globalranking = await Remote1.TheOnlyMethodUNeed(
+      payload,
+      "DashboardRankings"
+    );
+    payload = {
+      DashboardRecommendedArtists: {
+        codUser: LoginData.author_id,
+      },
+    };
+    let rec_artists = await Remote1.TheOnlyMethodUNeed(
+      payload,
+      "DashboardRecommendedArtists"
     );
     if (illusts.length > 15) {
       illusts = illusts.slice(0, 15);
@@ -29,7 +49,7 @@ controller.listFollowingIllust = async (req, res) => {
 
 controller.commission = async (req, res) => {
   const LoginData = req.session.LoginSessionInfo;
-  
+
   res.render("commission", { LoginData });
 };
 
