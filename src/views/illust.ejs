@@ -1,63 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= data.illust_data.title %></title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Illust</title>
-</head>
+  <body>
+    <%- include('navbar', LoginData) %>
 
-<body>
-  <%- include('navbar', LoginData) %>
-    <%= data.illust_data %>
-      <%= data.illust_pages %>
-        <%= data.illust_tags %>
-          <div class="carousel">
-            <main>
-              <section class="has-dflex-center">
-                <div class="lx-container-80" >
-                  <div class="lx-row">
-                    <div class="lx-card carousel-container">
-                      <% if (data.illust_pages.large_dir) { %>
-                        <div class="item fade">
-                          <div class="image">
-                            <img
-                              src="/images<%= data.illust_pages.large_dir.slice(1, data.illust_pages.large_dir.length) %>"
-                              alt="" />
-                          </div>
-                        </div>
-                        <% } else { %>
-                          <% for( let index=0; index < data.illust_pages.length; index++ ) { %>
-                            <div class="item fade">
-                              <div class="image" style="border: 2px solid purple">
-                                <img
-                                  src="/images<%= data.illust_pages[index].large_dir.slice(1, data.illust_pages[index].large_dir.length) %>"
-                                  alt="" />
-                              </div>
-                            </div>
-                            <% } %>
-                              <% } %>
-
-                                <!-- <div class="item fade" style="border:2px solid purple;">
-                  <div class="image"><img src="https://bit.ly/34xczKy" /></div>
-                </div>
+    <div class="carousel">
+      <main>
+        <section class="has-dflex-center">
+          <div class="lx-container-80">
+            <div class="lx-row">
+              <div class="lx-card carousel-container">
+                <% if (data.illust_pages.large_dir) { %>
                 <div class="item fade">
-                  <div class="image"><img src="https://bit.ly/3lkp5DW" /></div>
-                </div>
-                <div class="item fade">
-                  <div class="image"><img src="https://bit.ly/3iMHuI1" /></div>
-                </div> -->
-                                <a class="prev has-dflex-center"><i class="fas fa-angle-left"></i></a><a
-                                  class="next has-dflex-center"><i class="fas fa-angle-right"></i></a>
-                    </div>
+                  <div class="image">
+                    <img
+                      src="/images<%= data.illust_pages.large_dir.slice(1, data.illust_pages.large_dir.length) %>"
+                      alt=""
+                    />
                   </div>
                 </div>
-              </section>
-            </main>
+                <% } else { %> <% for( let index=0; index < data.illust_pages.length; index++ ) { %>
+                <div class="item fade">
+                  <div class="image" style="border: 2px solid purple">
+                    <img
+                      src="/images<%= data.illust_pages[index].large_dir.slice(1, data.illust_pages[index].large_dir.length) %>"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <% } %> <% } %>
+                <a class="prev has-dflex-center"
+                  ><i class="fas fa-angle-left"></i></a
+                ><a class="next has-dflex-center"
+                  ><i class="fas fa-angle-right"></i
+                ></a>
+              </div>
+            </div>
           </div>
+        </section>
+      </main>
+    </div>
 
-          <script src="/js/carousel.js"></script>
-</body>
-
+    <script src="/js/carousel.js"></script>
+  </body>
 </html>

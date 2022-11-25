@@ -1,19 +1,16 @@
 const Formatter = require("./formatter");
-const axios = require("axios"); // Any API Client implementation. Can be axios
+const axios = require("axios");
 const Parser = require("./parser");
 const https = require("https");
-var format = require("xml-formatter");
 
 const ApiClient = axios.create({
   timeout: 60000,
   httpsAgent: new https.Agent({ keepAlive: true }),
 });
-//testing
-
 //const someeWS = `https://localhost:44325/wsAuthor.asmx?WSDL`;
 const someeWS = `http://www.dais-w-02.somee.com/wsAuthor.asmx?WSDL`;
 
-//SSL sign certificated
+// SSL sign certificated
 // comentar para some, sin comentar para local
 //process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
