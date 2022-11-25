@@ -7,12 +7,13 @@ const ApiClient = axios.create({
   timeout: 60000,
   httpsAgent: new https.Agent({ keepAlive: true }),
 });
-//const someeWS = `https://localhost:44325/wsAuthor.asmx?WSDL`;
-const someeWS = `http://www.dais-w-02.somee.com/wsAuthor.asmx?WSDL`;
+
+const someeWS = `https://localhost:44325/wsAuthor.asmx?WSDL`;
+// const someeWS = `http://www.dais-w-02.somee.com/wsAuthor.asmx?WSDL`;
 
 // SSL sign certificated
 // comentar para some, sin comentar para local
-//process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
 const remoteWS = {};
 
@@ -22,7 +23,7 @@ function methodParser(funcName, parsedRes) {
       `${funcName}Result`
     ]["diffgr:diffgram"].DocumentElement.Table;
   return data;
-}
+} 
 
 remoteWS.TheOnlyMethodUNeed = async (payload, functionName) =>{
   const headers = {

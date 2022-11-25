@@ -14,7 +14,8 @@ body {
     height: 400px;
     background-size: cover;
 }
-.author__line{
+
+.author__line {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -22,26 +23,31 @@ body {
     align-items: flex-start;
     color: white;
 }
-.author__line h3{
+
+.author__line h3 {
     padding: 10px;
     font-size: 3em;
 }
+
 .author__picname {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: flex-end;
 }
-.author__stats{
+
+.author__stats {
     display: flex;
     flex-direction: row;
     padding: 10px;
 }
-.author__stats h4{
+
+.author__stats h4 {
     padding: 0px 20px;
 }
+
 /* AUITHOR NAV START */
-.author__header{
+.author__header {
     position: relative;
     height: 400px;
     display: flex;
@@ -50,42 +56,55 @@ body {
     align-items: center;
     position: static;
 }
+
 .author__nav {
     display: flex;
-    justify-content:left;
+    justify-content: left;
     align-items: center;
     padding: 30px;
-    margin:auto;
-    margin-top:-25px;
-    width : 95%;
+    margin: auto;
+    margin-top: -25px;
+    width: 95%;
     box-shadow: 5px 5px 5px rgb(148, 148, 148);
     position: relative;
-    border-radius:7px;
+    border-radius: 7px;
     background-color: rgb(17, 19, 22) !important;
     z-index: 1;
 }
+
 .nav__links__auth {
-    
+
     list-style: none;
     background-color: rgb(17, 19, 22) !important;
 }
 
 .nav__links__auth li {
-    
+
     display: inline-block;
     padding: 0px 20px;
     background-color: rgb(17, 19, 22) !important;
 }
 
 .nav__links__auth li a {
-    
-    transition: all .3s ease 0s ;
+
+    transition: all .3s ease 0s;
     background-color: rgb(17, 19, 22) !important;
     color: white;
 }
 
 .nav__links__auth li a:hover {
     color: rgb(67, 120, 236)
-
 }
+
 /* AUITHOR NAV END */
+
+
+/* Style the tab */
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    color: #fff;
+}

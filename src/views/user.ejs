@@ -38,20 +38,55 @@
     <div class="author__nav">
       <nav>
         <ul class="nav__links__auth"">
-            <li><a href="/Dashboard/">Ilustraciones</a></li>
+            <li><a onclick="openNav(event, 'Ilustraciones')" autofocus>Ilustraciones</a></li>
+            <li><a onclick="openNav(event, 'Albumes')">Albumes</a></li>
+            <li><a onclick="openNav(event, 'Publicaciones')">Publicaciónes</a></li>
+            <li><a onclick="openNav(event, 'Comisiones')">Comisiones</a></li>
+            <li><a onclick="openNav(event, 'Request')">Requests</a></li>
+
+            <!-- <li><a href="/Dashboard/">Ilustraciones</a></li>
             <li><a href="/DashBoard/commission">Albumes</a></li>
             <li><a href="/DashBoard/request">Publicaciónes</a></li>
             <li><a href="/DashBoard/request">Comisiones</a></li>
-            <li><a href="/DashBoard/request">Requests</a></li>
-
+            <li><a href="/DashBoard/request">Requests</a></li> -->
         </ul>
       </nav>
     </div>
+    
+    <div id="Ilustraciones" class="tabcontent" autofocus>
+      <img id="open_load" src="<%='/images/'+AuthorData.profile_pic_dir.slice(1,AuthorData.profile_pic_dir.length)%>" alt="" style="width: 250px;" autofocus> 
+      <p>Pane de Ilustraciones</p>
+    </div>
+    
+    <div id="Albumes" class="tabcontent">
+      <img src="<%='/images/'+AuthorData.profile_pic_dir.slice(1,AuthorData.profile_pic_dir.length)%>" alt="" style="width: 250px;">
+      <p>Pane de Albumes</p> 
+    </div>
+    
+    <div id="Publicaciones" class="tabcontent">
+      <img src="<%='/images/'+AuthorData.profile_pic_dir.slice(1,AuthorData.profile_pic_dir.length)%>" alt="" style="width: 250px;">
+      <p>Pane de Publicaciones</p>
+    </div>
+   
+    <div id="Comisiones" class="tabcontent">
+      <img src="<%='/images/'+AuthorData.profile_pic_dir.slice(1,AuthorData.profile_pic_dir.length)%>" alt="" style="width: 250px;">
+      <p>Pane de Comisiones</p>
+    </div>
+
+    <div id="Request" class="tabcontent">
+      <img src="<%='/images/'+AuthorData.profile_pic_dir.slice(1,AuthorData.profile_pic_dir.length)%>" alt="" style="width: 250px;">
+      <p>Pane de request</p>
+    </div>
+    
+
+
     <!-- <% if (!match) { %>
         <input type="button" value="editar" class="btn-boton" />
     <% }else{ %>
         <input type="button" value="editar" class="btn-boton" hidden />
         <h1>No es el mismo en sesion</h1>
     <% } %> -->
+    
+    <script src="/js/tabPane.js"></script>
   </body>
 </html>
