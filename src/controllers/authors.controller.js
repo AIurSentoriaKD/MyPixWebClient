@@ -43,4 +43,11 @@ controller.registerAuthor = async (req, res) => {
   // TODO
 };
 
+controller.logOut = async (req, res) => {
+  req.session.destroy(function (err) {
+    if (err) throw new Error(err.message);
+    res.redirect("/");
+  });
+};
+
 module.exports = controller;

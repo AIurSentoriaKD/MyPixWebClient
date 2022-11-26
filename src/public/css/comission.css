@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500');
+
 /* ILE CONTAINER */
-body{
+body {
     background: rgb(31, 32, 39);
     min-width: 1300px;
     font-family: "Comfortaa", sans-serif !important;
     color: white;
 }
+
 .container {
     display: flex;
     justify-content: center;
@@ -13,8 +15,9 @@ body{
     flex-wrap: wrap;
     margin-bottom: 15px;
 }
+
 /* TITLES */
-.img_sh_title{
+.img_sh_title {
     /* background-color: rgb(37, 46, 66); */
     padding: 15px 10px;
     margin-bottom: 15px;
@@ -22,12 +25,14 @@ body{
     justify-content: space-between;
     align-items: center
 }
-.img_sh_title label{
+
+.img_sh_title label {
     background-color: rgb(166, 190, 255);
     padding: 10px;
     color: black;
 }
-.hr_left{
+
+.hr_left {
     width: 40%;
     height: 5px;
     background-image: linear-gradient(-90deg, rgb(166, 190, 255), transparent);
@@ -35,33 +40,64 @@ body{
     height: 2px;
     color: transparent !important;
 }
-.hr_right{
+
+.hr_right {
     width: 40%;
     height: 5px;
-    background-image:linear-gradient(90deg, rgb(166, 190, 255), transparent);
+    background-image: linear-gradient(90deg, rgb(166, 190, 255), transparent);
     border: 0;
     height: 2px;
     color: transparent !important;
 }
+
 /* titles end*/
 
 /* RIGHT CONTENT */
-.ile_r_container{
-    background-color: rgb(52, 58, 77);
+.ile_r_container {
     border-radius: 3px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 300px;
+    position: absolute;
 }
-.ile_r_container label{
+
+.ile_r_container label {
     background-color: rgb(166, 190, 255);
+    margin-top: -7px;
     padding: 10px;
     color: black;
 }
+
+.img_r_container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 300px;
+}
+
+.c__author_l {
+
+    margin: 10px 10px;
+}
+.c__author_l a{
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.c__author_l img {
+    height: 50px;
+    width: 50px;
+}
+
 /* RIGHT CONTENT end */
 
-.ile_container{
+.ile_container {
     display: flex;
     width: 99%;
     min-width: 1300px;
@@ -70,25 +106,28 @@ body{
     margin-left: 10px;
     position: relative
 }
-.ile_right{
+
+.ile_right {
     position: relative;
-    width: 40%;
+    width: 300px;
     /* display: inline-block; */
-    height : 100%;
-    background-color: rgb(52, 58, 77);
+    height: 100%;
+    border: 2px solid rgb(166, 190, 255);;
     border-radius: 3px;
 }
 
-.ile_left{
+.ile_left {
     padding: 7px;
     position: relative;
     max-width: 100%;
     width: 100%;
-    height : 100%;
+    height: 100%;
     float: right;
     margin-right: 10px;
 }
-.following_recents, .following_list{
+
+.following_recents,
+.following_list {
     width: 99%;
     align-items: center;
     justify-content: center;
@@ -98,29 +137,33 @@ body{
 
 
 /*IMAGES*/
-.image__card{
+.image__card {
     background: transparent;
 }
-.card__a{
+
+.card__a {
     background: transparent;
 }
+
 .image {
     margin: 3px;
     position: relative;
     border-radius: 2px;
 }
-.image__img{
+
+.image__img {
     display: block;
     width: 200px;
     height: 200px;
 }
-.image__overlay{
+
+.image__overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background:linear-gradient(0deg, rgba(0, 0, 0, 0.44) 0%, rgba(7, 58, 187, 0) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.44) 0%, rgba(7, 58, 187, 0) 100%);
     color: white;
     display: flex;
     flex-direction: column;
@@ -128,24 +171,28 @@ body{
     justify-content: flex-end;
     opacity: 0;
 }
-.image__overlay:hover{
+
+.image__overlay:hover {
     opacity: 1;
 }
-.image__title{
+
+.image__title {
     background: transparent;
     font-size: 1.5em;
     font-weight: bold;
     margin-left: 5px;
     height: 100%;
     display: flex;
-    align-items: flex-end; 
+    align-items: flex-end;
 }
-.author__line{
+
+.author__line {
     background: transparent;
     margin: 5px;
     position: relative;
 }
-.author__button{
+
+.author__button {
     background: transparent;
     display: flex;
     flex-direction: row;
@@ -153,18 +200,22 @@ body{
     justify-content: flex-end;
     z-index: 0;
 }
-.author__button:hover{
+
+.author__button:hover {
     background: transparent;
     z-index: 2;
 }
-.author__end{
+
+.author__end {
     background: transparent;
 }
-.author__img{
+
+.author__img {
     width: 50px;
     height: 50px;
 }
-.author__name{
+
+.author__name {
     background: transparent;
     font-size: 1em;
     margin-left: 5px;

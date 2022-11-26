@@ -4,15 +4,18 @@ const controller = {};
 controller.listFollowingIllust = async (req, res) => {
   try {
     const LoginData = req.session.LoginSessionInfo;
+
     let payload = {
       DashboardFollowsIllust: {
         codUser: LoginData.author_id,
       },
     };
+
     let illusts = await Remote1.TheOnlyMethodUNeed(
       payload,
       "DashboardFollowsIllust"
     );
+    
     payload = {
       DashboardRankings: {},
     };
@@ -120,8 +123,8 @@ controller.commission = async (req, res) => {
   if (C_Illust.length > 10) {
     C_Illust = C_Illust.slice(0, 10);
   }
-  if (C_Author_L.length > 5) {
-    C_Author_L = C_Author_L.slice(0, 5);
+  if (C_Author_L.length > 6) {
+    C_Author_L = C_Author_L.slice(0, 6);
   }
   try {
     if (C_Illust_F.length > 10) {

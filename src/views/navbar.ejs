@@ -27,18 +27,15 @@
             <button>Submit</button>
             <div class="dropdown-content">
                 <a href="/submit/illust">Ilustración</a>
-                <a href="/user/<%= LoginData.author_id %>#post">Publicación</a> 
-                <a href="/submit/request">Request</a>
-                <a href="/submit/comm">Comisión</a>
+                <a href="/user/<%= LoginData.author_id %>#post">Publicación</a>
             </div>
         </div>
         <div class="dropdown" style="float: right; margin-left: 30px;">
             <img src="/images<%= LoginData.profile_pic_dir.split(".")[1] %>.png"   alt="" style="width:30px;">
             <div class="dropdown-content-profile">
                 <a href="/user/<%= LoginData.author_id %>">Perfil</a>
-                <a href="/manage/comm-list">Mis Comisiones</a>
-                <a href="/manage/req-sol">Mis Requests</a>
-                <a href="#">Balance</a>
+                <a href="/manage/solicitudes">Request & Comision</a>
+                <a href="#">Balance  <strong style="font-size:14px">$ 15.00</strong></a>
                 <a href="/logout">Cerrar sesión</a>
             </div>
         </div>

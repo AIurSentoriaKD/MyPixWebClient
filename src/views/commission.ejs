@@ -48,6 +48,17 @@
         <div class="ile_r_container">
           <label>COMISIONES ABIERTAS</label>
         </div>
+        <div class="img_r_container">
+          <% for( let i = 0; i < CommData.C_Author_L.length; i++ ) { %>
+            <div class="c__author_l">
+              <a href="/user/<%=CommData.C_Author_L[i].author_id%>">
+                <img src="/images/<%=CommData.C_Author_L[i].profile_pic_dir.slice(1,CommData.C_Author_L[i].profile_pic_dir.length)%>" alt="" style="border-radius:8px;margin-right:7px;margin-top:3x;">
+                <p style="margin: auto;"><%= CommData.C_Author_L[i].nickname %> </p>
+              </a>
+            </div>
+          <% } %>
+        
+        </div>
       </div>
     </div>
 

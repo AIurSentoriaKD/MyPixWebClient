@@ -23,22 +23,48 @@ function methodParser(funcName, parsedRes) {
       `${funcName}Result`
     ]["diffgr:diffgram"].DocumentElement.Table;
   return data;
-} 
+}
 
-remoteWS.TheOnlyMethodUNeed = async (payload, functionName) =>{
+remoteWS.TheOnlyMethodUNeed = async (payload, functionName) => {
   const headers = {
     headers: {
       "Content-Type": "text/xml; charset=utf-8",
       SOAPAction: `http://tempuri.org/${functionName}`,
     },
   };
-  try{
+  try {
     let args = Formatter.convertJsonToSoapRequest(payload);
     let res = await ApiClient.post(someeWS, args, headers);
     const parsedRes = await Parser.convertXMLToJSON(res.data);
     const resData = methodParser(functionName, parsedRes);
     return resData;
-  }catch(err){
+  } catch (err) {
+    console.log("Error llamando el metodo: ", functionName, ", en remoteWS", err);
+    return null;
+  }
+}
+
+function methodBoolParser(funcName, parsedRes) {
+  const data =
+    parsedRes["soap:Body"][`${funcName}Response`][`${funcName}Result`]
+  return data;
+}
+
+remoteWS.GetBoolean = async (payload, functionName) => {
+  const headers = {
+    headers: {
+      "Content-Type": "text/xml; charset=utf-8",
+      SOAPAction: `http://tempuri.org/${functionName}`,
+    },
+  };
+  try {
+    let args = Formatter.convertJsonToSoapRequest(payload);
+    let res = await ApiClient.post(someeWS, args, headers);
+    const parsedRes = await Parser.convertXMLToJSON(res.data);
+    console.log(parsedRes);
+    const resData = methodBoolParser(functionName, parsedRes);
+    return resData;
+  } catch (err) {
     console.log("Error llamando el metodo: ", functionName, ", en remoteWS", err);
     return null;
   }
