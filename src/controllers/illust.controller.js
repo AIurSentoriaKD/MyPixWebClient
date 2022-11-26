@@ -42,6 +42,7 @@ controller.getOneIllust = async (req, res, next) => {
 //#region Submit Illust
 controller.addIllust = async (req, res) => {
   const LoginData = req.session.LoginSessionInfo;
+  
   res.render("submit/addIllust", { LoginData });
 };
 

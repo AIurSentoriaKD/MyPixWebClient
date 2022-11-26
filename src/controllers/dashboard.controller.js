@@ -29,8 +29,29 @@ controller.listFollowingIllust = async (req, res) => {
       payload,
       "DashboardRecommendedArtists"
     );
-    if (illusts.length > 15) {
-      illusts = illusts.slice(0, 15);
+
+    payload = {
+      DashboardRecommendedIllusts: {
+        codUser: LoginData.author_id,
+      },
+    };
+    let rec_illusts = await Remote1.TheOnlyMethodUNeed(
+      payload,
+      "DashboardRecommendedIllusts"
+    );
+
+    payload = {
+      DashboardFollowingPosts: {
+        codUser: LoginData.author_id,
+      },
+    };
+    let following_posts = await Remote1.TheOnlyMethodUNeed(
+      payload,
+      "DashboardFollowingPosts"
+    );
+
+    if (illusts.length > 14) {
+      illusts = illusts.slice(0, 14);
     }
     if (globalranking) {
       if (globalranking.length > 5) {
@@ -40,7 +61,21 @@ controller.listFollowingIllust = async (req, res) => {
     if (rec_artists.length > 10) {
       rec_artists = rec_artists.slice(0, 10);
     }
-    res.render("index", { illusts, LoginData, globalranking, rec_artists });
+    if (rec_illusts.length > 10) {
+      rec_illusts = rec_illusts.slice(0, 10);
+    }
+    if (following_posts.length > 5) {
+      following_posts = rec_illusts.slice(0, 10);
+    }
+
+    res.render("index", {
+      illusts,
+      LoginData,
+      globalranking,
+      rec_artists,
+      rec_illusts,
+      following_posts,
+    });
   } catch (error) {
     console.log("Error en ruta: listFollowingIllust ::", error.message);
     res.redirect("/");
@@ -49,8 +84,68 @@ controller.listFollowingIllust = async (req, res) => {
 
 controller.commission = async (req, res) => {
   const LoginData = req.session.LoginSessionInfo;
+  let payload = {
+    CommissionDashboardIllustsList: {},
+  };
+  let C_Illust = await Remote1.TheOnlyMethodUNeed(
+    payload,
+    "CommissionDashboardIllustsList"
+  );
+  payload = {
+    CommissionDashboardArtistsList: {},
+  };
+  let C_Author_L = await Remote1.TheOnlyMethodUNeed(
+    payload,
+    "CommissionDashboardArtistsList"
+  );
+  payload = {
+    CommissionDashboardFollowingRecents: {
+      codUser: LoginData.author_id,
+    },
+  };
+  let C_Illust_F = await Remote1.TheOnlyMethodUNeed(
+    payload,
+    "CommissionDashboardFollowingRecents"
+  );
+  payload = {
+    CommissionDashboardFollowingList: {
+      codUser: LoginData.author_id,
+    },
+  };
+  let C_Author_Fol = await Remote1.TheOnlyMethodUNeed(
+    payload,
+    "CommissionDashboardFollowingList"
+  );
 
-  res.render("commission", { LoginData });
+  if (C_Illust.length > 10) {
+    C_Illust = C_Illust.slice(0, 10);
+  }
+  if (C_Author_L.length > 5) {
+    C_Author_L = C_Author_L.slice(0, 5);
+  }
+  try {
+    if (C_Illust_F.length > 10) {
+      C_Illust_F = C_Illust_F.slice(0, 10);
+    }
+  } catch (err) {
+    console.log("Error con C_Illust_F: ", err.message);
+    C_Illust_F = null;
+  }
+  try {
+    if (C_Author_Fol.length > 10) {
+      C_Author_Fol = C_Author_Fol.slice(0, 10);
+    }
+  } catch (error) {
+    console.log("Error con C_Author_Fol: ", error.message);
+    C_Author_Fol = null;
+  }
+  const CommData = {
+    C_Illust,
+    C_Author_L,
+    C_Illust_F,
+    C_Author_Fol,
+  };
+  res.render("commission", { LoginData, CommData });
 };
 
 controller.request = async (req, res) => {

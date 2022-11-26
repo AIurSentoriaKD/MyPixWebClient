@@ -25,11 +25,9 @@
             <h3><%= AuthorData.nickname %> </h3>
           </div>
           <div class="author__inline">
-            <div class="author__stats">
-              <h4>Views</h4>
-              <h4>Ilustraciones</h4>
-              <h4>Page views</h4>
-            </div>
+            <h4>Views</h4>
+            <h4>Ilustraciones</h4>
+            <h4>Page views</h4>
           </div>
         </div>
       </div>
@@ -51,6 +49,12 @@
             <li><a href="/DashBoard/request">Requests</a></li> -->
         </ul>
       </nav>
+      <% if (!match) { %>
+        <div class="lift_left">
+          <a href="">Editar</a>
+          <a href="">TEST</a>
+        </div>
+      <% } %>
     </div>
     
     <div id="Ilustraciones" class="tabcontent" autofocus>

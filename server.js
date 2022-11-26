@@ -13,6 +13,8 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "./src/views"));
 env.config()
 
+//app.use(fileUpload());
+
 //Session configuration
 const date = new Date()
 const expiresAt = new Date(+date + 12000 * 10000)

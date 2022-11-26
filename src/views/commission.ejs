@@ -1,16 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Commission</title>
-  </head>
-  <body>
-    <%- include('navbar', LoginData) %>
-      <!--for commissions-->
-      <div class="container">
-        
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/comission.css">
+  <title>Commission</title>
+</head>
+
+<body>
+  <%- include('navbar', LoginData) %>
+    <!--for commissions-->
+    <div class="ile_container">
+      <div class="ile_left">
+        <div class="img_sh_title">
+          <hr class="hr_left">
+          <label>COMISIONES RECIENTES</label>
+          <hr class="hr_right">
+        </div>
+        <div class="container">
+          <% for( let i = 0; i < CommData.C_Illust.length; i++ ) { %>
+            <div class="image">
+              <a class="card__a" href="/illusts/<%= CommData.C_Illust[i].id %>" style="width: 200px; height: 200px;">
+                  <img class="image__img" src="/images<%= CommData.C_Illust[i].thumb_dir.split(".")[1] %>.jpg">
+                  <div class="image__overlay">
+                      <div class="image__title">
+                          <% if (CommData.C_Illust[i].title.length > 5 ) { %>
+                              <%= CommData.C_Illust[i].title.slice(0, 5) %>...
+                          <% } else { %>
+                              <%= CommData.C_Illust[i].title %>
+                          <% } %>
+                      </div>
+                      <div class="author__line">
+                          <a class="author__button" href="/user/<%= CommData.C_Illust[i].author_id %> ">
+                              <img class="author__img" src="/images<%= CommData.C_Illust[i].profile_pic_dir.split(".")[1]+"."+CommData.C_Illust[i].profile_pic_dir.split(".")[2]%>" alt="">
+                              <p class="author__name"><%= CommData.C_Illust[i].nickname %> </p>
+                          </a>      
+                      </div>
+                  </div>
+              </a>  
+          </div>
+          <% } %>
+        </div>
       </div>
-  </body>
+      <div class="ile_right">
+        <div class="ile_r_container">
+          <label>COMISIONES ABIERTAS</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="following_recents">
+      <div class="img_sh_title">
+        <hr class="hr_left">
+        <label>COMISIONES DE USUARIOS QUE SIGUES</label>
+        <hr class="hr_right">
+      </div>
+      <div class="container">
+        <% for( let i = 0; i < CommData.C_Illust_F.length; i++ ) { %>
+          <div class="image">
+            <a class="card__a" href="/illusts/<%= CommData.C_Illust_F[i].id %>" style="width: 200px; height: 200px;">
+                <img class="image__img" src="/images<%= CommData.C_Illust_F[i].thumb_dir.split(".")[1] %>.jpg">
+                <div class="image__overlay">
+                    <div class="image__title">
+                        <% if (CommData.C_Illust_F[i].title.length > 5 ) { %>
+                            <%= CommData.C_Illust_F[i].title.slice(0, 5) %>...
+                        <% } else { %>
+                            <%= CommData.C_Illust_F[i].title %>
+                        <% } %>
+                    </div>
+                    <div class="author__line">
+                        <a class="author__button" href="/user/<%= CommData.C_Illust_F[i].author_id %> ">
+                            <img class="author__img" src="/images<%= CommData.C_Illust_F[i].profile_pic_dir.split(".")[1]+"."+CommData.C_Illust_F[i].profile_pic_dir.split(".")[2]%>" alt="">
+                            <p class="author__name"><%= CommData.C_Illust_F[i].nickname %> </p>
+                        </a>      
+                    </div>
+                </div>
+            </a>  
+        </div>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="following_list">
+      <div class="img_sh_title">
+        <hr class="hr_left">
+        <label>ARTISTAS QUE SIGUES</label>
+        <hr class="hr_right">
+      </div>
+    </div>
+
+</body>
+
 </html>

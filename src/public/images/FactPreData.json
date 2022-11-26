@@ -1,0 +1,702 @@
+[
+    {
+        "card_number": "5335576318826231",
+        "card_date": "09/29/2022",
+        "fact_address": "60500 Gerald Circle",
+        "fact_country": "Kosovo",
+        "fact_postal": 6162
+    },
+    {
+        "card_number": "5002350443940396",
+        "card_date": "07/03/2023",
+        "fact_address": "70 Moulton Park",
+        "fact_country": "Philippines",
+        "fact_postal": 5671
+    },
+    {
+        "card_number": "5100172064354017",
+        "card_date": "05/09/2024",
+        "fact_address": "7 Morningstar Circle",
+        "fact_country": "Indonesia",
+        "fact_postal": 920
+    },
+    {
+        "card_number": "4017957142987",
+        "card_date": "10/03/2022",
+        "fact_address": "3 Weeping Birch Avenue",
+        "fact_country": "Poland",
+        "fact_postal": 4211
+    },
+    {
+        "card_number": "4041373286855",
+        "card_date": "09/23/2024",
+        "fact_address": "3 Center Junction",
+        "fact_country": "Russia",
+        "fact_postal": 6982
+    },
+    {
+        "card_number": "5010128430632279",
+        "card_date": "03/06/2025",
+        "fact_address": "7 Glacier Hill Place",
+        "fact_country": "Portugal",
+        "fact_postal": 445
+    },
+    {
+        "card_number": "5460114873310479",
+        "card_date": "02/28/2024",
+        "fact_address": "9 Arapahoe Point",
+        "fact_country": "Mongolia",
+        "fact_postal": 3691
+    },
+    {
+        "card_number": "5316384382476667",
+        "card_date": "10/06/2022",
+        "fact_address": "2268 Dunning Court",
+        "fact_country": "South Africa",
+        "fact_postal": 3549
+    },
+    {
+        "card_number": "5483493992516510",
+        "card_date": "09/08/2023",
+        "fact_address": "3 Mariners Cove Way",
+        "fact_country": "Netherlands",
+        "fact_postal": 3864
+    },
+    {
+        "card_number": "5100134118268718",
+        "card_date": "09/25/2022",
+        "fact_address": "2 Summer Ridge Avenue",
+        "fact_country": "Armenia",
+        "fact_postal": 4667
+    },
+    {
+        "card_number": "4017955389614",
+        "card_date": "07/23/2024",
+        "fact_address": "00 Memorial Parkway",
+        "fact_country": "Brazil",
+        "fact_postal": 2725
+    },
+    {
+        "card_number": "4017952529146024",
+        "card_date": "10/15/2022",
+        "fact_address": "21 Bluejay Terrace",
+        "fact_country": "China",
+        "fact_postal": 6400
+    },
+    {
+        "card_number": "4041376287894908",
+        "card_date": "04/11/2023",
+        "fact_address": "2708 Westend Circle",
+        "fact_country": "Japan",
+        "fact_postal": 4489
+    },
+    {
+        "card_number": "4207062196636",
+        "card_date": "08/29/2023",
+        "fact_address": "42 Glacier Hill Junction",
+        "fact_country": "Thailand",
+        "fact_postal": 6092
+    },
+    {
+        "card_number": "4623734234574831",
+        "card_date": "09/30/2023",
+        "fact_address": "13 South Avenue",
+        "fact_country": "Portugal",
+        "fact_postal": 2578
+    },
+    {
+        "card_number": "4786407890587768",
+        "card_date": "05/02/2025",
+        "fact_address": "21 Darwin Place",
+        "fact_country": "Indonesia",
+        "fact_postal": 1332
+    },
+    {
+        "card_number": "4486657658842",
+        "card_date": "05/01/2024",
+        "fact_address": "38 John Wall Place",
+        "fact_country": "Burundi",
+        "fact_postal": 6142
+    },
+    {
+        "card_number": "4017951604981909",
+        "card_date": "07/04/2025",
+        "fact_address": "1 Mccormick Circle",
+        "fact_country": "Brazil",
+        "fact_postal": 6929
+    },
+    {
+        "card_number": "4041596090183",
+        "card_date": "02/08/2024",
+        "fact_address": "70 Rigney Road",
+        "fact_country": "Portugal",
+        "fact_postal": 4206
+    },
+    {
+        "card_number": "4041377319793",
+        "card_date": "01/02/2025",
+        "fact_address": "90 Upham Road",
+        "fact_country": "China",
+        "fact_postal": 7027
+    },
+    {
+        "card_number": "4041371090357433",
+        "card_date": "07/12/2024",
+        "fact_address": "291 Old Gate Hill",
+        "fact_country": "China",
+        "fact_postal": 9196
+    },
+    {
+        "card_number": "4041370899970388",
+        "card_date": "07/06/2023",
+        "fact_address": "6018 Hansons Place",
+        "fact_country": "Ukraine",
+        "fact_postal": 9214
+    },
+    {
+        "card_number": "5007669164869939",
+        "card_date": "11/27/2024",
+        "fact_address": "47665 Sycamore Pass",
+        "fact_country": "Russia",
+        "fact_postal": 841
+    },
+    {
+        "card_number": "5278909383438773",
+        "card_date": "08/26/2022",
+        "fact_address": "3157 Hauk Crossing",
+        "fact_country": "Thailand",
+        "fact_postal": 2793
+    },
+    {
+        "card_number": "5100132732431662",
+        "card_date": "02/08/2024",
+        "fact_address": "43 Green Court",
+        "fact_country": "China",
+        "fact_postal": 1285
+    },
+    {
+        "card_number": "4041596978375962",
+        "card_date": "08/25/2023",
+        "fact_address": "6569 Londonderry Crossing",
+        "fact_country": "Syria",
+        "fact_postal": 4238
+    },
+    {
+        "card_number": "5108750845878552",
+        "card_date": "02/01/2024",
+        "fact_address": "7643 Killdeer Trail",
+        "fact_country": "Portugal",
+        "fact_postal": 1490
+    },
+    {
+        "card_number": "5411724969497053",
+        "card_date": "10/29/2024",
+        "fact_address": "56 Jenifer Way",
+        "fact_country": "Poland",
+        "fact_postal": 5756
+    },
+    {
+        "card_number": "5010124938818536",
+        "card_date": "12/29/2023",
+        "fact_address": "820 5th Park",
+        "fact_country": "Poland",
+        "fact_postal": 2582
+    },
+    {
+        "card_number": "5100143822926842",
+        "card_date": "11/30/2024",
+        "fact_address": "95 Messerschmidt Terrace",
+        "fact_country": "Thailand",
+        "fact_postal": 8883
+    },
+    {
+        "card_number": "5108757909470176",
+        "card_date": "10/26/2024",
+        "fact_address": "696 Northfield Hill",
+        "fact_country": "Ukraine",
+        "fact_postal": 1489
+    },
+    {
+        "card_number": "4041590338125",
+        "card_date": "04/10/2024",
+        "fact_address": "9 Butternut Alley",
+        "fact_country": "Poland",
+        "fact_postal": 3274
+    },
+    {
+        "card_number": "4756968744295",
+        "card_date": "11/22/2022",
+        "fact_address": "6 Little Fleur Drive",
+        "fact_country": "Indonesia",
+        "fact_postal": 7535
+    },
+    {
+        "card_number": "5010121072143333",
+        "card_date": "02/14/2025",
+        "fact_address": "9 Village Lane",
+        "fact_country": "China",
+        "fact_postal": 6963
+    },
+    {
+        "card_number": "5100149999950234",
+        "card_date": "12/01/2022",
+        "fact_address": "71 Hollow Ridge Crossing",
+        "fact_country": "Poland",
+        "fact_postal": 3341
+    },
+    {
+        "card_number": "5159239995544345",
+        "card_date": "08/20/2024",
+        "fact_address": "8 Fisk Road",
+        "fact_country": "Peru",
+        "fact_postal": 113
+    },
+    {
+        "card_number": "5257437980525136",
+        "card_date": "02/14/2025",
+        "fact_address": "5503 Knutson Circle",
+        "fact_country": "Sweden",
+        "fact_postal": 2175
+    },
+    {
+        "card_number": "4041590390480",
+        "card_date": "08/20/2024",
+        "fact_address": "417 Mallard Hill",
+        "fact_country": "Canada",
+        "fact_postal": 310
+    },
+    {
+        "card_number": "4017952312932",
+        "card_date": "01/21/2025",
+        "fact_address": "0 Rockefeller Plaza",
+        "fact_country": "Philippines",
+        "fact_postal": 8765
+    },
+    {
+        "card_number": "5100140497869067",
+        "card_date": "03/26/2025",
+        "fact_address": "027 Grover Way",
+        "fact_country": "Macedonia",
+        "fact_postal": 7663
+    },
+    {
+        "card_number": "5287371242521225",
+        "card_date": "12/11/2023",
+        "fact_address": "323 Huxley Way",
+        "fact_country": "China",
+        "fact_postal": 140
+    },
+    {
+        "card_number": "4017951938168686",
+        "card_date": "07/12/2024",
+        "fact_address": "30 Duke Drive",
+        "fact_country": "Poland",
+        "fact_postal": 9231
+    },
+    {
+        "card_number": "5100174303550918",
+        "card_date": "11/27/2022",
+        "fact_address": "85434 Del Mar Pass",
+        "fact_country": "Indonesia",
+        "fact_postal": 2616
+    },
+    {
+        "card_number": "4017959804485",
+        "card_date": "07/25/2023",
+        "fact_address": "2 Briar Crest Park",
+        "fact_country": "Brazil",
+        "fact_postal": 1214
+    },
+    {
+        "card_number": "4017952724527382",
+        "card_date": "06/25/2024",
+        "fact_address": "6571 Golden Leaf Alley",
+        "fact_country": "United Kingdom",
+        "fact_postal": 7929
+    },
+    {
+        "card_number": "4041596492256",
+        "card_date": "05/11/2023",
+        "fact_address": "80055 Petterle Terrace",
+        "fact_country": "Brazil",
+        "fact_postal": 3638
+    },
+    {
+        "card_number": "4041594527228",
+        "card_date": "06/30/2024",
+        "fact_address": "67 Old Gate Plaza",
+        "fact_country": "United States",
+        "fact_postal": 4216
+    },
+    {
+        "card_number": "5100148328754325",
+        "card_date": "10/22/2023",
+        "fact_address": "87 Pennsylvania Street",
+        "fact_country": "France",
+        "fact_postal": 9758
+    },
+    {
+        "card_number": "5100174117982984",
+        "card_date": "03/30/2025",
+        "fact_address": "269 Kropf Road",
+        "fact_country": "China",
+        "fact_postal": 9809
+    },
+    {
+        "card_number": "4250855975163763",
+        "card_date": "09/22/2023",
+        "fact_address": "0111 Golf Course Park",
+        "fact_country": "China",
+        "fact_postal": 9138
+    },
+    {
+        "card_number": "5118674487214801",
+        "card_date": "10/25/2024",
+        "fact_address": "2908 Eagan Way",
+        "fact_country": "China",
+        "fact_postal": 4726
+    },
+    {
+        "card_number": "5002353164178576",
+        "card_date": "06/07/2025",
+        "fact_address": "104 Scott Plaza",
+        "fact_country": "Canada",
+        "fact_postal": 483
+    },
+    {
+        "card_number": "5100133519540550",
+        "card_date": "11/11/2024",
+        "fact_address": "6 Weeping Birch Avenue",
+        "fact_country": "Slovenia",
+        "fact_postal": 5470
+    },
+    {
+        "card_number": "5521162892256162",
+        "card_date": "06/23/2024",
+        "fact_address": "00 Merchant Plaza",
+        "fact_country": "China",
+        "fact_postal": 9719
+    },
+    {
+        "card_number": "5150492631901556",
+        "card_date": "12/31/2022",
+        "fact_address": "97348 Summerview Alley",
+        "fact_country": "United States",
+        "fact_postal": 8547
+    },
+    {
+        "card_number": "5100131933292709",
+        "card_date": "01/17/2024",
+        "fact_address": "34 Glendale Point",
+        "fact_country": "Russia",
+        "fact_postal": 1039
+    },
+    {
+        "card_number": "4041598819061918",
+        "card_date": "01/28/2025",
+        "fact_address": "547 Corscot Hill",
+        "fact_country": "Azerbaijan",
+        "fact_postal": 8454
+    },
+    {
+        "card_number": "4041370804001055",
+        "card_date": "08/06/2024",
+        "fact_address": "27 High Crossing Trail",
+        "fact_country": "Peru",
+        "fact_postal": 1355
+    },
+    {
+        "card_number": "5284075763731708",
+        "card_date": "04/10/2024",
+        "fact_address": "0 Kingsford Avenue",
+        "fact_country": "New Zealand",
+        "fact_postal": 3627
+    },
+    {
+        "card_number": "4041378752546542",
+        "card_date": "06/03/2023",
+        "fact_address": "1 Coleman Alley",
+        "fact_country": "Poland",
+        "fact_postal": 7023
+    },
+    {
+        "card_number": "4041596819797",
+        "card_date": "06/30/2023",
+        "fact_address": "360 Annamark Street",
+        "fact_country": "Russia",
+        "fact_postal": 9713
+    },
+    {
+        "card_number": "5048373809766078",
+        "card_date": "12/31/2023",
+        "fact_address": "6805 Katie Plaza",
+        "fact_country": "Japan",
+        "fact_postal": 4865
+    },
+    {
+        "card_number": "5100130470779128",
+        "card_date": "06/21/2025",
+        "fact_address": "410 Melody Pass",
+        "fact_country": "China",
+        "fact_postal": 9750
+    },
+    {
+        "card_number": "5394799249491655",
+        "card_date": "01/09/2023",
+        "fact_address": "0 Lakewood Gardens Court",
+        "fact_country": "Philippines",
+        "fact_postal": 5218
+    },
+    {
+        "card_number": "5100148921246059",
+        "card_date": "01/08/2023",
+        "fact_address": "3 Golf Course Hill",
+        "fact_country": "Philippines",
+        "fact_postal": 6440
+    },
+    {
+        "card_number": "5108750943289082",
+        "card_date": "09/24/2023",
+        "fact_address": "2 Golf Course Court",
+        "fact_country": "Russia",
+        "fact_postal": 6942
+    },
+    {
+        "card_number": "4017951612035",
+        "card_date": "10/13/2023",
+        "fact_address": "11 4th Plaza",
+        "fact_country": "Palestinian Territory",
+        "fact_postal": 3612
+    },
+    {
+        "card_number": "4041370864985",
+        "card_date": "03/07/2024",
+        "fact_address": "24744 Rockefeller Crossing",
+        "fact_country": "Russia",
+        "fact_postal": 9205
+    },
+    {
+        "card_number": "4041590906277",
+        "card_date": "12/05/2024",
+        "fact_address": "00 Comanche Circle",
+        "fact_country": "China",
+        "fact_postal": 1717
+    },
+    {
+        "card_number": "4041372919779",
+        "card_date": "08/04/2024",
+        "fact_address": "86199 Eagle Crest Avenue",
+        "fact_country": "Indonesia",
+        "fact_postal": 455
+    },
+    {
+        "card_number": "5100132416733201",
+        "card_date": "07/08/2024",
+        "fact_address": "86 Warner Street",
+        "fact_country": "France",
+        "fact_postal": 375
+    },
+    {
+        "card_number": "4757969405878",
+        "card_date": "05/14/2024",
+        "fact_address": "035 Longview Alley",
+        "fact_country": "United States",
+        "fact_postal": 2094
+    },
+    {
+        "card_number": "5010123034381860",
+        "card_date": "08/14/2023",
+        "fact_address": "567 Oakridge Crossing",
+        "fact_country": "Azerbaijan",
+        "fact_postal": 216
+    },
+    {
+        "card_number": "5426852697802584",
+        "card_date": "05/18/2024",
+        "fact_address": "48 Barby Street",
+        "fact_country": "Kenya",
+        "fact_postal": 5453
+    },
+    {
+        "card_number": "4017956087998155",
+        "card_date": "09/11/2022",
+        "fact_address": "4 Menomonie Alley",
+        "fact_country": "Colombia",
+        "fact_postal": 6926
+    },
+    {
+        "card_number": "5048379649115327",
+        "card_date": "08/06/2023",
+        "fact_address": "817 Sloan Hill",
+        "fact_country": "Sweden",
+        "fact_postal": 8322
+    },
+    {
+        "card_number": "5100144189209814",
+        "card_date": "11/05/2023",
+        "fact_address": "85 Anniversary Plaza",
+        "fact_country": "Indonesia",
+        "fact_postal": 2422
+    },
+    {
+        "card_number": "4041594978639883",
+        "card_date": "09/22/2022",
+        "fact_address": "7 Coleman Street",
+        "fact_country": "China",
+        "fact_postal": 4776
+    },
+    {
+        "card_number": "4017951915966",
+        "card_date": "01/21/2023",
+        "fact_address": "8 Nancy Parkway",
+        "fact_country": "Portugal",
+        "fact_postal": 8658
+    },
+    {
+        "card_number": "4017959864313994",
+        "card_date": "01/15/2023",
+        "fact_address": "5605 Tennessee Drive",
+        "fact_country": "France",
+        "fact_postal": 5187
+    },
+    {
+        "card_number": "5010127584065005",
+        "card_date": "12/09/2022",
+        "fact_address": "1265 Dorton Circle",
+        "fact_country": "China",
+        "fact_postal": 8808
+    },
+    {
+        "card_number": "5575325995385510",
+        "card_date": "07/14/2025",
+        "fact_address": "9287 Esch Plaza",
+        "fact_country": "Dominican Republic",
+        "fact_postal": 3501
+    },
+    {
+        "card_number": "5007669315276042",
+        "card_date": "08/24/2023",
+        "fact_address": "443 Manitowish Place",
+        "fact_country": "Croatia",
+        "fact_postal": 4998
+    },
+    {
+        "card_number": "4094226351036132",
+        "card_date": "04/24/2025",
+        "fact_address": "96013 Southridge Circle",
+        "fact_country": "Canada",
+        "fact_postal": 4586
+    },
+    {
+        "card_number": "5007661434368966",
+        "card_date": "11/13/2024",
+        "fact_address": "2 Prairieview Pass",
+        "fact_country": "Poland",
+        "fact_postal": 1957
+    },
+    {
+        "card_number": "5566276882117469",
+        "card_date": "10/16/2024",
+        "fact_address": "54219 Chive Plaza",
+        "fact_country": "Russia",
+        "fact_postal": 7965
+    },
+    {
+        "card_number": "4017953123734",
+        "card_date": "09/25/2023",
+        "fact_address": "4183 Arizona Pass",
+        "fact_country": "China",
+        "fact_postal": 1575
+    },
+    {
+        "card_number": "4861019284859923",
+        "card_date": "03/20/2024",
+        "fact_address": "94476 Sunfield Trail",
+        "fact_country": "China",
+        "fact_postal": 2767
+    },
+    {
+        "card_number": "5331892353186694",
+        "card_date": "08/05/2024",
+        "fact_address": "2111 Havey Court",
+        "fact_country": "Russia",
+        "fact_postal": 4628
+    },
+    {
+        "card_number": "4041591199377",
+        "card_date": "07/15/2025",
+        "fact_address": "51 Fallview Road",
+        "fact_country": "Morocco",
+        "fact_postal": 4460
+    },
+    {
+        "card_number": "4041592991667667",
+        "card_date": "03/02/2025",
+        "fact_address": "7989 Shopko Street",
+        "fact_country": "Afghanistan",
+        "fact_postal": 6568
+    },
+    {
+        "card_number": "5466614225594476",
+        "card_date": "03/11/2023",
+        "fact_address": "8843 Bellgrove Crossing",
+        "fact_country": "Sudan",
+        "fact_postal": 413
+    },
+    {
+        "card_number": "4041597206283",
+        "card_date": "08/05/2023",
+        "fact_address": "81 Northview Street",
+        "fact_country": "Portugal",
+        "fact_postal": 3467
+    },
+    {
+        "card_number": "5599891017977149",
+        "card_date": "08/19/2025",
+        "fact_address": "2 Mcbride Junction",
+        "fact_country": "Brazil",
+        "fact_postal": 8038
+    },
+    {
+        "card_number": "4041376433231",
+        "card_date": "03/06/2024",
+        "fact_address": "891 Hanson Trail",
+        "fact_country": "Portugal",
+        "fact_postal": 3083
+    },
+    {
+        "card_number": "5048373282912744",
+        "card_date": "11/04/2024",
+        "fact_address": "77 Becker Point",
+        "fact_country": "China",
+        "fact_postal": 9400
+    },
+    {
+        "card_number": "5007664909241478",
+        "card_date": "01/27/2024",
+        "fact_address": "683 Blackbird Center",
+        "fact_country": "Kazakhstan",
+        "fact_postal": 9768
+    },
+    {
+        "card_number": "5100171189111310",
+        "card_date": "01/19/2023",
+        "fact_address": "048 Orin Center",
+        "fact_country": "Zambia",
+        "fact_postal": 7590
+    },
+    {
+        "card_number": "4757946292003952",
+        "card_date": "02/24/2024",
+        "fact_address": "0 Morrow Street",
+        "fact_country": "Sweden",
+        "fact_postal": 2806
+    },
+    {
+        "card_number": "5048370703643494",
+        "card_date": "07/23/2023",
+        "fact_address": "72648 Daystar Crossing",
+        "fact_country": "China",
+        "fact_postal": 875
+    }
+]

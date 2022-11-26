@@ -11,8 +11,12 @@
 
 <body>
     <%- include('navbar', LoginData) %>
-
-        <h1 class="title">ULTIMOS ARTWORKS</h1>
+    <div class="img__showcase">
+        <div class="img_sh_title">
+            <hr class="hr_left">
+            <label>ULTIMOS DE ARTISTAS QUE SIGUES</label>
+            <hr class="hr_right">
+        </div>
         <div class="container">
             <% for( let index = 0; index < illusts.length; index++ ) { %>
                 <div class="image">
@@ -37,8 +41,13 @@
                 </div>
             <% } %>
         </div>
-
-        <h1 class="title">RANKING GLOBAL</h1>
+    </div>
+    <div class="img__showcase">
+        <div class="img_sh_title">
+            <hr class="hr_left">
+            <label>RANKING</label>
+            <hr class="hr_right">
+        </div>
         <div class="container">
             <% if (globalranking) { %>
                 <% for( let index = 0; index < globalranking.length; index++ ) { %>
@@ -66,20 +75,60 @@
                 <% } %>
             <% } %>
         </div>
-        
-        <h1 class="title">ARTISTAS RECOMENDADOS</h1>
+    </div>
+    <div class="img__showcase">
+        <div class="img_sh_title">
+            <hr class="hr_left">
+            <label>ARTISTAS RECOMENDADOS</label>
+            <hr class="hr_right">
+        </div>
         <div class="container">
             <% for( let index = 0; index < rec_artists.length; index++ ) { %>
                 <div class="author__card">
                     <a href=/user/<%= rec_artists[index].author_id %> ">
-                        <div class="author__header">
-                            <img class="author__img" src="/images<%= rec_artists[index].profile_pic_dir.split(".")[1]+"."+rec_artists[index].profile_pic_dir.split(".")[2]%>" alt="">
-                            <p class="author__name"><%= rec_artists[index].nickname %> </p>
+                        <div class="author__card_img" style="background-image: url(<%=rec_artists[index].profile_portrait_dir%>);">
+                            <div class="author__header">
+                                <img class="author__img" src="/images<%= rec_artists[index].profile_pic_dir.split(".")[1]+"."+rec_artists[index].profile_pic_dir.split(".")[2]%>" alt="">
+                                <p class="author__name"><%= rec_artists[index].nickname %> </p>
+                            </div>
                         </div>
+                        
                     </a>
                 </div>
             <% } %>
         </div>
+    </div>
+    <div class="img__showcase">
+        <div class="img_sh_title">
+            <hr class="hr_left">
+            <label>ILUSTRACIONES RECOMENDADAS</label>
+            <hr class="hr_right">
+        </div>
+        <div class="container">
+            <% for( let index = 0; index < rec_illusts.length; index++ ) { %>
+                <div class="image">
+                    <a class="card__a" href="/illusts/<%= rec_illusts[index].id %>" style="width: 200px; height: 200px;">
+                        <img class="image__img" src="/images<%= rec_illusts[index].thumb_dir.split(".")[1] %>.jpg">
+                        <div class="image__overlay">
+                            <div class="image__title">
+                                <% if (rec_illusts[index].title.length > 5 ) { %>
+                                    <%= rec_illusts[index].title.slice(0, 5) %>...
+                                <% } else { %>
+                                    <%= rec_illusts[index].title %>
+                                <% } %>
+                            </div>
+                            <div class="author__line">
+                                <a class="author__button" href="/user/<%= rec_illusts[index].author_id %> ">
+                                    <img class="author__img" src="/images<%= rec_illusts[index].profile_pic_dir.split(".")[1]+"."+rec_illusts[index].profile_pic_dir.split(".")[2]%>" alt="">
+                                    <p class="author__name"><%= rec_illusts[index].nickname %> </p>
+                                </a>      
+                            </div>
+                        </div>
+                    </a>  
+                </div>
+            <% } %>
+        </div>
+    </div>
 </body>
 
 </html>
