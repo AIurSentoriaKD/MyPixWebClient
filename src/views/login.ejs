@@ -2,90 +2,89 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Bienvenido a MyPix</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Rubik:wght@400;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="/css/LoginStyle.css">
+  <meta charset="UTF-8">
+  <title>Bienvenido a MyPix</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/LoginStyle.css">
 
 </head>
 
 <body onload="OnLoadPage()">
-    <!-- partial:index.partial.html -->
-    <div id="tiles"></div>
+  <!-- partial:index.partial.html -->
+  <div id="tiles"></div>
 
-    <h1 id="title" class="centered">
-        Esto es
-        <span class="fancy">MyPix</span>
-    </h1>
-    <h1 id="bottom-title" class="centered">Click To login</h1>
+  <h1 id="title" class="centered">
+    Esto es
+    <span class="fancy">MyPix</span>
+  </h1>
+  <h1 id="bottom-title" class="centered">Click To login</h1>
 
-    <i id="icon" class="fa-solid fa-pen-nib centered"></i>
+  <i id="icon" class="fa-solid fa-pen-nib centered"></i>
 
-    <div id="maindiv" class="centered">
-        <div id="logindiv" class="appear centered">
-            <h1 class="logintxt" id="logintext">Iniciar sesion</h1>
-            <form action="/login" id="loginform" method="post">
-                <div id="form-control" class="formdiv">
-    
-                    <input name="login_mail" class="loginput" type="text" required>
-                    <label for="">Correo</label>
-                </div>
-                <div id="form-control" class="formdiv">
-    
-                    <input name="login_pass" class="loginput" type="password" required>
-                    <label for="">Contraseña</label>
-                </div>
-                <!-- <button id="loginbutton" class="logbtn">Acceder</button> -->
-                <input type="submit" id="loginbutton" class="logbtn" value="Ingresar"></input>
-            </form>
-            <% if(log == 2){ %>
-                <p class="noaccount">Credenciales incorrectas</p>
-            <% } %>
-            <!-- <p class="noaccount">Credenciales incorrectas</p> -->
-            <p class="noaccount">¿No tiene cuenta? <button onclick="DoAnimation()">Registrarse</button></p>
+  <div id="maindiv" class="centered">
+    <div id="logindiv" class="appear centered">
+      <h1 class="logintxt" id="logintext">Iniciar sesion</h1>
+      <form action="/login" id="loginform" method="post">
+        <div id="form-control" class="formdiv">
+
+          <input name="login_mail" class="loginput" type="text" required>
+          <label for="">Correo</label>
         </div>
-        <div id="registerdiv" class="dissapear">
-            <h1 class="registertxt" id="registertext">Registrarse</h1>
-            <form action="/register" id="loginform" method="post">
-                <div id="form-control" class="formdiv">
-    
-                    <input name="register_nick" class="loginput" type="text" required>
-                    <label for="">NickName</label>
-                </div>
-                <div id="form-control" class="formdiv">
-    
-                    <input name="register_correo" class="loginput" type="text" required>
-                    <label for="">Correo</label>
-                </div>
-                <div id="form-control" class="formdiv">
-    
-                    <input name="register_country" class="loginput" type="text" required>
-                    <label for="">Country</label>
-                </div>
-                <div id="form-control" class="formdiv">
-    
-                    <input name="register_birth" class="loginput" type="date" required>
-                    <!-- <label for="">Birthdate</label> -->
-                </div>
-                <div id="form-control" class="formdiv">
-    
-                    <input name="register_pass" class="loginput" type="password" required>
-                    <label for="">Contraseña</label>
-                </div>
-                <button name="loginbutton" class="logbtn">Acceder</button>
-            </form>
-            <p class="noaccount">¿Ya tiene cuenta? <button onclick="DoAnimationOut()">Iniciar Sesion</button></p>
+        <div id="form-control" class="formdiv">
+
+          <input name="login_pass" class="loginput" type="password" required>
+          <label for="">Contraseña</label>
         </div>
-    
+        <!-- <button id="loginbutton" class="logbtn">Acceder</button> -->
+        <input type="submit" id="loginbutton" class="logbtn" value="Ingresar"></input>
+      </form>
+      <% if(log == 2){ %>
+      <p class="noaccount">Credenciales incorrectas</p>
+      <% } %>
+      <!-- <p class="noaccount">Credenciales incorrectas</p> -->
+      <p class="noaccount">¿No tiene cuenta? <button onclick="DoAnimation()">Registrarse</button></p>
+    </div>
+    <div id="registerdiv" class="dissapear">
+      <h1 class="registertxt" id="registertext">Registrarse</h1>
+      <form action="/register" id="loginform" method="post">
+        <div id="form-control" class="formdiv">
+
+          <input name="register_nick" class="loginput" type="text" required>
+          <label for="">NickName</label>
+        </div>
+        <div id="form-control" class="formdiv">
+
+          <input name="register_correo" class="loginput" type="text" required>
+          <label for="">Correo</label>
+        </div>
+        <div id="form-control" class="formdiv">
+
+          <input name="register_country" class="loginput" type="text" required>
+          <label for="">Country</label>
+        </div>
+        <div id="form-control" class="formdiv">
+
+          <input name="register_birth" class="loginput" type="date" required>
+          <!-- <label for="">Birthdate</label> -->
+        </div>
+        <div id="form-control" class="formdiv">
+
+          <input name="register_pass" class="loginput" type="password" required>
+          <label for="">Contraseña</label>
+        </div>
+        <button name="loginbutton" class="logbtn">Acceder</button>
+      </form>
+      <p class="noaccount">¿Ya tiene cuenta? <button onclick="DoAnimationOut()">Iniciar Sesion</button></p>
     </div>
 
-    <!-- partial -->
-    <script src='https://kit.fontawesome.com/944eb371a4.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js'></script>
-    <script src="/js/LoginScript.js"></script>
+  </div>
+
+  <!-- partial -->
+  <script src='https://kit.fontawesome.com/944eb371a4.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js'></script>
+  <script src="/js/LoginScript.js"></script>
 
 </body>
 

@@ -2,44 +2,44 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyPix</title>
-    <link rel="stylesheet" href="/css/navbar.css">
-    <!-- Carrousel -->
-    <link rel="stylesheet" href="/css/illustStyle.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyPix</title>
+  <link rel="stylesheet" href="/css/navbar.css">
+  <!-- Carrousel -->
+  <link rel="stylesheet" href="/css/illustStyle.css">
 </head>
 
 <body>
-    <header>
-        <img class="logo" src="/images/logo.png" alt="">
-        <nav>
-            <ul class="nav__links"">
-                <li><a href="/Dashboard/">Home</a></li>
-                <li><a href="/DashBoard/commission">Commission</a></li>
-                <li><a href="/DashBoard/request">Request</a></li>
+  <header>
+    <img class="logo" src="/images/logo.png" alt="">
+    <nav>
+      <ul class="nav__links"">
+                <li><a href=" /Dashboard/">Home</a></li>
+        <li><a href="/DashBoard/commission">Commission</a></li>
+        <li><a href="/DashBoard/request">Request</a></li>
 
-            </ul>
-        </nav>
-        
-        <div class="dropdown" style="float:left;">
-            <button>Submit</button>
-            <div class="dropdown-content">
-                <a href="/submit/illust">Ilustración</a>
-                <a href="/user/<%= LoginData.author_id %>#post">Publicación</a>
-            </div>
-        </div>
-        <div class="dropdown" style="float: right; margin-left: 30px;">
-            <img src="/images<%= LoginData.profile_pic_dir.split(".")[1] %>.png"   alt="" style="width:30px;">
-            <div class="dropdown-content-profile">
-                <a href="/user/<%= LoginData.author_id %>">Perfil</a>
-                <a href="/manage/solicitudes">Request & Comision</a>
-                <a href="#">Balance  <strong style="font-size:14px">$ 15.00</strong></a>
-                <a href="/logout">Cerrar sesión</a>
-            </div>
-        </div>
-    </header>
+      </ul>
+    </nav>
+
+    <div class="dropdown" style="float:left;">
+      <button>Submit</button>
+      <div class="dropdown-content">
+        <a href="/submit/illust">Ilustración</a>
+        <a href="/user/<%= LoginData.author_id %>#post">Publicación</a>
+      </div>
+    </div>
+    <div class="dropdown" style="float: right; margin-left: 30px;">
+      <img src="/images<%= LoginData.profile_pic_dir.split(".")[1] %>.png" alt="" style="width:30px;">
+      <div class="dropdown-content-profile">
+        <a href="/user/<%= LoginData.author_id %>">Perfil</a>
+        <a href="/manage/solicitudes">Request & Comision</a>
+        <a href="#">Balance <strong style="font-size:14px">$ 15.00</strong></a>
+        <a href="/logout">Cerrar sesión</a>
+      </div>
+    </div>
+  </header>
 </body>
 
 </html>
