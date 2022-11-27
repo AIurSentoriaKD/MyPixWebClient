@@ -22,8 +22,12 @@ controller.req_comm = async (req, res) => {
     "GetCommissionsList"
   );
   
+res.render("manage/solicitudes")
+
 };
 
-controller.perfil = async (req, res) => {};
+controller.perfil = async (req, res) => {
+  res.render("manage/perfil")
+};
 
 module.exports = controller;

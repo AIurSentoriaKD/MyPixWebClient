@@ -41,12 +41,14 @@ const dashboard_route = require("./src/routes/dashboard.routes");
 const illust_route = require("./src/routes/illust.routes");
 const user_route = require("./src/routes/user.routes");
 const submit_route = require("./src/routes/submit.routes")
+const manage_route = require("./src/routes/manage.routes")
 
 app.use("/", login_route);
 app.use("/DashBoard", dashboard_route);
 app.use("/illusts", illust_route);
 app.use("/user", user_route);
 app.use("/submit", submit_route);
+app.use("/manage", manage_route)
 
 //OPEN SERVER
 // const PORT = process.env.PORT;

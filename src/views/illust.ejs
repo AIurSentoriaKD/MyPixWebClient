@@ -6,40 +6,63 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><%= data.illust_data.title %></title>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="/css/illustStyle.css">
+  
+
 </head>
 
 <body>
-  <%- include('navbar', LoginData) %>
-
-  <div class="carousel">
-    <main>
-      <section class="has-dflex-center">
-        <div class="lx-container-80">
-          <div class="lx-row">
-            <div class="lx-card carousel-container">
-              <% if (data.illust_pages.large_dir) { %>
-              <div class="item fade">
-                <div class="image">
-                  <img src="/images<%= data.illust_pages.large_dir.slice(1, data.illust_pages.large_dir.length) %>" alt="" />
-                </div>
-              </div>
-              <% } else { %> <% for( let index=0; index < data.illust_pages.length; index++ ) { %>
-              <div class="item fade">
-                <div class="image" style="border: 2px solid purple">
-                  <img src="/images<%= data.illust_pages[index].large_dir.slice(1, data.illust_pages[index].large_dir.length) %>" alt="" />
-                </div>
-              </div>
-              <% } %> <% } %>
-              <a class="prev has-dflex-center"><i class="fas fa-angle-left"></i></a><a class="next has-dflex-center"><i class="fas fa-angle-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+  <div style="z-index: 3;">
+    <%- include('navbar', LoginData) %>
   </div>
 
+  <section class="awSlider">
+    <div class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target=".carousel" data-slide-to="0" class="active"></li>
+        <li data-target=".carousel" data-slide-to="1"></li>
+        <li data-target=".carousel" data-slide-to="2"></li>
+        <li data-target=".carousel" data-slide-to="3"></li>
+      </ol>
 
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <% if (data.illust_pages.large_dir) { %>
+          <div class="item active">
+            <img src="/images/<%= data.illust_pages.large_dir.slice(1,data.illust_pages.large_dir.length) %>">
+            <div class="carousel-caption">Görsel #1</div>
+          </div>
+        <% } else { %>
+          <div class="item active">
+            <img src="/images/<%= data.illust_pages[0].large_dir.slice(1,data.illust_pages[0].large_dir.length) %>">
+            <div class="carousel-caption">Görsel #1</div>
+          </div>
+          <% for( let i = 1; i < data.illust_pages.length; i++ ) { %>
+            <div class="item">
+              <img src="/images/<%= data.illust_pages[i].large_dir.slice(1,data.illust_pages[i].large_dir.length) %>">
+              <div class="carousel-caption">Görsel #1</div>
+            </div>
+          <% } %>
+        <% } %>
+      </div>
+
+      <!-- Controls -->
+      <a class="left carousel-control" href=".carousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Geri</span>
+      </a>
+      <a class="right carousel-control" href=".carousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">İleri</span>
+      </a>
+    </div>
+  </section>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
   <script src="/js/carousel.js"></script>
+
 </body>
 
 </html>

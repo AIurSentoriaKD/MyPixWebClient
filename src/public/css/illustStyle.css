@@ -1,143 +1,53 @@
-main section {
-    width: 95%;
-    padding: 4rem 0;
-    margin: auto;
-    /* border: 2px solid purple; */
+body {
+    min-width: 1300px;
+    background: rgb(31, 32, 39) !important;
 }
 
-main section .carousel-container {
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    position: relative;
-    overflow: hidden;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    border-radius: 0.375rem;
-    /* border: 2px solid red; */
-}
 
-main section .carousel-container .item {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    display: none;
-    animation: fade 0.3s ease-in-out;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    border-radius: 0.375rem;
-    border: 2px solid rgb(0, 0, 0);
-}
-
-main section .carousel-container .item .numbertext {
-    padding: 0.5rem 0.75rem;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    border-radius: 0.9375rem;
-    font-size: 0.875rem;
-    color: #f2f2f2;
-    background-color: rgba(0, 0, 0, 0.9);
-}
-
-main section .carousel-container .item .image {
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    margin: auto;
-    /* border: 2px solid yellow; */
-}
-
-main section .carousel-container .item .image img {
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    width: 50%;
-    height: 100%;
-    object-fit: cover;
-    border-radius:12px;
-    border: 2px solid black;
-}
-
-main section .carousel-container .item .text {
-    width: 100%;
-    padding: 0.625rem 0.9375rem;
-    position: absolute;
-    bottom: 0;
-    font-size: 0.9rem;
-    color: #f2f2f2;
-    background-color: rgba(0, 0, 0, 0.9);
-}
-
-main section .carousel-container .item .text .title {
-    margin: 0.5rem 0 0 0;
-    font-size: 1.2rem;
-    font-weight: normal;
-}
-
-main section .carousel-container .prev,
-main section .carousel-container .next {
-    width: 2rem;
-    height: 2rem;
-    padding: 0.3125rem;
-    position: absolute;
-    top: calc(50% - 1rem);
+section.awSlider .carousel{
+    display:table;
+    z-index:2;
+    -moz-box-shadow: 0 0 4px #444;
+      -webkit-box-shadow: 0 0 4px #444;
+      box-shadow: 0 0 15px rgba(1,1,1,.5);
+  }
+  
+  section.awSlider{
+    margin:30px auto;
+    padding:30px;
+    position:relative;
+    display:table;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
-    font-size: 1rem;
-    color: #f2f2f2;
-    border-radius: 50%;
-    transition: 0.6s ease;
-}
-
-main section .carousel-container .prev:focus,
-main section .carousel-container .next:focus,
-main section .carousel-container .prev:hover,
-main section .carousel-container .next:hover {
-    background-color: rgba(0, 0, 0, 0.9);
-}
-
-main section .carousel-container .prev {
-    left: 0.8rem;
-}
-
-main section .carousel-container .next {
-    right: 0.8rem;
-}
-
-main section .carousel-container .dots {
-    padding: 0.9375rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-main section .carousel-container .dots .dot {
-    width: 0.625rem;
-    height: 0.625rem;
-    margin: 0 0.125rem;
-    display: inline-block;
-    cursor: pointer;
-    border-radius: 50%;
-    background-color: #bbb;
-    transition: background-color 0.6s ease;
-}
-
-main section .carousel-container .dots .dot:focus,
-main section .carousel-container .dots .dot:hover {
-    background-color: #717171;
-}
-
-@keyframes fade {
-    from {
-        opacity: 0.8;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
+  }
+  
+  section.awSlider:hover > img{
+    -ms-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    opacity:1;
+  }
+  
+  section.awSlider img{
+     pointer-events: none;
+  }
+  
+  section.awSlider > img{
+    position:absolute;
+    top:30px;
+    z-index:1;
+    transition:all .3s;
+    filter: blur(1.8vw);
+    -webkit-filter: blur(2vw);
+    -moz-filter: blur(2vw); 
+    -o-filter: blur(2vw); 
+    -ms-filter: blur(2vw);
+    -ms-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    opacity:.5;
+  }

@@ -53,8 +53,8 @@ controller.listFollowingIllust = async (req, res) => {
       "DashboardFollowingPosts"
     );
 
-    if (illusts.length > 14) {
-      illusts = illusts.slice(0, 14);
+    if (illusts.length > 18) {
+      illusts = illusts.slice(0, 18);
     }
     if (globalranking) {
       if (globalranking.length > 5) {
@@ -148,8 +148,6 @@ controller.commission = async (req, res) => {
     C_Illust_F,
     C_Author_Fol,
   };
-  
-  console.log("DATAS PERDIDAS");
   res.render("commission", { LoginData, CommData });
 };
 
