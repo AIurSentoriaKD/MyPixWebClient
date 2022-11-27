@@ -33,9 +33,14 @@
       </div>
     </div>
 
+    <script>document.getElementById('Home').focus();
+      window.location.hash = '#Home';
+    </script>
+
     <div class="author__nav">
       <nav>
         <ul class="nav__links__auth"">
+            <li id="home" tabIndex="-1"><a onclick="openNav(event, 'Home')" >Home</a></li>
             <li><a onclick="openNav(event, 'Ilustraciones')" autofocus>Ilustraciones</a></li>
             <li><a onclick="openNav(event, 'Albumes')">Albumes</a></li>
             <li><a onclick="openNav(event, 'Publicaciones')">Publicaciónes</a></li>
@@ -58,22 +63,93 @@
       
     </div>
     
+    <div id="Home" class="tabcontent" tabindex="-1">
+      <div class="home_recents_container">
+        <div class="img_sh_title">
+          <hr class="hr_left">
+          <label>ILUSTRACIONES RECIENTES</label>
+          <hr class="hr_right">
+        </div>
+        <div class="container" id="Home" tabindex="-1">
+          <% if (AuthorIllusts) { %>
+            <% if (bool_info.has_only_one_il) { %>
+              <div class="image">
+                <a class="card__a" href="/illusts/<%= AuthorIllusts.id %>" style="width: 200px; height: 200px;">
+                    <img class="image__img" src="/images<%= AuthorIllusts.thumb_dir.split(".")[1] %>.jpg">
+                    <input type="text" autofocus>
+                    <div class="image__overlay">
+                        <div class="image__title">
+                            <% if (AuthorIllusts.title.length > 5 ) { %>
+                                <%= AuthorIllusts.title.slice(0, 5) %>...
+                            <% } else { %>
+                                <%= AuthorIllusts.title %>
+                            <% } %>
+                        </div>
+                    </div>
+                </a>  
+              </div>
+            <% } else { %>
+              <% for( let i = 0; i < AuthorIllusts.length; i++ ) { %>
+                <div class="image">
+                  <a class="card__a" href="/illusts/<%= AuthorIllusts[i].id %>" style="width: 200px; height: 200px;">
+                      <img class="image__img" src="/images<%= AuthorIllusts[i].thumb_dir.split(".")[1] %>.jpg">
+                      <div class="image__overlay">
+                          <div class="image__title">
+                              <% if (AuthorIllusts[i].title.length > 5 ) { %>
+                                  <%= AuthorIllusts[i].title.slice(0, 5) %>...
+                              <% } else { %>
+                                  <%= AuthorIllusts[i].title %>
+                              <% } %>
+                          </div>
+                      </div>
+                  </a>  
+                </div>
+              <% } %>
+            <% } %>
+          <% } else { %>
+            <div class="image">
+              <label for="">AÚN NO HA PUBLICADO NADA :p</label>
+            </div>
+          <% } %>
+        </div>
+      </div>
+      <div class="ile_container">
+        <div class="ile_left">
+          <div class="img_sh_title">
+            <hr class="hr_left">
+            <label>ME GUSTA</label>
+            <hr class="hr_right">
+          </div>
+        </div>
+        <div class="ile_right">
+          <div class="img_sh_title">
+            <hr class="hr_left">
+            <label>INFORMACIÓN</label>
+            <hr class="hr_right">
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <div id="Ilustraciones" class="tabcontent" autofocus>
       <img id="open_load" src="<%='/images/'+AuthorData.profile_pic_dir.slice(1,AuthorData.profile_pic_dir.length)%>" alt="" style="width: 250px;" autofocus> 
       <p>Pane de Ilustraciones</p>
     </div>
 
     <div id="Albumes" class="tabcontent">
-      <img src="<%='/images/'+AuthorData.profile_pic_dir.slice(1,AuthorData.profile_pic_dir.length)%>" alt="" style="width: 250px;">
       <p>Pane de Albumes</p> 
       <% if(bool_info.single_album ) {%> 
-      <p><%= albums_info.album_id %> </p>
-      <img src = "<%='/images/'+albums_info.thumb.slice(1,albums_info.thumb.length)%>"  />
+        <p><%= albums_info.album_id %> </p>
+        <% if (has_illusts[0]) { %>
+          <img src = "<%='/images/'+albums_info.thumb.slice(1,albums_info.thumb.length)%>"  />
+        <% } %>
       <% }else{ %> 
-      <% for( let i = 0; i < albums_info.length; i++ ) { %>
-        <p><%= albums_info[i].album_id%> </p>
-      <img src = "<%='/images/'+albums_info[i].thumb.slice(1,albums_info[i].thumb.length)%>"  />
-      <% } %>
+        <% for( let i = 0; i < albums_info.length; i++ ) { %>
+          <p><%= albums_info[i].album_id%> </p>
+            <% if (has_illusts[0]) { %>
+              <img src = "<%='/images/'+albums_info[i].thumb.slice(1,albums_info[i].thumb.length)%>"  />
+            <% } %>
+        <% } %>
       <% } %>
     </div>
     

@@ -61,7 +61,6 @@ remoteWS.GetBoolean = async (payload, functionName) => {
     let args = Formatter.convertJsonToSoapRequest(payload);
     let res = await ApiClient.post(someeWS, args, headers);
     const parsedRes = await Parser.convertXMLToJSON(res.data);
-    console.log(parsedRes);
     const resData = methodBoolParser(functionName, parsedRes);
     return resData;
   } catch (err) {
