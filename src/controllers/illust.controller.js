@@ -29,7 +29,19 @@ controller.getOneIllust = async (req, res, next) => {
     "GetIllustsTags"
   );
 
-  const data = { illust_data, illust_pages, illust_tags };
+  payload = { SingleAuthor: { codAuthor: illust_data.author_id, }, };
+
+  const AuthorData = await Remote1.TheOnlyMethodUNeed(payload, "SingleAuthor");
+
+  payload = {
+    GetCommentsFrom: {
+      origin_id: illust_data.id,
+      type_require: 'ILLUST'
+    },
+  };
+  const illust_comments = await Remote1.TheOnlyMethodUNeed(payload, "GetCommentsFrom");
+
+  const data = { AuthorData, illust_data, illust_pages, illust_tags, illust_comments };
   // illust_data.then((oneIllust) => {
   //   res.render("illust", {LoginData, oneIllust,})
   // })
@@ -42,7 +54,7 @@ controller.getOneIllust = async (req, res, next) => {
 //#region Submit Illust
 controller.addIllust = async (req, res) => {
   const LoginData = req.session.LoginSessionInfo;
-  
+
   res.render("submit/addIllust", { LoginData });
 };
 

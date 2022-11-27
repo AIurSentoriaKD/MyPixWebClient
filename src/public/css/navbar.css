@@ -14,7 +14,7 @@ button {
     font-size: 16px;
     color: white;
     text-decoration: none;
-    background-color: rgb(17, 19, 22);
+    /* background-color: rgb(17, 19, 22); */
 }
 
 header {
@@ -74,7 +74,7 @@ button:hover {
 .dropdown {
     position: relative;
     display: inline-block;
-    background-color: rgb(17, 19, 22);;
+    background-color: rgb(17, 19, 22);
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -84,7 +84,7 @@ button:hover {
     position: absolute;
     background-color: #000000;
     min-width: 190px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
     z-index: 1;
 }
 .dropdown-content-profile {
@@ -93,7 +93,7 @@ button:hover {
     position: absolute;
     background-color: #000000;
     min-width: 190px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
     z-index: 1;
 }
 
@@ -113,11 +113,11 @@ button:hover {
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-    background-color: #ddd;
+    background-color: rgb(50, 114, 156);
 }
 
 .dropdown-content-profile a:hover {
-    background-color: #ddd;
+    background-color: rgb(50, 114, 156);
 }
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {

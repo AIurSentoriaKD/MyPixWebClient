@@ -1,68 +1,243 @@
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><%= data.illust_data.title %></title>
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
-  <link rel="stylesheet" href="/css/illustStyle.css">
-  
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= data.illust_data.title %></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/illustStyle.css">
 
-</head>
 
-<body>
-  <div style="z-index: 3;">
+  </head>
+
+  <body>
     <%- include('navbar', LoginData) %>
-  </div>
 
-  <section class="awSlider">
-    <div class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target=".carousel" data-slide-to="0" class="active"></li>
-        <li data-target=".carousel" data-slide-to="1"></li>
-        <li data-target=".carousel" data-slide-to="2"></li>
-        <li data-target=".carousel" data-slide-to="3"></li>
-      </ol>
+    <section class="awSlider">
+      <div class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <% if (data.illust_pages.large_dir) { %>
+          <li data-target=".carousel" data-slide-to="0" class="active"></li>
+          <% } else { %>
+          <li data-target=".carousel" data-slide-to="0" class="active"></li>
+          <% for( let i = 1; i < data.illust_pages.length; i++ ) { %>
+          <li data-target=".carousel" data-slide-to="<%= i %>"></li>
+          <% } %>
+          <% } %>
+        </ol>
 
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner" role="listbox">
-        <% if (data.illust_pages.large_dir) { %>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <% if (data.illust_pages.large_dir) { %>
           <div class="item active">
             <img src="/images/<%= data.illust_pages.large_dir.slice(1,data.illust_pages.large_dir.length) %>">
-            <div class="carousel-caption">Görsel #1</div>
+
           </div>
-        <% } else { %>
+          <% } else { %>
           <div class="item active">
             <img src="/images/<%= data.illust_pages[0].large_dir.slice(1,data.illust_pages[0].large_dir.length) %>">
-            <div class="carousel-caption">Görsel #1</div>
+
           </div>
           <% for( let i = 1; i < data.illust_pages.length; i++ ) { %>
-            <div class="item">
-              <img src="/images/<%= data.illust_pages[i].large_dir.slice(1,data.illust_pages[i].large_dir.length) %>">
-              <div class="carousel-caption">Görsel #1</div>
-            </div>
+          <div class="item">
+            <img src="/images/<%= data.illust_pages[i].large_dir.slice(1,data.illust_pages[i].large_dir.length) %>">
+
+          </div>
           <% } %>
+          <% } %>
+        </div>
+
+        <!-- Controls -->
+        <% if (!data.illust_pages.large_dir) { %>
+        <a class="left carousel-control" href=".carousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Geri</span>
+        </a>
+        <a class="right carousel-control" href=".carousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">İleri</span>
+        </a>
         <% } %>
+
       </div>
+    </section>
 
-      <!-- Controls -->
-      <a class="left carousel-control" href=".carousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Geri</span>
-      </a>
-      <a class="right carousel-control" href=".carousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">İleri</span>
-      </a>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- LADO DE INFO DE LA ILLUST -->
+        <div class="col-md-8">
+          <div class="container">
+            <br>
+            <div class="row">
+              <!-- DETALLES DE LA ILLUST -->
+              <div class="col-md-8">
+                <div class="row">
+                  <div class="col-md-3">
+                    <a href="/user/<%= data.AuthorData.author_id %>">
+                      <img src="/images/<%= data.AuthorData.profile_pic_dir.slice(1,data.AuthorData.profile_pic_dir.length) %>" class="img-rounded" />
+                    </a>
+                  </div>
+                  <div class="col-md-6">
+                    <br>
+                    <h1>
+                      <p class="text-nowrap"><%= data.illust_data.title %></p>
+                    </h1>
+                    <h3>
+                      <p class="text-left">Por:
+                        <a href="/user/<%= data.AuthorData.author_id %>"><u><%= data.AuthorData.nickname %></u></a>
+                      </p>
+                    </h3>
+                    <h4>
+                      <p class="text-left">
+                        Publicado el: <%= data.illust_data.publish_date.split("T")[0] %>
+                      </p>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+              <!-- ME GUSTA TOGGLE -->
+              <div class="col-md-3">
+                <div class="row">
+                  <h2>
+                    <p class="text-center"><i class="fa-regular fa-heart"></i> Me gusta</p>
+                  </h2>
+                  <!-- <h4>
+                    <p class="text-center">Comentar</p>
+                  </h4> -->
+                </div>
+              </div>
+            </div>
+            <!-- STATS DE LA ILLUST -->
+            <div class="row" style="margin: 10px;">
+              <div class="col-md-4">
+                <h4>
+                  <p class="text-center"><i class="fa-solid fa-eye"></i> Vistas:
+                    <%= data.illust_data.views_count %>
+                  </p>
+                </h4>
+              </div>
+              <div class="col-md-4">
+                <h4>
+                  <p class="text-center"><i class="fa-solid fa-star"></i> Me gusta:
+                    <%= data.illust_data.likes %>
+                  </p>
+                </h4>
+              </div>
+              <div class="col-md-4">
+                <h4>
+                  <p class="text-center"><i class="fa-solid fa-message"></i> Comentarios:
+                    <%= data.illust_data.views_count %>
+                  </p>
+                </h4>
+              </div>
+
+
+            </div>
+            <!-- ETIQUETAS DE LA ILLUST -->
+            <div class="row">
+              <div class="col-md-12">
+
+                <div class="tag__container">
+                  <!-- FOR DE ETIQUETAS -->
+                  <% for( let i = 0; i < data.illust_tags.length; i++ ) { %>
+                  <div class="il_tag">
+                    <p class="text-justify">
+                      <u>#<%= data.illust_tags[i].tag_name %></u>
+                      <% if (data.illust_tags[i].tag_translate) { %>
+                      <%= data.illust_tags[i].tag_translate %>
+                      <% } %>
+                    </p>
+                  </div>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+            <!-- COMENTARIOS DE LA ILLUST -->
+            <div class="row">
+              <div class="col-md-12">
+                <div class="img_sh_title">
+                  <hr class="hr_left">
+                  <label>COMENTARIOS</label>
+                  <hr class="hr_right">
+                </div>
+                <div class="row">
+                  <% if (data.illust_comments != null) { %>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <% if (data.illust_comments.comment_id) { %>
+                      <!-- SOLO UN COMMENT -->
+                      <div class="col-md-8">
+                        <div class="comment_content">
+                          <div class="comment_icon">
+                            <img src="/images/<%= data.illust_comments.profile_pic_dir.slice(1,data.illust_comments.profile_pic_dir.length) %>" alt="" class="comment_img">
+                          </div>
+                          <div class="comment_info">
+                            <a href="/user/<%= data.illust_comments.author_id %>">
+                              <p><%= data.illust_comments.nickname %></p>
+                            </a>
+                            <br>
+                            <p><%= data.illust_comments.comment_content %> </p>
+                            <br>
+                            <p><%= data.illust_comments.publish_date.split("T")[0] %></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <% } else { %>
+                  <% for( let i = 0; i < data.illust_comments.length; i++ ) { %>
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="comment_content">
+                        <div class="comment_icon">
+                          <img src="/images/<%= data.illust_comments[i].profile_pic_dir.slice(1,data.illust_comments[i].profile_pic_dir.length) %>" alt="" class="comment_img">
+                        </div>
+                        <div class="comment_info">
+                          <a href="/user/<%= data.illust_comments[i].author_id %>">
+                            <p><%= data.illust_comments[i].nickname %></p>
+                          </a>
+                          <br>
+                          <p><%= data.illust_comments[i].comment_content %> </p>
+                          <br>
+                          <p><%= data.illust_comments[i].publish_date.split("T")[0] %></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <% } %>
+                  <% } %>
+                  <% } else { %>
+                    <div class="row">
+                      <div class="col-md-8">
+                        <p>NO HAY COMENTARIOS :p</p>
+                      </div>
+                    </div>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- LADO DE MAS ILLUSTS -->
+        <div class="col-md-4">
+          <h3>
+            <div class="text-center">
+              MAS DEL ARTISTA
+            </div>
+          </h3>
+
+        </div>
+      </div>
     </div>
-  </section>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
-  <script src="/js/carousel.js"></script>
+    </div>
+    <script src="https://kit.fontawesome.com/b086d2a54c.js" crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+    <script src="/js/carousel.js"></script>
 
-</body>
+  </body>
 
-</html>
+  </html>
