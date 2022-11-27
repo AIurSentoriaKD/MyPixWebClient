@@ -39,7 +39,7 @@ remoteWS.TheOnlyMethodUNeed = async (payload, functionName) => {
     const resData = methodParser(functionName, parsedRes);
     return resData;
   } catch (err) {
-    console.log("Error llamando el metodo: ", functionName, ", en remoteWS", err);
+    console.log("Error llamando el metodo: ", functionName, ", en remoteWS", err.message);
     return null;
   }
 }

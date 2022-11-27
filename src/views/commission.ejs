@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <%- include('navbar', LoginData) %>
+  <%- include('navbar', LoginData); -%>
   <!--for commissions-->
   <div class="ile_container">
     <div class="ile_left">
@@ -27,15 +27,14 @@
             <div class="image__overlay">
               <div class="image__title">
                 <% if (CommData.C_Illust[i].title.length> 5 ) { %>
-                <%= CommData.C_Illust[i].title.slice(0, 5) %>...
+                <%= CommData.C_Illust[i].title.slice(0, 5) %>
                 <% } else { %>
                 <%= CommData.C_Illust[i].title %>
                 <% } %>
               </div>
               <div class="author__line">
                 <a class="author__button" href="/user/<%= CommData.C_Illust[i].author_id %> ">
-                  <img class="author__img" src="/images<%= CommData.C_Illust[i].profile_pic_dir.split("
-                        .")[1]+"."+CommData.C_Illust[i].profile_pic_dir.split(".")[2]%>" alt="">
+                  <img class="author__img" src="/images/<%= CommData.C_Illust[i].profile_pic_dir.slice(1, CommData.C_Illust[i].profile_pic_dir.length) %>">
                   <p class="author__name">
                     <%= CommData.C_Illust[i].nickname %>
                   </p>

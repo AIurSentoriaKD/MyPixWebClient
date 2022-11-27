@@ -84,6 +84,8 @@ body {
 
     list-style: none;
     background-color: rgb(17, 19, 22) !important;
+    cursor: pointer !important;
+    /* cursor: wait; */
 }
 
 .nav__links__auth li {

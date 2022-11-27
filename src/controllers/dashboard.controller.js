@@ -148,6 +148,8 @@ controller.commission = async (req, res) => {
     C_Illust_F,
     C_Author_Fol,
   };
+  
+  console.log("DATAS PERDIDAS");
   res.render("commission", { LoginData, CommData });
 };
 

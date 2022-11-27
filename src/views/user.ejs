@@ -34,16 +34,11 @@
     </div>
   </div>
 
-  <script>
-    document.getElementById('Home').focus();
-    window.location.hash = '#Home';
-  </script>
-
   <div class="author__nav">
     <nav>
-      <ul class="nav__links__auth"">
-            <li id=" home" tabIndex="-1"><a onclick="openNav(event, 'Home')">Home</a></li>
-        <li><a onclick="openNav(event, 'Ilustraciones')" autofocus>Ilustraciones</a></li>
+      <ul class="nav__links__auth">
+        <li><a onclick="openNav(event, 'Home')">Home</a></li>
+        <li><a onclick="openNav(event, 'Ilustraciones')" >Ilustraciones</a></li>
         <li><a onclick="openNav(event, 'Albumes')">Albumes</a></li>
         <li><a onclick="openNav(event, 'Publicaciones')">Publicaciónes</a></li>
         <li><a onclick="openNav(event, 'Comisiones')">Comisiones</a></li>
@@ -54,7 +49,6 @@
     <% if (bool_info.match) { %>
     <div class="lift_left">
       <a href="">Editar</a>
-      <a href="">TEST</a>
     </div>
     <% } else { %>
     <div class="lift_left"></div>
@@ -65,14 +59,14 @@
 
   </div>
 
-  <div id="Home" class="tabcontent" tabindex="-1">
+  <div id="Home" class="tabcontent" onload="myFunction()">
     <div class="home_recents_container">
       <div class="img_sh_title">
         <hr class="hr_left">
         <label>ILUSTRACIONES RECIENTES</label>
         <hr class="hr_right">
       </div>
-      <div class="container" id="Home" tabindex="-1">
+      <div class="container" id="Home" onload="myFunction()">
         <% if (AuthorIllusts) { %>
         <% if (bool_info.has_only_one_il) { %>
         <div class="image">
@@ -134,40 +128,91 @@
   </div>
 
   <div id="Ilustraciones" class="tabcontent" autofocus>
-    <img id="open_load" src="<%='/images/'+AuthorData.profile_pic_dir.slice(1,AuthorData.profile_pic_dir.length)%>" alt="" style="width: 250px;" autofocus>
-    <p>Pane de Ilustraciones</p>
+    <div class="illusts_container">
+      <div class="img_sh_title">
+        <hr class="hr_left">
+        <label>ILUSTRACIONES</label>
+        <hr class="hr_right">
+      </div>
+    </div>
   </div>
 
   <div id="Albumes" class="tabcontent">
-    <p>Pane de Albumes</p>
-    <% if(bool_info.single_album ) {%>
-    <p><%= albums_info.album_id %> </p>
-    <% if (has_illusts[0]) { %>
-    <img src="<%='/images/'+albums_info.thumb.slice(1,albums_info.thumb.length)%>" />
-    <% } %>
-    <% }else{ %>
-    <% for( let i = 0; i < albums_info.length; i++ ) { %>
-    <p><%= albums_info[i].album_id%> </p>
-    <% if (has_illusts[0]) { %>
-    <img src="<%='/images/'+albums_info[i].thumb.slice(1,albums_info[i].thumb.length)%>" />
-    <% } %>
-    <% } %>
-    <% } %>
+    <div class="albums_container">
+      <div class="img_sh_title">
+        <hr class="hr_left">
+        <label>ALBUMES</label>
+        <hr class="hr_right">
+      </div>
+      <div class="album__thumb__container">
+        <% if(bool_info.single_album ) {%>
+        <p><%= albums_info.album_id %> </p>
+        <% if (has_illusts[0]) { %>
+        <img src="<%='/images/'+albums_info.thumb.slice(1,albums_info.thumb.length)%>" />
+        <% } %>
+        <% }else{ %>
+        <% for( let i = 0; i < albums_info.length; i++ ) { %>
+        <p><%= albums_info[i].album_id%> </p>
+        <% if (has_illusts[0]) { %>
+        <img src="<%='/images/'+albums_info[i].thumb.slice(1,albums_info[i].thumb.length)%>" />
+        <% } %>
+        <% } %>
+        <% } %>
+      </div>
+      <div class="img_sh_title">
+        <hr class="hr_left">
+        <label>COLECCIÓN</label>
+        <hr class="hr_right">
+      </div>
+      <div class="container">
+
+      </div>
+    </div>
+
   </div>
 
   <div id="Publicaciones" class="tabcontent">
-    <img src="<%='/images/'+AuthorData.profile_pic_dir.slice(1,AuthorData.profile_pic_dir.length)%>" alt="" style="width: 250px;">
-    <p>Pane de Publicaciones</p>
+    <div class="author_posts_container">
+      <div class="input__container">
+        <input type="text" placeholder="test">
+      </div>
+      <div class="posts_main">
+        <div class="img_sh_title">
+          <hr class="hr_left">
+          <label>POSTS</label>
+          <hr class="hr_right">
+        </div>
+        <div class="posts_contai">
+
+        </div>
+      </div>
+    </div>
   </div>
 
   <div id="Comisiones" class="tabcontent">
-    <img src="<%='/images/'+AuthorData.profile_pic_dir.slice(1,AuthorData.profile_pic_dir.length)%>" alt="" style="width: 250px;">
-    <p>Pane de Comisiones</p>
+    <div class="comms_container">
+      <div class="img_sh_title">
+        <hr class="hr_left">
+        <label>COMISIONES</label>
+        <hr class="hr_right">
+      </div>
+      <div class="container">
+        <!--el for de las comisiones-->
+      </div>
+    </div>
   </div>
 
   <div id="Request" class="tabcontent">
-    <img src="<%='/images/'+AuthorData.profile_pic_dir.slice(1,AuthorData.profile_pic_dir.length)%>" alt="" style="width: 250px;">
-    <p>Pane de request</p>
+    <div class="request_container">
+      <div class="img_sh_title">
+        <hr class="hr_left">
+        <label>REQUESTS</label>
+        <hr class="hr_right">
+      </div>
+      <div class="container">
+        <!--el for de las requests-->
+      </div>
+    </div>
   </div>
 
   <script src="/js/tabPane.js"></script>
