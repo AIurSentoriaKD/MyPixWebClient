@@ -1,0 +1,14 @@
+body {
+    background-color: #1f2027;
+    color:white;
+}
+
+.container input, textarea{
+    padding:7px;
+    border-radius: 7px;
+    background-color:#61858d;
+}
+
+.profile_img{
+    border-radius:90%;
+}

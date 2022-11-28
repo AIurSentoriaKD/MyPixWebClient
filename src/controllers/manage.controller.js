@@ -42,7 +42,9 @@ controller.req_comm = async (req, res) => {
 };
 
 controller.perfil = async (req, res) => {
-  res.render("manage/perfil")
+  const LoginData = req.session.LoginSessionInfo;
+  console.log("Session: ",LoginData);
+  res.render("manage/perfil", { LoginData })
 };
 
 module.exports = controller;
