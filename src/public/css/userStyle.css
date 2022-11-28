@@ -300,7 +300,22 @@ body {
 
 
 /* ALBUMS TAB STYLE */
-
+.album__card{
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    width: 300px;
+    background-color: black;
+}
+.album__card img{
+    height: 180px;
+    width: 300px;
+    background-size: cover;
+}
+.album__card .title__label{
+    height: 20px;
+    color: white;
+}
 /* ALBUMS TAB STYLE END */
 
 

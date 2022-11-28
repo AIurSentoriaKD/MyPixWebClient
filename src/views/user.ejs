@@ -152,26 +152,26 @@
                 <% } %>
             <% } %>
           <% } else { %>
-          <% for( let i = 0; i < albums_info.length; i++ ) { %>
-          <% if (albums_info[i].album_name == 'Favorites') { %>
-          <% for( let u = 0; u < album_illusts[i].illusts.length; u++ ) { %>
-          <div class="image">
-            <a class="card__a" href="/illusts/<%= album_illusts[i].illusts[u].id %>" style="width: 200px; height: 200px;">
-              <img class="image__img" src="/images<%= album_illusts[i].illusts[u].thumb_dir %>">
-              <div class="image__overlay">
-                <div class="image__title">
-                  <% if (album_illusts[i].illusts[u].title.length > 5 ) { %>
-                  <%= album_illusts[i].illusts[u].title.slice(0, 5) %>...
-                  <% } else { %>
-                  <%= album_illusts[i].illusts[u].title %>
-                  <% } %>
-                </div>
-              </div>
-            </a>
-          </div>
-          <% } %>
-          <% } %>
-          <% } %>
+            <% for( let i = 0; i < albums_info.length; i++ ) { %>
+              <% if (albums_info[i].album_name == 'Favorites') { %>
+                <% for( let u = 0; u < album_illusts[i].illusts.length; u++ ) { %>
+                  <div class="image">
+                    <a class="card__a" href="/illusts/<%= album_illusts[i].illusts[u].id %>" style="width: 200px; height: 200px;">
+                      <img class="image__img" src="/images<%= album_illusts[i].illusts[u].thumb_dir %>">
+                      <div class="image__overlay">
+                        <div class="image__title">
+                          <% if (album_illusts[i].illusts[u].title.length > 5 ) { %>
+                            <%= album_illusts[i].illusts[u].title.slice(0, 5) %>...
+                          <% } else { %>
+                            <%= album_illusts[i].illusts[u].title %>
+                          <% } %>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                <% } %>
+              <% } %>
+            <% } %>
           <% } %>
         </div>
       </div>
@@ -246,17 +246,22 @@
       </div>
       <div class="album__thumb__container">
         <% if(bool_info.single_album ) {%>
-        <p><%= albums_info.album_id %> </p>
-        <% if (has_illusts[0]) { %>
-        <img src="<%='/images/'+albums_info.thumb.slice(1,albums_info.thumb.length)%>" />
-        <% } %>
+          <p><%= albums_info.album_id %> </p>
+          <% if (has_illusts[0]) { %>
+            <div class="album__card">
+              <img src="<%='/images/'+albums_info.thumb%>" />
+              <div class="title__label">
+                <label for=""><%= albums_info.album_name %> </label>
+              </div>
+            </div>
+          <% } %>
         <% }else{ %>
-        <% for( let i = 0; i < albums_info.length; i++ ) { %>
-        <p><%= albums_info[i].album_id%> </p>
-        <% if (has_illusts[0]) { %>
-        <img src="<%='/images/'+albums_info[i].thumb.slice(1,albums_info[i].thumb.length)%>" />
-        <% } %>
-        <% } %>
+          <% for( let i = 0; i < albums_info.length; i++ ) { %>
+            <p><%= albums_info[i].album_id%> </p>
+            <% if (has_illusts[i]) { %>
+              <img src="<%='/images/'+albums_info[i].thumb%>" />
+            <% } %>
+          <% } %>
         <% } %>
       </div>
       <div class="img_sh_title">

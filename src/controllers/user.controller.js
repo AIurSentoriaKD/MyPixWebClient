@@ -41,13 +41,20 @@ controller.User = async (req, res) => {
     let has_illusts = [];
 
     try {
-      if (albums_info.owner_id) single_album = true;
-      else single_album = false;
-      console.log(single_album);
+      if (albums_info.owner_id) {
+        single_album = true;
+        albums_info.thumb = albums_info.thumb.slice(1,albums_info.thumb.length);
+      } else {
+        single_album = false;
+        for (let i = 0; i < illusts.length; i++) {
+          illusts[i].thumb = illusts[i].thumb.slice(1, illusts[i].thumb.length);
+        }
+      }
+      console.log("Un solo album: ", single_album);
       if (single_album) {
         if (albums_info.il_count > 0) has_illusts.push(true);
         else has_illusts.push(false);
-        
+
         payload = {
           GetAlbumIllustInfo: {
             codalbum: albums_info.album_id,
@@ -55,6 +62,8 @@ controller.User = async (req, res) => {
         };
 
         let illusts = await Remote1.TheOnlyMethodUNeed(payload, "GetAlbumIllustInfo");
+
+        // editar la cadena del thumbnail
         album_illusts = illusts;
       } else {
         for (let i = 0; i < albums_info.length; i++) {
@@ -69,11 +78,15 @@ controller.User = async (req, res) => {
           };
 
           let illusts = await Remote1.TheOnlyMethodUNeed(payload, "GetAlbumIllustInfo");
+
+          // editar la cadena de los thumbnail
+          
           album_illusts.push(illusts);
         }
       }
+      console.log("Albumes tienen illusts?: ", has_illusts);
     } catch (error) {
-      console.log("Error del album: ", error.message);
+      console.log("Error del album: ", error);
     }
 
 
@@ -90,10 +103,10 @@ controller.User = async (req, res) => {
         has_only_one_il = true;
     }
 
-    if(has_only_one_il){
+    if (has_only_one_il) {
       AuthorIllusts.thumb_dir = AuthorIllusts.thumb_dir.slice(1, AuthorIllusts.thumb_dir.length);
-    }else {
-      if(AuthorIllusts){
+    } else {
+      if (AuthorIllusts) {
         for (let i = 0; i < AuthorIllusts.length; i++) {
           AuthorIllusts[i].thumb_dir = AuthorIllusts[i].thumb_dir.slice(1, AuthorIllusts[i].thumb_dir.length);
         }
