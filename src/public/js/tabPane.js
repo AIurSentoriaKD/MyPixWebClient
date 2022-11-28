@@ -27,7 +27,3 @@ function myFunction() {
     input.focus(); // adding the focus
   });
 }
-
-function openDefault(){
-  document.getElementById("defaultOpen").click();
-}

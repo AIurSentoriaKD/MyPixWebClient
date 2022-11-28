@@ -193,6 +193,12 @@ body {
     width: 200px;
     height: 200px;
 }
+.image__img_w {
+    display: block;
+    width: 300px;
+    height: 200px;
+    background-size: cover;
+}
 
 .image__overlay {
     position: absolute;
@@ -256,7 +262,7 @@ body {
 
 /* HOME TAB STYLE */
 .home_recents_container {
-    max-height: 300px;
+    min-height: 300px;
 }
 .ile_container {
     display: flex;

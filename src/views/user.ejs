@@ -70,8 +70,7 @@
         <% if (bool_info.has_only_one_il) { %>
         <div class="image">
           <a class="card__a" href="/illusts/<%= AuthorIllusts.id %>" style="width: 200px; height: 200px;">
-            <img class="image__img" src="/images<%= AuthorIllusts.thumb_dir.split(".")[1] %>.jpg">
-            <input type="text" autofocus>
+            <img class="image__img" src="/images<%= AuthorIllusts.thumb_dir %>">
             <div class="image__overlay">
               <div class="image__title">
                 <% if (AuthorIllusts.title.length > 5 ) { %>
@@ -83,11 +82,28 @@
             </div>
           </a>
         </div>
-        <% } else { %>
+        <% } else if(AuthorIllusts.length > 9) { %>
+        <% for( let i = 0; i < 9; i++ ) { %>
+        <div class="image">
+          <a class="card__a" href="/illusts/<%= AuthorIllusts[i].id %>" style="width: 200px; height: 200px;">
+            <img class="image__img" src="/images<%= AuthorIllusts[i].thumb_dir %>">
+            <div class="image__overlay">
+              <div class="image__title">
+                <% if (AuthorIllusts[i].title.length > 5 ) { %>
+                <%= AuthorIllusts[i].title.slice(0, 5) %>...
+                <% } else { %>
+                <%= AuthorIllusts[i].title %>
+                <% } %>
+              </div>
+            </div>
+          </a>
+        </div>
+        <% } %>
+        <% } else if(AuthorIllusts.length < 9) { %>
         <% for( let i = 0; i < AuthorIllusts.length; i++ ) { %>
         <div class="image">
           <a class="card__a" href="/illusts/<%= AuthorIllusts[i].id %>" style="width: 200px; height: 200px;">
-            <img class="image__img" src="/images<%= AuthorIllusts[i].thumb_dir.split(".")[1] %>.jpg">
+            <img class="image__img" src="/images<%= AuthorIllusts[i].thumb_dir %>">
             <div class="image__overlay">
               <div class="image__title">
                 <% if (AuthorIllusts[i].title.length > 5 ) { %>
@@ -115,6 +131,49 @@
           <label>ME GUSTA</label>
           <hr class="hr_right">
         </div>
+        <div class="container">
+          <% if (bool_info.single_album) { %>
+            <% if (album_illusts) { %>
+              <% for( let u = 0; u < album_illusts.length; u++ ) { %>
+                <div class="image">
+                  <a class="card__a" href="/illusts/<%= album_illusts[u].illust_id %>" style="width: 200px; height: 200px;">
+                    <img class="image__img" src="/images<%= album_illusts[u].thumb_dir.slice(1,album_illusts[u].thumb_dir.length) %>">
+                    <div class="image__overlay">
+                      <div class="image__title">
+                        <% if (album_illusts[u].title.length > 5 ) { %>
+                        <%= album_illusts[u].title.slice(0, 5) %>...
+                        <% } else { %>
+                        <%= album_illusts[u].title %>
+                        <% } %>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <% } %>
+            <% } %>
+          <% } else { %>
+          <% for( let i = 0; i < albums_info.length; i++ ) { %>
+          <% if (albums_info[i].album_name == 'Favorites') { %>
+          <% for( let u = 0; u < album_illusts[i].illusts.length; u++ ) { %>
+          <div class="image">
+            <a class="card__a" href="/illusts/<%= album_illusts[i].illusts[u].id %>" style="width: 200px; height: 200px;">
+              <img class="image__img" src="/images<%= album_illusts[i].illusts[u].thumb_dir %>">
+              <div class="image__overlay">
+                <div class="image__title">
+                  <% if (album_illusts[i].illusts[u].title.length > 5 ) { %>
+                  <%= album_illusts[i].illusts[u].title.slice(0, 5) %>...
+                  <% } else { %>
+                  <%= album_illusts[i].illusts[u].title %>
+                  <% } %>
+                </div>
+              </div>
+            </a>
+          </div>
+          <% } %>
+          <% } %>
+          <% } %>
+          <% } %>
+        </div>
       </div>
       <div class="ile_right">
         <div class="img_sh_title">
@@ -133,6 +192,48 @@
         <label>ILUSTRACIONES</label>
         <hr class="hr_right">
       </div>
+    </div>
+    <div class="container">
+      <% if (AuthorIllusts) { %>
+      <% if (bool_info.has_only_one_il) { %>
+      <div class="image">
+        <a class="card__a" href="/illusts/<%= AuthorIllusts.id %>" style="width: 300px; height: 200px;">
+          <div class="image__img_w" style="background-image: url(/images/<%=AuthorIllusts.thumb_dir%>);"></div>
+          <div class="image__overlay">
+            <div class="image__title">
+              <% if (AuthorIllusts.title.length > 6 ) { %>
+              <%= AuthorIllusts.title.slice(0, 6) %>...
+              <% } else { %>
+              <%= AuthorIllusts.title %>
+              <% } %>
+            </div>
+          </div>
+        </a>
+      </div>
+      <% } else if(AuthorIllusts.length > 1) { %>
+      <% for( let i = 0; i < AuthorIllusts.length; i++ ) { %>
+      <div class="image">
+        <a class="card__a" href="/illusts/<%= AuthorIllusts[i].id %>" style="width: 300px; height: 200px;">
+
+          <div class="image__img_w" style="background-image: url(/images/<%=AuthorIllusts[i].thumb_dir%>);"></div>
+          <div class="image__overlay">
+            <div class="image__title">
+              <% if (AuthorIllusts[i].title.length > 6 ) { %>
+              <%= AuthorIllusts[i].title.slice(0, 6) %>...
+              <% } else { %>
+              <%= AuthorIllusts[i].title %>
+              <% } %>
+            </div>
+          </div>
+        </a>
+      </div>
+      <% } %>
+      <% } %>
+      <% } else { %>
+      <div class="image">
+        <label for="">AÚN NO HA PUBLICADO NADA :p</label>
+      </div>
+      <% } %>
     </div>
   </div>
 
@@ -213,63 +314,6 @@
       </div>
     </div>
   </div>
-
-  <!--Modal: Commisions-->
-  <div id="id01" class="modal">
-    <form class="modal-content animate" action="/login" method="post">
-
-      <div class="container" style="text-align: center;">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="row text-center justify-content-center align-items-center" style="padding: 15px;">
-              <div class="col-md-12 mb-2">
-                <h3 style="color:#ffffff">LOGIN</h3>
-              </div>
-              <div class="col-md-11 text-left my-2">
-                <i class="fas fa-user mr-1"></i> <label for="uname"><b>Your Username</b></label>
-                <input type="text" placeholder="Enter Username" name="comm_id" id="username" required>
-                <input type="date" placeholder="Enter Username" name="commission_ada" id="username" required>
-              </div>
-              <div class="col-md-11 text-left my-2">
-                <i class="fas fa-user mr-1"></i> <label for="uname"><b>Your Username</b></label>
-                <input type="text" placeholder="Enter Username" name="username" id="username" required>
-                <input type="text" placeholder="Enter Username" name="username" id="username" required>
-                <input type="text" placeholder="Enter Username" name="username" id="username" required>
-              </div>
-              <div class="col-md-11">
-                <button type="submit">Request</button>
-              </div>
-              <div class="col-md-11">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn text-center">Cancel</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </form>
-  </div>
-
-  <script>
-    // Get the modal
-    var price = document.getElementsByClassName("single-product-pricing")
-    var modal = document.getElementById('id01');
-
-    var conDecimal = parseFloat(price.toFixed(2));
-
-    price.document.textContent = conDecimal;
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-    
-  </script>
-  <!--Modal: Login / Register Form-->
-
   <script src="/js/tabPane.js"></script>
 </body>
 

@@ -21,7 +21,7 @@
         <div class="col-md-6 p-3" style="border: 1px solid red;">
           <div class="col-md-12" style="border: 1px solid rgb(0, 255, 187);">
             <h1>Profile Image</h1>
-            <img class="profile_img" src="/images/img/users/profile/361691_975807202cf10531a5ca6fba10ac1706_170.jpg">
+            <img class="profile_img" src="/images/<%= LoginData.profile_pic_dir.slice(1, LoginData.profile_pic_dir.length) %>">
         </div>
         <input type="file">
         </div>
@@ -53,10 +53,10 @@
                 <h1>Country</h1>
                 <input type="text" name="country" value="<%= LoginData.country %>">
               </div>
-              <div class="col-md-12">
+              <!-- <div class="col-md-12">
                 <h1>Birthdate</h1>
                 <input type="date" name="birthdate" value="<%= LoginData.birthdate %>">
-              </div>
+              </div> -->
             </div>
             <div class="row my-3 p-3" style="border: 1px solid orange;">
               <h1>Edit Credentials</h1>
