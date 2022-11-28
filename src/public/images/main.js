@@ -88,6 +88,7 @@ const init = async () => {
       "\nImage Tools",
       "\n     1. Automatico: Ilustraciones, follows y recommended",
       "\n     3. Comprobar imagenes de perfil",
+      "\n     3.1. Comprobar imagenes de portada",
       "\n     4. Comprobar imagenes de thumbnail",
       "\n     5. Comprobar paginas de imagenes",
       "\nData Tools",
@@ -126,6 +127,11 @@ const init = async () => {
         console.log("\nComprobando Imagenes de Perfil");
         await AuthorProfileUpdater(pool);
         console.log("\nFIN\n");
+        break;
+      }
+      case "3.1":{
+        console.log("\nComprobando Imagenes de Portada");
+
         break;
       }
       case "4": {
@@ -254,6 +260,12 @@ const init = async () => {
 };
 
 init();
+
+async function UpdatePortraitImage(pool){
+  let authors = await pool.request().execute("spListarArtistasSinPortada");
+  
+}
+
 async function CommissionInfoGenerate(pixiv, pool) {
   // mock data de facturacion info
   let rawdata = fs.readFileSync("FactPreData.json");

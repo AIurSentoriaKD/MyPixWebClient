@@ -15,7 +15,7 @@
   </style>
 </head>
 
-<body onload="openDefault()">
+<body>
   <%- include('navbar', LoginData) %>
   <div class="author__header">
     <div class="header__fill" style="background-image: var(--background-image);">
@@ -25,9 +25,14 @@
           <h3><%= AuthorData.nickname %> </h3>
         </div>
         <div class="author__inline">
-          <h4>Views</h4>
-          <h4>Ilustraciones</h4>
-          <h4>Page views</h4>
+          <h4>Views: <%= AuthorData.page_views %></h4>
+          <h4>
+            <% if (AuthorIllusts) { %>
+             <%= AuthorIllusts.length %> 
+            <% } else { %>
+              0
+            <% } %>
+          </h4>
         </div>
       </div>
     </div>
@@ -36,12 +41,12 @@
   <div class="author__nav">
     <nav>
       <ul class="nav__links__auth">
-        <li><a id="defaultOpen" onclick="openNav(event, 'Home')" style="display: block;">Home</a></li>
-        <li><a onclick="openNav(event, 'Ilustraciones')">Ilustraciones</a></li>
-        <li><a onclick="openNav(event, 'Albumes')">Albumes</a></li>
-        <li><a onclick="openNav(event, 'Publicaciones')">Publicaciónes</a></li>
-        <li><a onclick="document.getElementById('id01').style.display='block'">Comisiones</a></li>
-        <li></li><a onclick="openNav(event, 'Request')">Requests</a></li>
+        <li><a name="author-li" class="active-li" onclick="openNav(event, 'Home')">Home</a></li>
+        <li><a name="author-li" class="inactive-li" onclick="openNav(event, 'Ilustraciones')">Ilustraciones</a></li>
+        <li><a name="author-li" class="inactive-li" onclick="openNav(event, 'Albumes')">Albumes</a></li>
+        <li><a name="author-li" class="inactive-li" onclick="openNav(event, 'Publicaciones')">Publicaciones</a></li>
+        <li><a name="author-li" class="inactive-li" onclick="openNav(event, 'Comisiones')">Comisiones</a></li>
+        <li><a name="author-li" class="inactive-li" onclick="openNav(event, 'Request')">Requests</a></li>
       </ul>
     </nav>
 
@@ -58,7 +63,7 @@
 
   </div>
 
-  <div id="Home" class="tabcontent" onload="myFunction()">
+  <div id="Home" class="tabcontent" style="display: block;">
     <div class="home_recents_container">
       <div class="img_sh_title">
         <hr class="hr_left">
@@ -146,10 +151,16 @@
                         <%= album_illusts[u].title %>
                         <% } %>
                       </div>
+                      <div class="author__line">
+                        <a class="author__button" href="/user/<%= album_illusts[u].author_id %> ">
+                          <img class="author__img" src="/images<%= album_illusts[u].profile_pic_dir.slice(1,album_illusts[u].profile_pic_dir.length)%>" alt="">
+                          <p class="author__name"><%= album_illusts[u].nickname %> </p>
+                        </a>
+                      </div>
                     </div>
                   </a>
                 </div>
-                <% } %>
+              <% } %>
             <% } %>
           <% } else { %>
             <% for( let i = 0; i < albums_info.length; i++ ) { %>
@@ -185,7 +196,7 @@
     </div>
   </div>
 
-  <div id="Ilustraciones" class="tabcontent" autofocus>
+  <div id="Ilustraciones" class="tabcontent">
     <div class="illusts_container">
       <div class="img_sh_title">
         <hr class="hr_left">
@@ -246,32 +257,106 @@
       </div>
       <div class="album__thumb__container">
         <% if(bool_info.single_album ) {%>
-          <p><%= albums_info.album_id %> </p>
           <% if (has_illusts[0]) { %>
-            <div class="album__card">
-              <img src="<%='/images/'+albums_info.thumb%>" />
-              <div class="title__label">
-                <label for=""><%= albums_info.album_name %> </label>
+            <a onclick="openAlbum(event, `Favorites`)" style="cursor: pointer;" name="albums-card">
+              <div class="album__card">
+                <div class="album__image" style="background-image: url(/images/<%=albums_info.thumb%>);"></div>
+                  <div class="title__label">
+                    <label>+ <%= albums_info.album_name %></label>
+                    <p><%= albums_info.album_id %></p>
+                </div>
               </div>
-            </div>
+            </a>
           <% } %>
         <% }else{ %>
           <% for( let i = 0; i < albums_info.length; i++ ) { %>
-            <p><%= albums_info[i].album_id%> </p>
             <% if (has_illusts[i]) { %>
-              <img src="<%='/images/'+albums_info[i].thumb%>" />
+              <a onclick="openAlbum(event, `${albums_info[i].album_name}`)" name="albums-card">
+                <div class="album__card">
+                  <div class="album__image" style="background-image: url(/images/<%=albums_info[i].thumb%>);"></div>
+                  <div class="title__label">
+                    <label for="">* <%= albums_info[i].album_name %></label>
+                    <p><%= albums_info[i].album_id%></p>
+                  </div>
+                </div>
+              </a>
             <% } %>
           <% } %>
         <% } %>
       </div>
       <div class="img_sh_title">
         <hr class="hr_left">
-        <label>COLECCIÓN</label>
+          <label>COLECCIÓN</label>
         <hr class="hr_right">
       </div>
-      <div class="container">
-
-      </div>
+      <!-- ALBUMES TOGGLE POR CLICK EN ALBUM -->
+      <% if(bool_info.single_album) { %>
+        <!-- CUANDO HAY UN SOLO ALBUM MOSTRAR ESE ALBUM A LA PRIMERA -->
+        <div class="container__il" id="Favorites" styles="display: flex;">
+          <% for( let u = 0; u < album_illusts.length; u++ ) { %>
+            <div class="image">
+              <a class="card__a" href="/illusts/<%= album_illusts[u].illust_id %>" style="width: 200px; height: 200px;">
+                <img class="image__img" src="/images<%= album_illusts[u].thumb_dir.slice(1,album_illusts[u].thumb_dir.length) %>">
+                <div class="image__overlay">
+                  <div class="image__title">
+                    <% if (album_illusts[u].title.length > 5 ) { %>
+                    <%= album_illusts[u].title.slice(0, 5) %>...
+                    <% } else { %>
+                    <%= album_illusts[u].title %>
+                    <% } %>
+                  </div>
+                  <div class="author__line">
+                    <a class="author__button" href="/user/<%= album_illusts[u].author_id %> ">
+                      <img class="author__img" src="/images<%= album_illusts[u].profile_pic_dir.slice(1,album_illusts[u].profile_pic_dir.length)%>" alt="">
+                      <p class="author__name"><%= album_illusts[u].nickname %> </p>
+                    </a>
+                  </div>
+                </div>
+              </a>
+            </div>
+          <% } %>
+        </div>
+      <% } else { %>
+        <!-- CUANDO HAY MAS DE UN ALBUM, MOSTRAR EL PRIMERO, Y LOS DEMAS EN MODO OCULTO -->
+        <div class="container__il" id="Favorites" styles="display: flex;">
+          <% for( let u = 0; u < album_illusts[0].length; u++ ) { %>
+            <div class="image">
+              <a class="card__a" href="/illusts/<%= album_illusts[0][u].illust_id %>" style="width: 200px; height: 200px;">
+                <img class="image__img" src="/images<%= album_illusts[0][u].thumb_dir.slice(1,album_illusts[0][u].thumb_dir.length) %>">
+                <div class="image__overlay">
+                  <div class="image__title">
+                    <% if (album_illusts[0][u].title.length > 5 ) { %>
+                    <%= album_illusts[0][u].title.slice(0, 5) %>...
+                    <% } else { %>
+                    <%= album_illusts[0][u].title %>
+                    <% } %>
+                  </div>
+                </div>
+              </a>
+            </div>
+          <% } %>
+        </div>
+        <% for( let i = 1; i < album_illusts.length; i++ ) { %>
+          <div class="container__il" id="Favorites">
+            <% for( let u = 0; u < album_illusts[i].length; u++ ) { %>
+              <div class="image">
+                <a class="card__a" href="/illusts/<%= album_illusts[i][u].illust_id %>" style="width: 200px; height: 200px;">
+                  <img class="image__img" src="/images<%= album_illusts[i][u].thumb_dir.slice(1,album_illusts[i][u].thumb_dir.length) %>">
+                  <div class="image__overlay">
+                    <div class="image__title">
+                      <% if (album_illusts[i][u].title.length > 5 ) { %>
+                      <%= album_illusts[i][u].title.slice(0, 5) %>...
+                      <% } else { %>
+                      <%= album_illusts[i][u].title %>
+                      <% } %>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            <% } %>
+          </div>
+        <% } %>
+      <% } %>
     </div>
 
   </div>

@@ -25,8 +25,6 @@ controller.User = async (req, res) => {
 
     let req_bool = AuthorData.request_open == 1 ? true : false;
 
-
-
     payload = {
       GetAlbumList: {
         coduser: AuthorData.author_id,
@@ -35,7 +33,7 @@ controller.User = async (req, res) => {
     };
 
     let albums_info = await Remote1.TheOnlyMethodUNeed(payload, "GetAlbumList");
-    console.log(albums_info)
+    //console.log(albums_info)
     let single_album = false;
     let album_illusts = [];
     let has_illusts = [];
@@ -114,6 +112,7 @@ controller.User = async (req, res) => {
     }
 
     const bool_info = { match, comm_bool, req_bool, single_album, has_only_one_il };
+    console.log(album_illusts);
     res.render("user", { LoginData, AuthorData, AuthorIllusts, bool_info, albums_info, album_illusts, has_illusts });
   } else {
     console.log("Error, venció la sesión");

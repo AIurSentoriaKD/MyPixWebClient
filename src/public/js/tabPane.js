@@ -1,29 +1,24 @@
 function openNav(evt, pane) {
   evt.preventDefault();
-  var i, tabcontent, tablinks;
+  var i, tabcontent;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
   }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  var author_lis = document.getElementsByName("author-li");
+  for (var i = 0; i < author_lis.length; i++) {
+    author_lis[i].className = "inactive-li";
   }
   document.getElementById(pane).style.display = "block";
-  evt.currentTarget.className += " active";
-  document.getElementById("Home").focus();
+  evt.currentTarget.className = "active-li";
 }
 
-window.onload = function () {
-  document.getElementById("Home").focus();
-};
-
-const input = document.getElementById("Home");
-const body = document.getElementById("Home");
-body.onload = myFunction;
-
-function myFunction() {
-  window.addEventListener("load", (e) => {
-    input.focus(); // adding the focus
-  });
+function openAlbum(evt, pane) {
+  evt.preventDefault();
+  var albums = document.getElementsByName("albums-card");
+  for (var i = 0; i < albums.length; i++) {
+    albums[i].style = "inactive-album";
+  }
+  document.getElementById(pane).style.display = "flex";
+  evt.currentTarget.className = "active-album";
 }

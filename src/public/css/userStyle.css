@@ -193,6 +193,7 @@ body {
     width: 200px;
     height: 200px;
 }
+
 .image__img_w {
     display: block;
     width: 300px;
@@ -264,6 +265,7 @@ body {
 .home_recents_container {
     min-height: 300px;
 }
+
 .ile_container {
     display: flex;
     width: 99%;
@@ -273,12 +275,14 @@ body {
     margin-left: 10px;
     position: relative
 }
+
 .ile_right {
     position: relative;
     width: 300px;
     /* display: inline-block; */
     height: 100%;
-    border: 2px solid rgb(166, 190, 255);;
+    border: 2px solid rgb(166, 190, 255);
+    ;
     border-radius: 3px;
 }
 
@@ -291,6 +295,7 @@ body {
     float: right;
     margin-right: 10px;
 }
+
 /* HOME TAB STYLE END */
 
 
@@ -300,22 +305,60 @@ body {
 
 
 /* ALBUMS TAB STYLE */
-.album__card{
+.album__thumb__container a {
+    height: 200px;
+    width: 300px;
+}
+
+.album__card {
     display: flex;
     flex-direction: column;
     height: 200px;
     width: 300px;
     background-color: black;
+    border-radius: 3px;
 }
-.album__card img{
-    height: 180px;
+
+.album__card .album__image {
+    height: 170px;
     width: 300px;
     background-size: cover;
 }
-.album__card .title__label{
-    height: 20px;
+
+.album__card .title__label {
+    height: 30px;
+    margin: 15px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title__label label {
+    font-size: 1em;
+}
+
+.container__il {
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.active-album {
+    color: aqua;
+}
+.inactive-album{
     color: white;
 }
+
+.active-li {
+    color: aqua !important;
+}
+.inactive-li {
+    color: white !important;
+}
+
 /* ALBUMS TAB STYLE END */
 
 
