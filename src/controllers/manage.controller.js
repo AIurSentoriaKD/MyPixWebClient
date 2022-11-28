@@ -8,7 +8,7 @@ controller.req_comm = async (req, res) => {
       codUser: LoginData.author_id,
     },
   };
-  let Req_Comms = await Remote1.TheOnlyMethodUNeed(
+  let Comms_From = await Remote1.TheOnlyMethodUNeed(
     payload,
     "GetCommissionRequestsList"
   );
@@ -17,12 +17,27 @@ controller.req_comm = async (req, res) => {
       codUser: LoginData.author_id,
     },
   };
-  let Comms_Invoice = await Remote1.TheOnlyMethodUNeed(
+  let Comms_To = await Remote1.TheOnlyMethodUNeed(
     payload,
     "GetCommissionsList"
   );
-  
-res.render("manage/solicitudes")
+  payload = {
+    RequestsList: {
+      author_id: LoginData.author_id,
+      rec_type: "SELF",
+    }
+  }
+  let Req_To = await Remote1.TheOnlyMethodUNeed(payload, "RequestsList");
+  payload = {
+    RequestsList: {
+      author_id: LoginData.author_id,
+      rec_type: "FROM",
+    }
+  }
+  let Req_From = await Remote1.TheOnlyMethodUNeed(payload, "RequestsList");
+
+  const ReqCommList = { Comms_From, Comms_To, Req_To, Req_From };
+  res.render("manage/solicitudes", { LoginData, ReqCommList })
 
 };
 

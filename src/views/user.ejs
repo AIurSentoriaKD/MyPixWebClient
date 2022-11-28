@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><%= AuthorData.nickname %> - MyPix</title>
   <link rel="stylesheet" href="/css/userStyle.css">
-
   <!-- dios mio lo que tuve que pasar para que esto sirva -->
   <style>
     :root {
@@ -16,7 +15,7 @@
   </style>
 </head>
 
-<body>
+<body onload="openDefault()">
   <%- include('navbar', LoginData) %>
   <div class="author__header">
     <div class="header__fill" style="background-image: var(--background-image);">
@@ -37,12 +36,12 @@
   <div class="author__nav">
     <nav>
       <ul class="nav__links__auth">
-        <li><a onclick="openNav(event, 'Home')">Home</a></li>
-        <li><a onclick="openNav(event, 'Ilustraciones')" >Ilustraciones</a></li>
+        <li><a id="defaultOpen" onclick="openNav(event, 'Home')" style="display: block;">Home</a></li>
+        <li><a onclick="openNav(event, 'Ilustraciones')">Ilustraciones</a></li>
         <li><a onclick="openNav(event, 'Albumes')">Albumes</a></li>
         <li><a onclick="openNav(event, 'Publicaciones')">Publicaciónes</a></li>
-        <li><a onclick="openNav(event, 'Comisiones')">Comisiones</a></li>
-        <li><a onclick="openNav(event, 'Request')">Requests</a></li>
+        <li><a onclick="document.getElementById('id01').style.display='block'">Comisiones</a></li>
+        <li></li><a onclick="openNav(event, 'Request')">Requests</a></li>
       </ul>
     </nav>
 
@@ -52,8 +51,8 @@
     </div>
     <% } else { %>
     <div class="lift_left"></div>
-    <% if (bool_info.comm_bool) {%> <a href="">Comisión</a> <%} %>
-    <% if (bool_info.req_bool) {%> <a href="">Request</a><%} %>
+    <% if (bool_info.comm_bool) {%> <li><a href="">Comisión</a></li> <%} %>
+    <% if (bool_info.req_bool) {%> <li><a href="">Request</a></li> <%} %>
   </div>
   <% } %>
 
@@ -214,6 +213,62 @@
       </div>
     </div>
   </div>
+
+  <!--Modal: Commisions-->
+  <div id="id01" class="modal">
+    <form class="modal-content animate" action="/login" method="post">
+
+      <div class="container" style="text-align: center;">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="row text-center justify-content-center align-items-center" style="padding: 15px;">
+              <div class="col-md-12 mb-2">
+                <h3 style="color:#ffffff">LOGIN</h3>
+              </div>
+              <div class="col-md-11 text-left my-2">
+                <i class="fas fa-user mr-1"></i> <label for="uname"><b>Your Username</b></label>
+                <input type="text" placeholder="Enter Username" name="comm_id" id="username" required>
+                <input type="date" placeholder="Enter Username" name="commission_ada" id="username" required>
+              </div>
+              <div class="col-md-11 text-left my-2">
+                <i class="fas fa-user mr-1"></i> <label for="uname"><b>Your Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" id="username" required>
+                <input type="text" placeholder="Enter Username" name="username" id="username" required>
+                <input type="text" placeholder="Enter Username" name="username" id="username" required>
+              </div>
+              <div class="col-md-11">
+                <button type="submit">Request</button>
+              </div>
+              <div class="col-md-11">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn text-center">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </form>
+  </div>
+
+  <script>
+    // Get the modal
+    var price = document.getElementsByClassName("single-product-pricing")
+    var modal = document.getElementById('id01');
+
+    var conDecimal = parseFloat(price.toFixed(2));
+
+    price.document.textContent = conDecimal;
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    
+  </script>
+  <!--Modal: Login / Register Form-->
 
   <script src="/js/tabPane.js"></script>
 </body>

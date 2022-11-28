@@ -28,3 +28,6 @@ function myFunction() {
   });
 }
 
+function openDefault(){
+  document.getElementById("defaultOpen").click();
+}

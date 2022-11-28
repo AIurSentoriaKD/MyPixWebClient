@@ -1,12 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitudes</title>
+  <link rel="stylesheet" href="/css/solicitudesStyle.css">
+
 </head>
+
 <body>
-    <h2>Solicutdes de Request y commissions</h2>
+  <%- include('../navbar', LoginData) %>
+  <div class="row">
+    <div class="img_sh_title">
+      <hr class="hr_left">
+      <label>COMISIONES PARA TI</label>
+      <hr class="hr_right">
+    </div>
+    <div class="inner__comms">
+      <% if (ReqCommList.Comms_To) { %>
+
+      <% } else { %>
+      <h3>NO TIENES COMISIÓNES PENDIENTES</h3>
+      <% } %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="img_sh_title">
+      <hr class="hr_left">
+      <label>TUS PEDIDOS DE COMISION</label>
+      <hr class="hr_right">
+    </div>
+    <div class="outer__comms">
+      <% if (ReqCommList.Comms_From) { %>
+
+      <% } else { %>
+      <h3>NO HAS REALIZADO PEDIDOS DE COMISIÓN</h3>
+      <% } %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="img_sh_title">
+      <hr class="hr_left">
+      <label>REQUESTS PARA TI</label>
+      <hr class="hr_right">
+    </div>
+    <div class="inner_reqs">
+      <% if (ReqCommList.Req_To) { %>
+
+      <% } else { %>
+      <h3>NO TIENES REQUESTS PENDIENTES</h3>
+      <% } %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="img_sh_title">
+      <hr class="hr_left">
+      <label>TUS PEDIDOS DE REQUEST</label>
+      <hr class="hr_right">
+    </div>
+    <div class="outer_reqs">
+      <% if (ReqCommList.Req_From) { %>
+
+      <% } else { %>
+      <h3>NO HAS REALIZADO NINGUN REQUEST</h3>
+      <% } %>
+    </div>
+  </div>
 </body>
+
 </html>

@@ -8,8 +8,6 @@
     <title><%= data.illust_data.title %></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/illustStyle.css">
-
-
   </head>
 
   <body>
@@ -33,22 +31,53 @@
         <div class="carousel-inner" role="listbox">
           <% if (data.illust_pages.large_dir) { %>
           <div class="item active">
-            <img src="/images/<%= data.illust_pages.large_dir.slice(1,data.illust_pages.large_dir.length) %>">
+            <img src="/images/<%= data.illust_pages.large_dir.slice(1,data.illust_pages.large_dir.length) %>" id="myImg">
 
           </div>
           <% } else { %>
           <div class="item active">
-            <img src="/images/<%= data.illust_pages[0].large_dir.slice(1,data.illust_pages[0].large_dir.length) %>">
+            <img src="/images/<%= data.illust_pages[0].large_dir.slice(1,data.illust_pages[0].large_dir.length) %>" id="myImg">
 
           </div>
           <% for( let i = 1; i < data.illust_pages.length; i++ ) { %>
           <div class="item">
-            <img src="/images/<%= data.illust_pages[i].large_dir.slice(1,data.illust_pages[i].large_dir.length) %>">
+            <img src="/images/<%= data.illust_pages[i].large_dir.slice(1,data.illust_pages[i].large_dir.length) %>" id="myImg">
 
           </div>
           <% } %>
           <% } %>
+
+          <div id="myModal" class="modal">
+            <img class="modal-content" id="img01">
+          </div>
+
         </div>
+
+<script>
+  var modal = document.getElementById('myModal');
+
+  var img = document.getElementById('myImg');
+  var modalImg = document.getElementById("img01");
+  
+  img.onclick = function(){
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      modalImg.alt = this.alt;
+      captionText.innerHTML = this.alt;
+  }
+  
+  
+  // When the user clicks on <span> (x), close the modal
+  modal.onclick = function() {
+    img01.className += " out";
+      setTimeout(function() {
+         modal.style.display = "none";
+         img01.className = "modal-content";
+       }, 400);
+  
+   }
+
+</script>
 
         <!-- Controls -->
         <% if (!data.illust_pages.large_dir) { %>
@@ -101,14 +130,16 @@
               <!-- ME GUSTA TOGGLE -->
               <div class="col-md-3">
                 <div class="row">
-                  <h2>
-                    <p class="text-center"><i class="fa-regular fa-heart"></i> Me gusta</p>
+                  <h2 id="like">
+                    <p class="text-center" id="solid"><i onclick="myFunction(this)" id="mode" class="fa-solid fa-heart"></i> Me gusta</p>
                   </h2>
                   <!-- <h4>
                     <p class="text-center">Comentar</p>
                   </h4> -->
                 </div>
               </div>
+
+
             </div>
             <!-- STATS DE LA ILLUST -->
             <div class="row" style="margin: 10px;">
@@ -237,7 +268,6 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
     <script src="/js/carousel.js"></script>
-
   </body>
 
   </html>

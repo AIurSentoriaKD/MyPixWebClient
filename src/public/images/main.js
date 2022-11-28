@@ -95,7 +95,7 @@ const init = async () => {
       "\n         6.1. Generar likes aleatorios repetitivamente",
       "\n     7. Generar Follows aleatorios",
       "\n     8. Generar commission aleatorios",
-      "\n     9. Generar LoginInfo aleatorio",
+      "\n     9. Generar views aleatorios",
       "\n     10. Generar PostInfo aleatorio",
       "\n     11. Generar FactInfo aleatorio",
       "\n     12. Obtener 10 imagenes de un autor",
@@ -166,7 +166,8 @@ const init = async () => {
         break;
       }
       case "9": {
-        console.log("\nAgregando login info");
+        console.log("\nAgregando views");
+        await IllustViewGenerator(pool);
         console.log("\nFIN\n");
         break;
       }
@@ -200,7 +201,7 @@ const init = async () => {
               await addtodatabase(illusts[index], pool, index); // agrega datos de la imagen a la bd
               await imagedl.wait(1000); // 1 segundo entre operacion de illust
             } catch (err) {
-              log.error("ERROR en RECOMMENDED", err);
+              log.error("ERROR en Agregando imagenes del autor", err);
               log.show(err);
             }
           }
@@ -427,7 +428,7 @@ async function follows(pixiv, pool) {
       try {
         //const image_dir = await downloadimage(illusts[i]); // desgarga las imagenes y las mueve
         await addtodatabase(illusts[i], pool); // agrega datos de la imagen a la bd
-        await imagedl.wait(1000);
+        await imagedl.wait(500);
       } catch (err) {
         console.log("ERROR en FOLLOWS", err);
       }
@@ -451,7 +452,7 @@ async function recommended(pixiv, pool) {
     try {
       //const image_dir = await downloadimage(illusts[i]); // desgarga las imagenes y las mueve
       await addtodatabase(illusts[i], pool); // agrega datos de la imagen a la bd
-      await imagedl.wait(1000); // 1 segundo entre operacion de illust
+      await imagedl.wait(500); // 1 segundo entre operacion de illust
     } catch (err) {
       log.error("ERROR en RECOMMENDED", err);
     }
@@ -481,7 +482,7 @@ async function IllustViewGenerator(pool) {
         .input("illust_id", illust.id)
         .execute("spSumarViewIllust");
       log.success(illust.id, update_illust.recordset[0].Mensaje);
-      await imagedl.wait(500);
+      await imagedl.wait(100);
     }
   }
 }
@@ -586,9 +587,9 @@ async function createFolder(create_date, image_file) {
       }
     }
   );
-
   return `./img/${year}/${month}/${day}/large/${image_file}`;
 }
+
 async function downloadThumb(url, create_date) {
   let thumb_file = await pixivImg(url);
   const findate = create_date.split("T");
@@ -597,6 +598,33 @@ async function downloadThumb(url, create_date) {
   year = dateparams[0];
   month = dateparams[1];
   day = dateparams[2];
+
+  // CREAR LOS FOLDERSs
+  if (!existsSync(`./img/${year}/${month}/${day}`)) {
+    try {
+      mkdirSync(`./img/${year}`);
+    } catch {
+      log.warning("   Folder de anio existe");
+    }
+    try {
+      mkdirSync(`./img/${year}/${month}`);
+    } catch {
+      log.warning("   Folder de mes existe");
+    }
+    try {
+      mkdirSync(`./img/${year}/${month}/${day}`);
+    } catch {
+      log.warning("   Folder de dia existe");
+    }
+    try {
+      mkdirSync(`./img/${year}/${month}/${day}/square`);
+      mkdirSync(`./img/${year}/${month}/${day}/original`);
+      mkdirSync(`./img/${year}/${month}/${day}/large`);
+    } catch {
+      log.warning("   Folder de imagenes existen");
+    }
+  }
+
   await renameSync(
     `./${thumb_file}`,
     `./img/${year}/${month}/${day}/square/${thumb_file}`,
@@ -733,7 +761,7 @@ async function addtodatabase(illust, pool, author_added = 0) {
       log.info(
         `${illust.id} - CE: ${response_page.recordset[0].CodError}, ${response_page.recordset[0].Mensaje}`
       );
-      await imagedl.wait(500);
+      await imagedl.wait(100);
     }
   }
 
@@ -752,7 +780,7 @@ async function addtodatabase(illust, pool, author_added = 0) {
     await response_tag.execute("spAgregarEtiquetas", (err, result) => {
       //if (result.recordsets) console.log(result.recordsets[0]);
     });
-    await imagedl.wait(500);
+    await imagedl.wait(100);
     const response_tagIllust = await pool
       .request()
       .input("tag_name", sql.NVarChar, tags[i].name)
