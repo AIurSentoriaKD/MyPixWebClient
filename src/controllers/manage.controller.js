@@ -1,4 +1,5 @@
 const Remote1 = require("../../helpers/soapConsumer/remoteWS");
+const countries = require("../public/images/countrys")
 const controller = {};
 
 controller.req_comm = async (req, res) => {
@@ -43,8 +44,8 @@ controller.req_comm = async (req, res) => {
 
 controller.perfil = async (req, res) => {
   const LoginData = req.session.LoginSessionInfo;
-  console.log("Session: ",LoginData);
-  res.render("manage/perfil", { LoginData })
+  console.log("Session: ", LoginData);
+  res.render("manage/perfil", { LoginData, countries })
 };
 
 module.exports = controller;

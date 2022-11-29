@@ -22,3 +22,7 @@ function openAlbum(evt, pane) {
   document.getElementById(pane).style.display = "flex";
   evt.currentTarget.className = "active-album";
 }
+
+
+/// Get current date and make the input date value 
+document.getElementById('current_date').value = new Date().toISOString().substring(0, 10);

@@ -41,7 +41,7 @@ controller.User = async (req, res) => {
     try {
       if (albums_info.owner_id) {
         single_album = true;
-        albums_info.thumb = albums_info.thumb.slice(1,albums_info.thumb.length);
+        albums_info.thumb = albums_info.thumb.slice(1,albums_info.thumb.length); 
       } else {
         single_album = false;
         for (let i = 0; i < illusts.length; i++) {

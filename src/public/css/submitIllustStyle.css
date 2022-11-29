@@ -29,27 +29,31 @@ body {
     align-items: center;
     flex-wrap: wrap;
 }
+
 .scrolls {
     overflow-x: scroll;
     overflow-y: hidden;
     height: 180px;
-    white-space:nowrap;
+    white-space: nowrap;
     width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 .preview-images>img {
     box-shadow: 1px 1px 10px #999;
     max-height: 200px;
     cursor: pointer;
-    display:inline-block;
-    display:inline;/* For IE7*/
-    zoom:1;/* For IE7*/
-    vertical-align:top;
+    display: inline-block;
+    display: inline;
+    /* For IE7*/
+    zoom: 1;
+    /* For IE7*/
+    vertical-align: top;
 }
 
 /* ILE CONTAINER */
-.ile_container{
+.ile_container {
     display: flex;
     width: 99%;
     min-width: 1300px;
@@ -58,30 +62,37 @@ body {
     margin-left: 10px;
     position: absolute;
 }
-.ile_right{
+
+.ile_right {
+
+    background-color: #0c0b0b;
     position: relative;
     width: 500px;
 }
 
-.ile_left{
+.ile_left {
     position: relative;
     min-width: 800px;
     max-width: 900px;
     float: right;
     margin-right: 10px;
 }
-.form__fields{
+
+.form__fields {
     width: 100%;
 }
-.form__fields input{
-    font-family: "Comfortaa", sans-serif;  
+
+.form__fields input {
+    font-family: "Comfortaa", sans-serif;
 }
-.title_div input{
+
+.title_div input {
     width: 99%;
     height: 30px;
     word-wrap: normal;
 }
-.description_div input{
+
+.description_div input {
     width: 99%;
     height: 100px;
     margin-top: 2px;
@@ -89,10 +100,12 @@ body {
     word-wrap: break-word;
     word-break: break-all;
 }
+
 .tags_div label {
     margin-top: 15px;
 }
-.tags_div input{
+
+.tags_div input {
     width: 99%;
     height: 50px;
     margin-top: 15px;
@@ -100,7 +113,22 @@ body {
     margin-bottom: 15px;
 }
 
-.btn-submit{
+.btn-submit {
     width: 50%;
     margin: 0;
+}
+
+.add_illust {
+    background-color: #0c0b0b;
+    border-radius: 10px;
+}
+.add_illust input {
+    background-color: rgb(62, 62, 62);
+    padding:5px;
+    border-radius: 3px;
+    color:white;
+}
+.add_illust input:focus {
+    outline: 0 !important;
+    border-bottom: 3px solid turquoise;
 }

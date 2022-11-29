@@ -348,13 +348,15 @@ body {
 .active-album {
     color: aqua;
 }
-.inactive-album{
+
+.inactive-album {
     color: white;
 }
 
 .active-li {
     color: aqua !important;
 }
+
 .inactive-li {
     color: white !important;
 }
@@ -368,6 +370,43 @@ body {
 
 
 /* COMISSIONS TAB STYLE */
+.commision_form {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.details,
+.deliver_date {
+    margin: 10px 20px;
+
+}
+
+.input_detail {
+    margin-top: 10px;
+    padding:10px;
+    border-radius: 5px;
+}
+
+.input_deliver_date {
+    margin-top: 10px;
+    border-radius: 5px;
+    width:100%;
+    font-weight: bold;
+    height:40px;
+    text-align: center;
+}
+
+.button_commission{
+    background-color:rgb(166, 190, 255);
+    color: black;
+    margin-top: 7px;
+    font-weight: bold;
+    width: 30%;
+    height:30px;
+    border-radius: 5px;
+}
 
 /* COMISSIONS TAB STYLE END */
 

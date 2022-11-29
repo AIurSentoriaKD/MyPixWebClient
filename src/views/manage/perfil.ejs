@@ -12,67 +12,73 @@
 
 <body>
   <%- include('../navbar', LoginData) %>
-  
+
   <div class="container my-4">
-      <h1>Perfil de Usuario <%= LoginData.accountname %> </h1>
+    <h1>Perfil de Usuario <%= LoginData.accountname %> </h1>
 
     <form action="" method="post">
       <div class="row">
-        <div class="col-md-6 p-3" style="border: 1px solid red;">
-          <div class="col-md-12" style="border: 1px solid rgb(0, 255, 187);">
+        <div class="col-md-6 p-3 text-center div_image_profile">
+          <div class="col-md-12">
             <h1>Profile Image</h1>
             <img class="profile_img" src="/images/<%= LoginData.profile_pic_dir.slice(1, LoginData.profile_pic_dir.length) %>">
-        </div>
-        <input type="file">
+          </div>
+          <input class="mt-3" type="file">
         </div>
 
-        <div class="col-md-6 p-3" style="border: 1px solid green;">
-            <div class="col-md-12">
-                <h1>Nickname</h1>
-                <input type="text" name="nickname" value="<%= LoginData.nickname %>">
-              </div>
-              <div class="col-md-12">
-                <h1>Description / Bio</h1>
-                <textarea name="info" id="" cols="40" rows="5"></textarea>
-              </div>
-              <div class="col-md-12">
-                <h1>Gender</h1>
-                <fieldset>
-                  <label>
-                    <input type="radio" name="male" value="male"> Male
-                  </label>
-                  <label>
-                    <input type="radio" name="female" value="female"> Female
-                  </label>
-                  <label>
-                    <input type="radio" name="other" value="other"> Other
-                  </label>
-                </fieldset>
-              </div>
-              <div class="col-md-12">
-                <h1>Country</h1>
-                <input type="text" name="country" value="<%= LoginData.country %>">
-              </div>
-              <!-- <div class="col-md-12">
+        <div class="col-md-6 p-3 basic_info">
+          <div class="col-md-12">
+            <h1>Nickname</h1>
+            <input type="text" name="nickname" value="<%= LoginData.nickname %>">
+          </div>
+          <div class="col-md-12">
+            <h1>Description / Bio</h1>
+            <textarea name="info" id=""></textarea>
+          </div>
+          <div class="col-md-12 gender-div">
+            <h1>Gender</h1>
+            <fieldset>
+              <label>
+                <input type="radio" name="male" value="male"> Male
+              </label>
+              <label>
+                <input type="radio" name="female" value="female"> Female
+              </label>
+              <label>
+                <input type="radio" name="other" value="other"> Not Specific
+              </label>
+            </fieldset>
+          </div>
+          <div class="col-md-12">
+            <h1>Country</h1>
+            <select name="countries" id="cbx-countries" class="select-countries">
+              <option value="" selected disabled>Select Country</option>
+              <% for( let i = 0; i < countries.length; i++ ) { %>
+              <option value="<%= countries[i] %>" <% if( countries[i] === LoginData.country ) { %> selected <% } %>><%= countries[i] %></option>
+              <% } %>
+            </select>
+
+          </div>
+          <!-- <div class="col-md-12">
                 <h1>Birthdate</h1>
                 <input type="date" name="birthdate" value="<%= LoginData.birthdate %>">
               </div> -->
-            </div>
-            <div class="row my-3 p-3" style="border: 1px solid orange;">
-              <h1>Edit Credentials</h1>
-              <div class="col-md-12" style="border: 1px solid purple;">
-                <label class="mx-3" for="">Email
-                  <input type="text" name="email" value="<%= LoginData.email %> " readonly>
-                </label>
-                <label class="mx-3" for="">Password
-                  <input type="text" name="password" value="**">
-                </label>
-                <input type="submit" class="btn btn-primary" value="edit" 2>
-              </div>
-            </div>
         </div>
 
 
+        <div class="row credentials mt-4">
+          <h1 class="mt-2">Edit Credentials</h1>
+          <div class="col-md-12">
+            <label class="mx-2" for="">Email
+              <input type="text" name="email" value="<%= LoginData.email %> " readonly>
+            </label>
+            <label class="mx-2" for="">Password
+              <input type="text" name="password" value="**">
+            </label>
+            <input type="submit" class="submit_button text-center" value="Edit" >
+          </div>
+        </div>
+      </div>
     </form>
 
   </div>
