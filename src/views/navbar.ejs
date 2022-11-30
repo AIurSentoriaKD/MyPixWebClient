@@ -34,7 +34,11 @@
       <div class="dropdown-content-profile">
         <a href="/user/<%= LoginData.author_id %>">Perfil</a>
         <a href="/manage/solicitudes">Request & Comision</a>
-        <a href="#">Balance <strong style="font-size:14px">$ 15.00</strong></a>
+        <% if (LoginData.fact_id) { %>
+          <a href="#">Balance <strong style="font-size:14px">$ <%= LoginData.balance %> </strong></a>
+        <% } else { %>
+          <a href="/manage/perfil">Agregar Facturacion</a>
+        <% } %>
         <a href="/logout">Cerrar sesión</a>
       </div>
     </div>

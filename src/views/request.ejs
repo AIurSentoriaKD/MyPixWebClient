@@ -6,10 +6,151 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Request Page</title>
+  <link rel="stylesheet" href="/css/comission.css">
 </head>
+
 
 <body>
   <%- include('navbar', LoginData) %>
+  <!--for commissions-->
+  <div class="ile_container">
+    <div class="ile_left">
+      <div class="img_sh_title">
+        <hr class="hr_left">
+        <label>REQUESTS RECIENTES</label>
+        <hr class="hr_right">
+      </div>
+      <div class="container">
+        <% if (CommData.C_Illust) { %>
+        <% for( let i=0; i < CommData.C_Illust.length; i++ ) { %>
+        <div class="image">
+          <a class="card__a" href="/illusts/<%= CommData.C_Illust[i].id %>" style="width: 200px; height: 200px;">
+            <img class="image__img" src="/images<%= CommData.C_Illust[i].thumb_dir.split(".")[1] %>.jpg">
+            <div class="image__overlay">
+              <div class="image__title">
+                <% if (CommData.C_Illust[i].title.length> 5 ) { %>
+                <%= CommData.C_Illust[i].title.slice(0, 5) %>
+                <% } else { %>
+                <%= CommData.C_Illust[i].title %>
+                <% } %>
+              </div>
+              <div class="author__line">
+                <a class="author__button" href="/user/<%= CommData.C_Illust[i].author_id %> ">
+                  <img class="author__img" src="/images/<%= CommData.C_Illust[i].profile_pic_dir.slice(1, CommData.C_Illust[i].profile_pic_dir.length) %>">
+                  <p class="author__name">
+                    <%= CommData.C_Illust[i].nickname %>
+                  </p>
+                </a>
+              </div>
+            </div>
+          </a>
+        </div>
+        <% } %>
+        <% } else { %>
+        <label for="">NADA POR AQUÍ</label>
+        <% } %>
+      </div>
+    </div>
+    <div class="ile_right">
+      <div class="ile_r_container">
+        <label>REQUESTS ABIERTAS</label>
+      </div>
+      <div class="img_r_container">
+        <% for( let i=0; i < CommData.C_Author_L.length; i++ ) { %>
+        <div class="c__author_l">
+          <a href="/user/<%=CommData.C_Author_L[i].author_id%>">
+            <img src="/images/<%=CommData.C_Author_L[i].profile_pic_dir.slice(1,CommData.C_Author_L[i].profile_pic_dir.length)%>" alt="" style="border-radius:8px;margin-right:7px;margin-top:3x;">
+            <p style="margin: auto;">
+              <%= CommData.C_Author_L[i].nickname %>
+            </p>
+          </a>
+        </div>
+        <% } %>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="following_recents">
+    <div class="img_sh_title">
+      <hr class="hr_left">
+      <label>REQUESTS DE USUARIOS QUE SIGUES</label>
+      <hr class="hr_right">
+    </div>
+    <div class="container">
+      <% if (CommData.C_Illust_F) { %>
+      <% for( let i=0; i < CommData.C_Illust_F.length; i++ ) { %>
+      <div class="image">
+        <a class="card__a" href="/illusts/<%= CommData.C_Illust_F[i].id %>" style="width: 200px; height: 200px;">
+          <img class="image__img" src="/images<%= CommData.C_Illust_F[i].thumb_dir.split(".")[1] %>.jpg">
+          <div class="image__overlay">
+            <div class="image__title">
+              <% if (CommData.C_Illust_F[i].title.length> 5 ) { %>
+              <%= CommData.C_Illust_F[i].title.slice(0, 5) %>...
+              <% } else { %>
+              <%= CommData.C_Illust_F[i].title %>
+              <% } %>
+            </div>
+            <div class="author__line">
+              <a class="author__button" href="/user/<%= CommData.C_Illust_F[i].author_id %>">
+                <img class="author__img" src="/images<%= CommData.C_Illust_F[i].profile_pic_dir.split(".")[1]+"."+CommData.C_Illust_F[i].profile_pic_dir.split(".")[2]%>" alt="">
+                <p class="author__name">
+                  <%= CommData.C_Illust_F[i].nickname %>
+                </p>
+              </a>
+            </div>
+          </div>
+        </a>
+      </div>
+      <% } %>
+      <% } else { %>
+      <label for="">NADA POR AQUÍ</label>
+      <% } %>
+    </div>
+  </div>
+
+  </div>
+
+
+  <div class="following_list">
+    <div class="img_sh_title">
+      <hr class="hr_left">
+      <label>ARTISTAS QUE SIGUES</label>
+      <hr class="hr_right">
+    </div>
+    <div class="container">
+      <% if (CommData.C_Author_Fol) { %>
+      <% if (CommData.C_Author_Fol.author_id) { %>
+        <div class="author__card">
+          <a href=/user/<%= CommData.C_Author_Fol.author_id %> ">
+            <div class=" author__card_img" style="background-image: url(<%=CommData.C_Author_Fol.profile_portrait_dir%>);">
+            <div class="author__header">
+              <img class="author__img" src="/images<%= CommData.C_Author_Fol.profile_pic_dir.split(".")[1]+"."+CommData.C_Author_Fol.profile_pic_dir.split(".")[2]%>" alt="">
+              <p class="author__name"><%= CommData.C_Author_Fol.nickname %> </p>
+            </div>
+          </div>
+          </a>
+        </div>
+      <% } else { %>
+      <% for( let index = 0; index < CommData.C_Author_Fol.length; index++ ) { %>
+      <div class="author__card">
+        <a href=/user/<%= CommData.C_Author_Fol[index].author_id %> ">
+          <div class=" author__card_img" style="background-image: url(<%=CommData.C_Author_Fol[index].profile_portrait_dir%>);">
+          <div class="author__header">
+            <img class="author__img" src="/images<%= CommData.C_Author_Fol[index].profile_pic_dir.split(".")[1]+"."+CommData.C_Author_Fol[index].profile_pic_dir.split(".")[2]%>" alt="">
+            <p class="author__name"><%= CommData.C_Author_Fol[index].nickname %> </p>
+          </div>
+        </div>
+        </a>
+      </div>
+      <% } %>
+      <% } %>
+      <% } else { %>
+      <label for="">NADA POR AQUÍ</label>
+      <% } %>
+    </div>
+  </div>
 </body>
 
 </html>

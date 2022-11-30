@@ -14,6 +14,7 @@ body {
     align-items: flex-start;
     flex-wrap: wrap;
     margin-bottom: 15px;
+    min-height: 200px;
 }
 
 /* TITLES */
@@ -219,5 +220,29 @@ body {
 .author__name {
     background: transparent;
     font-size: 1em;
+    margin-left: 5px;
+}
+
+/* AUTHOR RECOMMENDED CARDS */
+.author__card{
+    background: transparent;
+    margin: 3px;
+    position: relative;
+    border-bottom: 3px solid white;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.author__card_img{
+    width: 250px;
+    height: 180px;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+}
+.author__header{
+    background: transparent;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 5px;
     margin-left: 5px;
 }

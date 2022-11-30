@@ -26,3 +26,11 @@ function openAlbum(evt, pane) {
 
 /// Get current date and make the input date value 
 document.getElementById('current_date').value = new Date().toISOString().substring(0, 10);
+
+
+///Alert of commission
+function fun() {
+  alert("Request");
+}
+
+

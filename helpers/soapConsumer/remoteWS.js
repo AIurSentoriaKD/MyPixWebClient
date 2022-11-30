@@ -8,7 +8,7 @@ const ApiClient = axios.create({
   httpsAgent: new https.Agent({ keepAlive: true }),
 });
 
-const someeWS = `https://localhost:44325/wsAuthor.asmx?WSDL`;
+const someeWS = `https://localhost:44325/wsMyPix.asmx?WSDL`;
 // const someeWS = `http://www.dais-w-02.somee.com/wsAuthor.asmx?WSDL`;
 
 // SSL sign certificated
@@ -51,6 +51,7 @@ function methodBoolParser(funcName, parsedRes) {
 }
 
 remoteWS.GetBoolean = async (payload, functionName) => {
+  // se llama getboolean pero sirve para traer un unico valor de los metodos
   const headers = {
     headers: {
       "Content-Type": "text/xml; charset=utf-8",

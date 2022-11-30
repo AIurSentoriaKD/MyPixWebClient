@@ -41,7 +41,7 @@ controller.User = async (req, res) => {
     try {
       if (albums_info.owner_id) {
         single_album = true;
-        albums_info.thumb = albums_info.thumb.slice(1,albums_info.thumb.length); 
+        albums_info.thumb = albums_info.thumb.slice(1, albums_info.thumb.length);
       } else {
         single_album = false;
         for (let i = 0; i < illusts.length; i++) {
@@ -78,7 +78,7 @@ controller.User = async (req, res) => {
           let illusts = await Remote1.TheOnlyMethodUNeed(payload, "GetAlbumIllustInfo");
 
           // editar la cadena de los thumbnail
-          
+
           album_illusts.push(illusts);
         }
       }
@@ -112,12 +112,37 @@ controller.User = async (req, res) => {
     }
 
     const bool_info = { match, comm_bool, req_bool, single_album, has_only_one_il };
-    console.log(album_illusts);
+    //console.log(album_illusts);
     res.render("user", { LoginData, AuthorData, AuthorIllusts, bool_info, albums_info, album_illusts, has_illusts });
   } else {
     console.log("Error, venció la sesión");
     res.redirect("/");
   }
 };
+
+controller.postCommission = async (req, res) => {
+  const author_id = req.body.author_id; // id del artista
+  const commissioner_id = req.body.commissioner_id; // id del que pide
+  const details = req.body.details;
+  const deliver_date = req.body.comm_deliver_date;
+
+  const body_req = { author_id, commissioner_id, details, deliver_date }
+  console.log(body_req);
+
+
+  let payload = {
+    RequestNewCommission: {
+      author_id: author_id,
+      details: details,
+      deliver_date: deliver_date,
+      commissioner_id: commissioner_id
+    }
+  }
+
+  const postComm = await Remote1.GetBoolean(payload, "RequestNewCommission");
+  //console.log(postComm);
+  res.redirect(`/user/${author_id}`)
+}
+
 
 module.exports = controller;

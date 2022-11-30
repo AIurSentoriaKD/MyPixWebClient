@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500');
+
 * {
     /* background: rgb(31, 32, 39); */
     color: white;
 }
-body{
+
+body {
     width: 100%;
     height: 100%;
     min-width: 1300px;
@@ -15,29 +17,42 @@ body{
 
 
 /* IMAGE FOLLOW & RANKING CARDS */
-.image__card{
+.image__card {
     background: transparent;
 }
-.card__a{
+
+.card__a {
     background: transparent;
 }
+
 .image {
     margin: 3px;
     position: relative;
     border-radius: 2px;
 }
-.image__img{
-    display: block;
+.image-rank {
+    margin: 3px;
+    position: relative;
+    border-radius: 2px;
+}
+
+.image__img {
     width: 200px;
     height: 200px;
 }
-.image__overlay{
+.image__img__rank{
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+}
+
+.image__overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background:linear-gradient(0deg, rgba(0, 0, 0, 0.44) 0%, rgba(7, 58, 187, 0) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.44) 0%, rgba(7, 58, 187, 0) 100%);
     color: white;
     display: flex;
     flex-direction: column;
@@ -45,24 +60,28 @@ body{
     justify-content: flex-end;
     opacity: 0;
 }
-.image__overlay:hover{
+
+.image__overlay:hover {
     opacity: 1;
 }
-.image__title{
+
+.image__title {
     background: transparent;
     font-size: 1.5em;
     font-weight: bold;
     margin-left: 5px;
     height: 100%;
     display: flex;
-    align-items: flex-end; 
+    align-items: flex-end;
 }
-.author__line{
+
+.author__line {
     background: transparent;
     margin: 5px;
     position: relative;
 }
-.author__button{
+
+.author__button {
     background: transparent;
     display: flex;
     flex-direction: row;
@@ -70,29 +89,34 @@ body{
     justify-content: flex-end;
     z-index: 0;
 }
-.author__button:hover{
+
+.author__button:hover {
     background: transparent;
     z-index: 2;
 }
-.author__end{
+
+.author__end {
     background: transparent;
 }
-.author__img{
+
+.author__img {
     width: 50px;
     height: 50px;
 }
-.author__name{
+
+.author__name {
     background: transparent;
     font-size: 1em;
-    
+
     margin-left: 5px;
 }
 
 /* END */
-.img__showcase{
-margin: 15px 15px;
+.img__showcase {
+    margin: 15px 15px;
 }
-.img_sh_title{
+
+.img_sh_title {
     /* background-color: rgb(37, 46, 66); */
     padding: 15px 10px;
     margin-bottom: 15px;
@@ -100,12 +124,14 @@ margin: 15px 15px;
     justify-content: space-between;
     align-items: center
 }
-.img_sh_title label{
+
+.img_sh_title label {
     background-color: rgb(166, 190, 255);
     padding: 10px;
     color: black;
 }
-.hr_left{
+
+.hr_left {
     width: 40%;
     height: 5px;
     background-image: linear-gradient(-90deg, rgb(166, 190, 255), transparent);
@@ -113,37 +139,45 @@ margin: 15px 15px;
     height: 2px;
     color: transparent !important;
 }
-.hr_right{
+
+.hr_right {
     width: 40%;
     height: 5px;
-    background-image:linear-gradient(90deg, rgb(166, 190, 255), transparent);
+    background-image: linear-gradient(90deg, rgb(166, 190, 255), transparent);
     border: 0;
     height: 2px;
     color: transparent !important;
 }
+
 .container {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
     margin-bottom: 15px;
+    min-height: 200px;
 }
 
 /* AUTHOR RECOMMENDED CARDS */
-.author__card{
+.author__card {
     background: transparent;
     margin: 3px;
     position: relative;
+    border-bottom: 3px solid white;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
-.author__card_img{
+
+.author__card_img {
     width: 250px;
     height: 180px;
     background-size: cover;
     display: flex;
     align-items: flex-end;
-    border-radius: 5px;
 }
-.author__header{
+
+.author__header {
     background: transparent;
     display: flex;
     align-items: flex-end;

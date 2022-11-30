@@ -1,32 +1,38 @@
 body {
     background-color: #1f2027;
     color: white;
+    font-family: "Comfortaa", sans-serif;
 }
 
-.container input,
-textarea {
+.container {
+    background-color: #000000;
     color: white;
+    border-bottom: 5px solid turquoise;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+input,
+textarea {
+    color: white !important;
     padding: 7px;
     border-radius: 2px;
-    background-color: #000000;
+    background-color: #464646 !important;
     border: 1px solid transparent !important;
     border-bottom: 1px solid rgb(56, 126, 255) !important;
-
-}
-
-.container textarea {
-    width: 100%;
 }
 
 textarea:focus,
 input:focus,
 select:focus {
     outline: 0;
-    border-bottom: 3px solid turquoise !important;
+    border-bottom: 2px solid turquoise !important;
 }
 
 .profile_img {
     border-radius: 90%;
+    height: 250px;
+    width: 250px;
 }
 
 .select-countries {
@@ -36,44 +42,42 @@ select:focus {
     background-color: rgb(62, 62, 62);
 }
 
-.gender-div input {
-    margin-left: 18px;
-}
+.submit_button {
 
-h1 {
-    font-size: 24px;
-    margin-top: 20px;
-}
-
-.credentials {
-    width: 70%;
-    background-color: #0c0b0b;
-    height: 150px;
-    padding: 5px;
+    width: 150px;
+    background-color: rgb(88, 176, 167) !important;
     margin: auto;
-    border-radius: .6rem;
+
 }
 
-.credentials input {
-    background-color: rgb(62, 62, 62);
-    margin-left:10px;
+.img_sh_title {
+    /* background-color: rgb(37, 46, 66); */
+    padding: 15px 10px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
 }
 
-
-.basic_info {
-    background-color: #0c0b0b;
-    /* background-color: rgb(62, 62, 62); */
-    border-radius: .4rem;
+.img_sh_title label {
+    background-color: rgb(166, 190, 255);
+    padding: 10px;
+    color: black;
 }
 
-.basic_info input,
-textarea {
-    background-color: rgb(62, 62, 62);
+.hr_left {
+    width: 40%;
+    height: 5px;
+    background-image: linear-gradient(-90deg, rgb(166, 190, 255), transparent);
+    border: 0;
+    height: 2px;
+    color: transparent !important;
 }
 
-.submit_button{
-
-    width: 15%;
-    background-color: rgb(88, 176, 167) !important
-
+.hr_right {
+    width: 40%;
+    height: 5px;
+    background-image: linear-gradient(90deg, rgb(166, 190, 255), transparent);
+    border: 0;
+    height: 2px;
 }

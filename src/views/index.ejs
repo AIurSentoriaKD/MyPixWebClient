@@ -51,23 +51,26 @@
     <div class="container">
       <% if (globalranking) { %>
       <% for( let index = 0; index < globalranking.length; index++ ) { %>
-      <div class="image">
-        <a class="card__a" href="/illusts/<%= globalranking[index].id %>" style="width: 200px; height: 200px;">
-          <img class="image__img" src="/images<%= globalranking[index].thumb_dir.split(".")[1] %>.jpg">
-          <div class="image__overlay">
-            <div class="image__title">
-              <% if (globalranking[index].title.length > 5 ) { %>
-              <%= globalranking[index].title.slice(0, 5) %>...
-              <% } else { %>
-              <%= globalranking[index].title %>
-              <% } %>
-            </div>
-            <div class="author__line">
-              <a class="author__button" href="/user/<%= globalranking[index].author_id %> ">
-                <img class="author__img" src="/images<%= globalranking[index].profile_pic_dir.split(".")[1]+"."+globalranking[index].profile_pic_dir.split(".")[2]%>" alt="">
-                <p class="author__name"><%= globalranking[index].nickname %> </p>
-              </a>
-
+      <div class="image-rank">
+        <a class="card__a" href="/illusts/<%= globalranking[index].id %>" style="width: 300px; height: 300px;">
+          <div class="image__img__rank" style="background-image: url(/images/<%=globalranking[index].thumb_dir%>);">
+            <div class="image__overlay">
+              <div class="image__title">
+                <% if (globalranking[index].title.length > 5 ) { %>
+                <%= globalranking[index].title.slice(0, 5) %>...
+                <% } else { %>
+                <%= globalranking[index].title %>
+                <% } %>
+              </div>
+              <div class="author__line">
+                <a class="author__button" href="/user/<%= globalranking[index].author_id %> ">
+                  <img class="author__img" src="/images<%= globalranking[index].profile_pic_dir.split(".")[1]+"."+globalranking[index].profile_pic_dir.split(".")[2]%>" alt="">
+                  <p class="author__name"><%= globalranking[index].nickname %> </p>
+                </a>
+              </div>
+              <div class="rank__info__line">
+                <p>#<%= index+1 %></p>
+              </div>
             </div>
           </div>
         </a>
@@ -86,17 +89,17 @@
       <% for( let index = 0; index < rec_artists.length; index++ ) { %>
       <div class="author__card">
         <a href=/user/<%= rec_artists[index].author_id %> ">
-                        <div class=" author__card_img" style="background-image: url(<%=rec_artists[index].profile_portrait_dir%>);">
+          <div class=" author__card_img" style="background-image: url(<%=rec_artists[index].profile_portrait_dir%>);">
           <div class="author__header">
             <img class="author__img" src="/images<%= rec_artists[index].profile_pic_dir.split(".")[1]+"."+rec_artists[index].profile_pic_dir.split(".")[2]%>" alt="">
-            <p class="author__name"><%= rec_artists[index].nickname %> </p>
+            <p class="author__name"><%= rec_artists[index].nickname %></p>
           </div>
       </div>
-
       </a>
     </div>
     <% } %>
   </div>
+
   </div>
   <div class="img__showcase">
     <div class="img_sh_title">

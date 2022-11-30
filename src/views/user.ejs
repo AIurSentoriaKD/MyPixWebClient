@@ -45,8 +45,9 @@
         <li><a name="author-li" class="inactive-li" onclick="openNav(event, 'Ilustraciones')">Ilustraciones</a></li>
         <li><a name="author-li" class="inactive-li" onclick="openNav(event, 'Albumes')">Albumes</a></li>
         <li><a name="author-li" class="inactive-li" onclick="openNav(event, 'Publicaciones')">Publicaciones</a></li>
-        <li><a name="author-li" class="inactive-li" onclick="openNav(event, 'Comisiones')">Comisiones</a></li>
-        <li><a name="author-li" class="inactive-li" onclick="openNav(event, 'Request')">Requests</a></li>
+        <% if (bool_info.comm_bool) {%> <li><a name="author-li" class="inactive-li" onclick="openNav(event, 'Comisiones')">⭐ Comisiones abiertas! </a></li> <%} %>
+
+        <% if (bool_info.req_bool) {%> <li><a name="author-li" class="inactive-li" onclick="openNav(event, 'Request')">🧾 Requests abiertas!</a></li><%} %>
       </ul>
     </nav>
 
@@ -56,8 +57,6 @@
     </div>
     <% } else { %>
     <div class="lift_left"></div>
-    <% if (bool_info.comm_bool) {%> <li><a href="">Comisión</a></li> <%} %>
-    <% if (bool_info.req_bool) {%> <li><a href="">Request</a></li> <%} %>
   </div>
   <% } %>
 
@@ -139,6 +138,28 @@
         <div class="container">
           <% if (bool_info.single_album) { %>
           <% if (album_illusts) { %>
+          <% if (album_illusts.illust_id) { %>
+          <div class="image">
+            <a class="card__a" href="/illusts/<%= album_illusts.illust_id %>" style="width: 200px; height: 200px;">
+              <img class="image__img" src="/images<%= album_illusts.thumb_dir.slice(1,album_illusts.thumb_dir.length) %>">
+              <div class="image__overlay">
+                <div class="image__title">
+                  <% if (album_illusts.title.length > 5 ) { %>
+                  <%= album_illusts.title.slice(0, 5) %>...
+                  <% } else { %>
+                  <%= album_illusts.title %>
+                  <% } %>
+                </div>
+                <div class="author__line">
+                  <a class="author__button" href="/user/<%= album_illusts.author_id %> ">
+                    <img class="author__img" src="/images<%= album_illusts.profile_pic_dir.slice(1,album_illusts.profile_pic_dir.length)%>" alt="">
+                    <p class="author__name"><%= album_illusts.nickname %> </p>
+                  </a>
+                </div>
+              </div>
+            </a>
+          </div>
+          <% } else { %>
           <% for( let u = 0; u < album_illusts.length; u++ ) { %>
           <div class="image">
             <a class="card__a" href="/illusts/<%= album_illusts[u].illust_id %>" style="width: 200px; height: 200px;">
@@ -160,6 +181,7 @@
               </div>
             </a>
           </div>
+          <% } %>
           <% } %>
           <% } %>
           <% } else { %>
@@ -293,6 +315,28 @@
       <% if(bool_info.single_album) { %>
       <!-- CUANDO HAY UN SOLO ALBUM MOSTRAR ESE ALBUM A LA PRIMERA -->
       <div class="container__il" id="Favorites" styles="display: flex;">
+        <% if (album_illusts.illust_id) { %>
+        <div class="image">
+          <a class="card__a" href="/illusts/<%= album_illusts.illust_id %>" style="width: 200px; height: 200px;">
+            <img class="image__img" src="/images<%= album_illusts.thumb_dir.slice(1,album_illusts.thumb_dir.length) %>">
+            <div class="image__overlay">
+              <div class="image__title">
+                <% if (album_illusts.title.length > 5 ) { %>
+                <%= album_illusts.title.slice(0, 5) %>...
+                <% } else { %>
+                <%= album_illusts.title %>
+                <% } %>
+              </div>
+              <div class="author__line">
+                <a class="author__button" href="/user/<%= album_illusts.author_id %> ">
+                  <img class="author__img" src="/images<%= album_illusts.profile_pic_dir.slice(1,album_illusts.profile_pic_dir.length)%>" alt="">
+                  <p class="author__name"><%= album_illusts.nickname %> </p>
+                </a>
+              </div>
+            </div>
+          </a>
+        </div>
+        <% } else { %>
         <% for( let u = 0; u < album_illusts.length; u++ ) { %>
         <div class="image">
           <a class="card__a" href="/illusts/<%= album_illusts[u].illust_id %>" style="width: 200px; height: 200px;">
@@ -314,6 +358,7 @@
             </div>
           </a>
         </div>
+        <% } %>
         <% } %>
       </div>
       <% } else { %>
@@ -387,35 +432,35 @@
         <hr class="hr_right">
       </div>
       <div class="container">
-        <form method="POST" action="" class="commission_form">
+        <form method="POST" action="/user/post-commission" class="commission_form">
 
-<% const date = new Date();
+          <% const date = new Date();
 
-let day = date.getDate();
-let month = date.getMonth() + 1;
-let year = date.getFullYear();
+          let day = date.getDate();
+          let month = date.getMonth() + 1;
+          let year = date.getFullYear();
 
-// This arrangement can be altered based on how we want the date's format to appear.
-let currentDate = `${day}-${month}-${year}`; // "17-6-2022" 
-%> 
+          // This arrangement can be altered based on how we want the date's format to appear.
+          let currentDate = `${day}-${month}-${year}`; // "17-6-2022" 
+          %>
 
           <div class="commision_form">
             <div class="details">
-              <label>Details <strong >*</strong></label>
+              <label>Details <strong>*</strong></label>
               <br>
-              <textarea placeholder="Put here the details..." class="input_detail" name="details" required id="details" cols="50" rows="12" ></textarea>
+              <textarea placeholder="Put here the details..." class="input_detail" name="details" required id="details" cols="50" rows="12"></textarea>
             </div>
             <div class="deliver_date">
-              <label>Commision Deliver <strong >*</strong></label>
+              <label>Commision Deliver <strong>*</strong></label>
               <br>
-              <input class="input_deliver_date" required type="date" name="comm_deliver_date" id="current_date" >
+              <input class="input_deliver_date" required type="date" name="comm_deliver_date" id="current_date">
             </div>
 
             <input hidden type="text" name="author_id" value="<%= AuthorData.author_id %> ">
             <input hidden type="text" name="commissioner_id" value="<%= LoginData.author_id  %>">
           </div>
 
-          <input class="button_commission" type="submit" value="COMMISION">
+          <input class="button_commission" onclick="fun()" type="submit" value="Realizar Pedido">
 
         </form>
       </div>
