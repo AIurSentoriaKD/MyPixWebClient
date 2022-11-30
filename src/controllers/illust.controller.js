@@ -54,8 +54,19 @@ controller.getOneIllust = async (req, res, next) => {
 //#region Submit Illust
 controller.addIllust = async (req, res) => {
   const LoginData = req.session.LoginSessionInfo;
-
-  res.render("submit/addIllust", { LoginData });
+  let payload = {
+    AcceptedRequestsList:{
+      codUser: LoginData.author_id,
+    }
+  }
+  const requests = await Remote1.TheOnlyMethodUNeed(payload, "AcceptedRequestsList");
+  payload = {
+    AcceptedCommissionsList: {
+      codUser: LoginData.author_id,
+    }
+  }
+  const commissions = await Remote1.TheOnlyMethodUNeed(payload, "AcceptedCommission");
+  res.render("submit/addIllust", { LoginData, requests, commissions });
 };
 
 

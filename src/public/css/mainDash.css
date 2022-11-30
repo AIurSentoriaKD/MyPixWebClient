@@ -29,21 +29,44 @@ body {
     margin: 3px;
     position: relative;
     border-radius: 2px;
+    transition: all .2s ease-in-out;
+    z-index: 1;
 }
+
+.image:hover {
+    transform: scale(1.1);
+    z-index: 2;
+}
+
 .image-rank {
     margin: 3px;
     position: relative;
     border-radius: 2px;
 }
 
+.rank__info__line {
+    background-color: rgb(28, 104, 117);
+}
+
+.rank__info__line p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 30px;
+    text-align: center;
+}
+
 .image__img {
     width: 200px;
     height: 200px;
 }
-.image__img__rank{
+
+.image__img__rank {
     background-size: cover;
     width: 300px;
     height: 300px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom: 5px solid turquoise;
 }
 
 .image__overlay {
@@ -92,7 +115,7 @@ body {
 
 .author__button:hover {
     background: transparent;
-    z-index: 2;
+    z-index: 1;
 }
 
 .author__end {
@@ -125,10 +148,20 @@ body {
     align-items: center
 }
 
-.img_sh_title label {
+
+
+.img_sh_title a {
     background-color: rgb(166, 190, 255);
+    color: black;
     padding: 10px;
     color: black;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.img_sh_title a:hover {
+    background-color: rgb(96, 177, 243);
+    transform: scale(1.1);
 }
 
 .hr_left {

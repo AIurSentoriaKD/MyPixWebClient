@@ -129,7 +129,7 @@ const init = async () => {
         console.log("\nFIN\n");
         break;
       }
-      case "3.1":{
+      case "3.1": {
         console.log("\nComprobando Imagenes de Portada");
 
         break;
@@ -147,7 +147,13 @@ const init = async () => {
         break;
       }
       case "6": {
+        const promptaut = require("prompt-sync")();
+        const illust_id = promptaut("Ingresa un id de illust (opcional): ");
+        log.imagelog_(`\nAgregando imagenes del autor: ${illust_id}`);
         console.log("\nGenerando algunos likes");
+        if(illust_id.length>0)
+          await LikesGenerator(pool, illust_id);
+        else
         await LikesGenerator(pool);
         console.log("\nFIN\n");
         break;
@@ -261,9 +267,9 @@ const init = async () => {
 
 init();
 
-async function UpdatePortraitImage(pool){
+async function UpdatePortraitImage(pool) {
   let authors = await pool.request().execute("spListarArtistasSinPortada");
-  
+
 }
 
 async function CommissionInfoGenerate(pixiv, pool) {
@@ -405,22 +411,37 @@ async function FacturationInfoGenerate(pool) {
     log.info("Detenido en: ", accumula);
   }
 }
-async function LikesGenerator(pool) {
+async function LikesGenerator(pool, illust_id = null) {
   const authors_response = await pool.request().execute("spListAllAuthors");
-  const illusts_response = await pool.request().execute("spListarIllust");
-  for (let index = 0; index < authors_response.recordsets[0].length; index++) {
-    const author = authors_response.recordsets[0][index];
-    const illust = illusts_response.recordsets[0][index];
+  if (illust_id) {
+    for (let index = 0; index < authors_response.recordsets[0].length; index++) {
+      const author = authors_response.recordsets[0][index];
+      const add_favorite = await pool
+        .request()
+        .input("user_id", author.author_id)
+        .input("illust_id", illust_id)
+        .execute("spAddIllustToAFavorites");
+      log.success(
+        `${author.author_id} Liked: ${illust_id} MSG: ${add_favorite.recordset[0].Mensaje}`
+      );
+      await imagedl.wait(100);
+    }
+  } else {
+    const illusts_response = await pool.request().execute("spListarIllust");
+    for (let index = 0; index < authors_response.recordsets[0].length; index++) {
+      const author = authors_response.recordsets[0][index];
+      const illust = illusts_response.recordsets[0][index];
 
-    const add_favorite = await pool
-      .request()
-      .input("user_id", author.author_id)
-      .input("illust_id", illust.id)
-      .execute("spAddIllustToAFavorites");
-    log.success(
-      `${author.author_id} Liked: ${illust.id} MSG: ${add_favorite.recordset[0].Mensaje}`
-    );
-    await imagedl.wait(100);
+      const add_favorite = await pool
+        .request()
+        .input("user_id", author.author_id)
+        .input("illust_id", illust.id)
+        .execute("spAddIllustToAFavorites");
+      log.success(
+        `${author.author_id} Liked: ${illust.id} MSG: ${add_favorite.recordset[0].Mensaje}`
+      );
+      await imagedl.wait(100);
+    }
   }
 }
 // similar a recommended solo que en base los follows
@@ -472,29 +493,31 @@ async function recommended(pixiv, pool) {
 }
 
 async function IllustViewGenerator(pool) {
-  const page_views_responses = await pool
-    .request()
-    .execute("spAuthorViewPagesUpdate");
-  await imagedl.wait(300);
-  if (page_views_responses.recordsets[0].length > 0) {
-    const illust_responses = await pool.request().execute("spListarIllust");
+  for (let index = 0; index < 10; index++) {
+    const page_views_responses = await pool
+      .request()
+      .execute("spAuthorViewPagesUpdate");
+    await imagedl.wait(300);
+    if (page_views_responses.recordsets[0].length > 0) {
+      const illust_responses = await pool.request().execute("spListarIllust");
 
-    function getMultipleRandom(arr, num) {
-      const shuffled = [...arr].sort(() => 0.5 - Math.random());
+      function getMultipleRandom(arr, num) {
+        const shuffled = [...arr].sort(() => 0.5 - Math.random());
 
-      return shuffled.slice(0, num);
-    }
-    for (const illust of getMultipleRandom(
-      illust_responses.recordsets[0],
-      10
-    )) {
-      log.info("Agregando views a:", illust.id, illust.title);
-      const update_illust = await pool
-        .request()
-        .input("illust_id", illust.id)
-        .execute("spSumarViewIllust");
-      log.success(illust.id, update_illust.recordset[0].Mensaje);
-      await imagedl.wait(100);
+        return shuffled.slice(0, num);
+      }
+      for (const illust of getMultipleRandom(
+        illust_responses.recordsets[0],
+        10
+      )) {
+        log.info("Agregando views a:", illust.id, illust.title);
+        const update_illust = await pool
+          .request()
+          .input("illust_id", illust.id)
+          .execute("spSumarViewIllust");
+        log.success(illust.id, update_illust.recordset[0].Mensaje);
+        await imagedl.wait(100);
+      }
     }
   }
 }

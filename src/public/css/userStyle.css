@@ -362,8 +362,20 @@ body {
 }
 
 /* ALBUMS TAB STYLE END */
-
-
+.posts__class{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.post__form{
+    min-width: 500px;
+    margin-right: 20px;
+    background-color: black;
+}
+.post__history{
+    min-width: 900px;
+    background-color: black;
+}
 /* POSTS TAB STYLE */
 
 /* POSTS TAB STYLE END */

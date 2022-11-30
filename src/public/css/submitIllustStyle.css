@@ -22,14 +22,6 @@ body {
     font-size: 1.5em;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
 .scrolls {
     overflow-x: scroll;
     overflow-y: hidden;
@@ -52,101 +44,6 @@ body {
     vertical-align: top;
 }
 
-/* ILE CONTAINER */
-.ile_container {
-    display: flex;
-    width: 99%;
-    min-width: 1300px;
-    align-items: center;
-    justify-content: center;
-    margin-left: 10px;
-    position: absolute;
-}
-
-.ile_right {
-
-    background-color: #0c0b0b;
-    position: relative;
-    width: 500px;
-    margin: 15px 10px;
-}
-.ile_r_content{
-    margin: 15px 10px;
-}
-.ile_left {
-    position: relative;
-    min-width: 800px;
-    max-width: 900px;
-    float: right;
-    margin-right: 10px;
-}
-
-.form__fields {
-    width: 100%;
-}
-
-.form__fields input {
-    font-family: "Comfortaa", sans-serif;
-}
-
-.title_div input {
-    width: 99%;
-    height: 30px;
-    word-wrap: normal;
-}
-
-.description_div input {
-    width: 99%;
-    height: 100px;
-    margin-top: 2px;
-    margin-bottom: 15px;
-    word-wrap: break-word;
-    word-break: break-all;
-}
-
-.tags_div label {
-    margin-top: 15px;
-}
-
-.tags_div input {
-    width: 99%;
-    height: 50px;
-    margin-top: 15px;
-    word-wrap: normal;
-    margin-bottom: 15px;
-}
-
-.btn-submit {
-    width: 50%;
-    margin: 0;
-}
-
-.add_illust {
-    background-color: #0c0b0b;
-    border-radius: 10px;
-}
-.add_illust input {
-    background-color: rgb(62, 62, 62);
-    padding:5px;
-    border-radius: 3px;
-    color:white;
-}
-.add_illust input:focus {
-    outline: 0 !important;
-    border-bottom: 3px solid turquoise;
-}
-
-
-
-
-
-.text-area {
-    border: 2px solid rgb(122, 122, 122);
-    width: 500px;
-    padding: 3rem 1rem;
-    border-radius: .5rem;
-    position: relative;
-}
 span:not(.tags) {
     background-color: rgba(255, 255, 255, .1);
     padding: .3rem 1rem;
@@ -156,7 +53,8 @@ span:not(.tags) {
     display: inline-block;
     cursor: url(cursor.png), auto;
 }
-input {
+
+/* input {
     border: none;
     outline: none;
     background-color: transparent;
@@ -164,12 +62,13 @@ input {
     margin-left: 0.5rem;
     padding: .3rem 0;
     margin-top: 1rem;
-}
+} */
 
 .focused {
     border-color: rgb(0, 0, 150);
     box-shadow: 0 0 .3rem rgb(0, 0, 150);
 }
+
 .label {
     position: absolute;
     background-color: rgb(0, 0, 20);
@@ -182,4 +81,63 @@ input {
 
 .focused .label {
     top: 0;
+}
+
+/* OPCION DESPLEGABLE DEL RADIO */
+.content
+{
+    display: none;
+}
+
+.contenido-peticion{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 15px 5px;
+    min-height: 500px;
+    background-color: black;
+    border-radius: 5px;
+}
+.comm-card{
+    width: 400px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    background-color:rgb(27, 29, 41);
+    margin-bottom: 5px;
+    border: 2px solid rgb(255, 255, 255);
+}
+.comm-card img{
+    width: 100px;
+    height: 100px;
+    margin-right: 5px;
+}
+.comm-card-content{
+    width: 300px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.comm-card-content label{
+    font-size: 1em;
+}
+.comm-card-content p{
+    margin: 0px;
+}
+
+/* RADIO DE PETICION O COMISION COMO DIV */
+.radio-group{
+    position: relative;
+}
+
+.radio{
+    cursor:pointer;
+}
+
+.radio.selected{
+    border: 2px solid turquoise;
+    background-color: rgb(19, 93, 122);
 }

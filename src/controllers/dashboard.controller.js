@@ -1,7 +1,8 @@
 const Remote1 = require("../../helpers/soapConsumer/remoteWS");
+const randomHexColor = require('random-hex-color')
 const controller = {};
 
-controller.listFollowingIllust = async (req, res) => {
+controller.indexmain = async (req, res) => {
   try {
     const LoginData = req.session.LoginSessionInfo;
 
@@ -67,11 +68,16 @@ controller.listFollowingIllust = async (req, res) => {
     if (rec_artists.length > 10) {
       rec_artists = rec_artists.slice(0, 10);
     }
-    if (rec_illusts.length > 10) {
-      rec_illusts = rec_illusts.slice(0, 10);
+    if (rec_illusts.length > 18) {
+      rec_illusts = rec_illusts.slice(0, 18);
     }
     if (following_posts.length > 5) {
       following_posts = rec_illusts.slice(0, 10);
+    }
+
+    const colors = [];
+    for (let index = 0; index < 5; index++) {
+      colors.push(randomHexColor());
     }
 
     res.render("index", {
@@ -81,6 +87,7 @@ controller.listFollowingIllust = async (req, res) => {
       rec_artists,
       rec_illusts,
       following_posts,
+      colors
     });
   } catch (error) {
     console.log("Error en ruta: listFollowingIllust ::", error.message);
@@ -224,4 +231,11 @@ controller.request = async (req, res) => {
   res.render("request", { LoginData, CommData });
 };
 
+controller.following = async (req, res) => {
+
+};
+
+controller.rankings = async (req, res) => {
+  
+};
 module.exports = controller;

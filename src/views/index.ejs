@@ -14,7 +14,7 @@
   <div class="img__showcase">
     <div class="img_sh_title">
       <hr class="hr_left">
-      <label>ULTIMOS DE ARTISTAS QUE SIGUES</label>
+      <a href="/Dashboard/following">ULTIMOS DE ARTISTAS QUE SIGUES</a>
       <hr class="hr_right">
     </div>
     <div class="container">
@@ -45,13 +45,16 @@
   <div class="img__showcase">
     <div class="img_sh_title">
       <hr class="hr_left">
-      <label>RANKING</label>
+      <a href="/Dashboard/ranking">RANKING</a>
       <hr class="hr_right">
     </div>
     <div class="container">
       <% if (globalranking) { %>
       <% for( let index = 0; index < globalranking.length; index++ ) { %>
       <div class="image-rank">
+        <div class="rank__info__line">
+          <p>#<%= index+1 %></p>
+        </div>
         <a class="card__a" href="/illusts/<%= globalranking[index].id %>" style="width: 300px; height: 300px;">
           <div class="image__img__rank" style="background-image: url(/images/<%=globalranking[index].thumb_dir%>);">
             <div class="image__overlay">
@@ -68,9 +71,6 @@
                   <p class="author__name"><%= globalranking[index].nickname %> </p>
                 </a>
               </div>
-              <div class="rank__info__line">
-                <p>#<%= index+1 %></p>
-              </div>
             </div>
           </div>
         </a>
@@ -82,7 +82,7 @@
   <div class="img__showcase">
     <div class="img_sh_title">
       <hr class="hr_left">
-      <label>ARTISTAS RECOMENDADOS</label>
+      <a href="/dashboard/recommended">ARTISTAS RECOMENDADOS</a>
       <hr class="hr_right">
     </div>
     <div class="container">
@@ -104,7 +104,7 @@
   <div class="img__showcase">
     <div class="img_sh_title">
       <hr class="hr_left">
-      <label>ILUSTRACIONES RECOMENDADAS</label>
+      <a href="/dashboard/recommended">ILUSTRACIONES RECOMENDADAS</a>
       <hr class="hr_right">
     </div>
     <div class="container">

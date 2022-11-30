@@ -18,6 +18,7 @@
     "express-fileupload": "^1.4.0",
     "express-session": "^1.17.3",
     "jsontoxml": "^1.0.1",
+    "random-hex-color": "^1.0.1",
     "request": "^2.88.2",
     "soap": "^0.45.0",
     "xml-formatter": "^2.6.1",

@@ -8,21 +8,17 @@
   <title>Submission</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/submitIllustStyle.css">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 </head>
 
 <body>
   <%- include('../navbar', LoginData) %>
-  <div class="main__head">
-
-  </div>
-  <!-- partial:index.partial.html -->
-  <div class="ile_container">
-    <div class="ile_left">
-      <form action="/multiple-upload" method="POST">
-
-        <div class="container mt-4 add_illust p-3">
-          <i class="fa-solid fa-upload my-3 title"> Publicar nueva ilustración</i>
+  <div class="container">
+    <h3 class="text-center my-4">Publica tu obra</h3>
+    <div class="row my-4">
+      <div class="col-8">
+        <h4><i class="bi bi-upload"></i> Hablanos sobre tu obra</h4>
+        <form action="">
           <div class="scrolls">
             <div class="">
               <div class="preview-images"></div>
@@ -31,135 +27,122 @@
           <div class="form-group my-3">
             <input type="file" name="multi-files" multiple required id="input-multi-files" class="form-control-file border" />
           </div>
-          <div class="form__fields">
-            <div class="title_div mb-2">
-              <input type="text" required placeholder="Dale un titulo a tu ilustración">
-            </div>
-            <div class="description_div">
-              <input type="textarea" placeholder="Dile a los demás de que trata tu trabajo.">
-            </div>
-            <div class="tags_div">
-              <label for="">Agrega etiquetas</label>
-              <!-- <input id="tokenfield" type="text" > -->
-
-              <div class="text-area">
-                <div class="label">Type Tags</div>
-                <span class="tags">
-                  <!-- <span>Hello</span>
-                    <span>World</span> -->
-                </span>
-                <input id ="tags" type="text">
-              </div>
-
-              <script>
-                const input = document.querySelector('#tags')
-                const text_area = document.querySelector('.text-area')
-                const tags_container = document.querySelector('.tags')
-
-                text_area.addEventListener('click', () => {
-                  text_area.classList.add('focused')
-                  input.focus()
-                })
-
-                input.addEventListener('blur', () => {
-                  if (tags_container.innerText == '') {
-                    text_area.classList.remove('focused')
-                  } else {
-                    text_area.classList.add('focused')
-                  }
-                })
-
-                input.addEventListener('keyup', (e) => {
-                  if (e.code == 'Space') {
-                    if (input.value !== ' ') {
-                      create_span(input.value)
-                    }
-                    input.value = ''
-                  }
-                })
-
-                function create_span(span_text) {
-                  const span = document.createElement('span')
-                  span.innerText = span_text
-
-                  tags_container.append(span)
-
-                  const tags = document.querySelectorAll('.tags span')
-                  remove_tag(tags)
-                }
-
-                function remove_tag(tags) {
-                  tags.forEach(tag => {
-                    tag.addEventListener('click', () => tag.remove())
-                  })
-                }
-              </script>
-
-
-              <div class="form-data"></div>
-            </div>
+          <div class="mb-3">
+            <input name="illust_title" type="text" class="form-control" id="title-illust" placeholder="Dale un titulo a tu ilustración.">
           </div>
-          <button type="submit" class="btn btn-primary">Publicar</button>
+          <div class="mb-3">
+            <textarea name="illust_desc" id="" cols="30" rows="10" class="form-control" placeholder="Cuentales a los demas de que trata tu ilustración"></textarea>
+          </div>
+          <div class="mb-3 text-area">
+            <span class="tags">
+            </span>
+            <br>
+            <input id="tags" type="text" class="form-control" placeholder="Agrega etiquetas a tu obra.">
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3" style="margin: 0;">PUBLICAR</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-4">
+        <h4><i class="bi bi-bookmark"></i> Especifica tu contenido</h4>
+        <div class="form-check form-switch my-2">
+          <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+          <label class="form-check-label" for="flexSwitchCheckDefault">¿NSFW?</label>
         </div>
-      </form>
-    </div>
+        <div class="form-check form-switch my-2">
+          <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+          <label class="form-check-label" for="flexSwitchCheckDefault">Permitir que mi trabajo sea usado para entrenar IAs</label>
+        </div>
+        <div class="form-check form-switch my-2">
+          <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+          <label class="form-check-label" for="flexSwitchCheckDefault">Imprimible</label>
+        </div>
+        <div class="form-check form-switch my-2">
+          <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+          <label class="form-check-label" for="flexSwitchCheckDefault">Tamaño de archivo grande</label>
+        </div>
+        <label for="">¿Es la ilustración un pedido?</label>
+        <div class="my-2 text-center">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input trigger" type="radio" name="peticion" id="inlineRadio1" value="req" data-rel="abc">
+            <label class="form-check-label" for="inlineRadio1">Request</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input trigger" type="radio" name="peticion" id="inlineRadio2" value="comm" data-rel="xyz">
+            <label class="form-check-label" for="inlineRadio2">Comisión</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input trigger" type="radio" name="peticion" id="inlineRadio2" value="none" checked>
+            <label class="form-check-label" for="inlineRadio2">Ninguno</label>
+          </div>
+        </div>
+        <div class="abc content">
+          <label for="">Lista de Requests</label>
+          <div class="contenido-peticion radio-group">
+            <% if (requests) { %>
+            <input class="form-control" type="hidden" id="radio-value" name="peticion_id">
+            <% if (requests.req_id) { %>
+            <div class="comm-card radio" data-value="<%=requests.req_id%>">
+              <a href="/user/<%=requests.requester_id%>" target="_blank" rel="noopener noreferrer">
+                <img src="/images<%=requests.profile_pic_dir.slice(1,requests.profile_pic_dir.length)%>" alt="">
+              </a>
+              <div class="comm-card-content">
+                <label for=""><%= requests.nickname %></label>
+                <p for=""><%= requests.requester_comment %></p>
+                <label for=""><%= requests.request_date %></label>
+              </div>
+            </div>
+            <% } else {%>
+            <% for( let i = 0; i < requests.length; i++ ) { %>
+            <div class="comm-card radio" data-value="<%=requests[i].req_id%>">
+              <a href="/user/<%=requests[i].requester_id%>" target="_blank" rel="noopener noreferrer">
+                <img src="/images<%=requests[i].profile_pic_dir.slice(1,requests[i].profile_pic_dir.length)%>" alt="">
+              </a>
+              <div class="comm-card-content">
+                <label for=""><%= requests[i].nickname %></label>
+                <p for=""><%= requests[i].requester_comment %></p>
+                <label for=""><%= requests[i].request_date %></label>
+              </div>
+            </div>
+            <% } %>
+            <% } %>
+            <% } %>
+          </div>
+        </div>
+        <div class="xyz content">
+          <label for="">Lista de Comisiones</label>
+          <div class="contenido-peticion">
+            <% if (commissions) { %>
+            <% for( let i = 0; i < commissions.length; i++ ) { %>
 
-    <div class="ile_right">
-      <div class="ile_r_content">
-        <h3>Especificación de Contenido</h3>
-        <fieldset>
-          <legend>Publico</legend>
-          <label>
-            <input type="radio" name="nsfw" value="true"> NSFW
-          </label>
-          <label>
-            <input type="radio" name="nsfw" value="false"> SFW
-          </label>
-        </fieldset>
-        <fieldset>
-          <legend>Permisos de IA</legend>
-          <label>
-            <input type="radio" name="allow-ia" value="true"> Permitir
-          </label>
-          <label>
-            <input type="radio" name="allow-ia" value="false"> No permitir
-          </label>
-        </fieldset>
-        <fieldset>
-          <legend>Tipo de ilustración</legend>
-          <label>
-            <input type="radio" name="original" value="azul"> Comision
-          </label>
-          <label>
-            <input type="radio" name="original" value="negro"> Request
-          </label>
-          <label>
-            <input type="radio" name="original" value="negro" checked> Original
-          </label>
-        </fieldset>
+            <% } %>
+            <% } %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
+  </div>
+  </div>
   <!-- partial -->
   <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-  <script src="./script.js"></script>
 
-  <script src="https://kit.fontawesome.com/b086d2a54c.js" crossorigin="anonymous"></script>
   <script>
-    $(document).ready(function() {
-      $('#tokenfield').tokenfield({
-        autocomplete: {
-          source: ['red', 'blue', 'green', 'yellow', 'violet', 'brown', 'purple', 'black', 'white'],
-          delay: 100
-        },
-        showAutocompleteOnFocus: true
-      });
+    $('.radio-group .radio').click(function() {
+      $(this).parent().find('.radio').removeClass('selected');
+      $(this).addClass('selected');
+      var val = $(this).attr('data-value');
+      //alert(val);
+      $(this).parent().find('input').val(val);
+    });
 
-      $("form").submit(function(e) {
-        e.preventDefault();
-        $('.form-data').text($('#tokenfield').val());
-      });
+    $('.trigger').change(function() {
+      $('.content').hide();
+      $('.' + $('.trigger:checked').data('rel')).show();
+    }).change(); //Show content on page load
+    $(document).ready(function() {
       let imagesPreview = function(input, placeToInsertImagePreview) {
         if (input.files) {
           let filesAmount = input.files.length;
@@ -178,6 +161,47 @@
         imagesPreview(this, "div.preview-images");
       });
     });
+    const input = document.querySelector('#tags')
+    const text_area = document.querySelector('.text-area')
+    const tags_container = document.querySelector('.tags')
+
+    text_area.addEventListener('click', () => {
+      text_area.classList.add('focused')
+      input.focus()
+    })
+
+    input.addEventListener('blur', () => {
+      if (tags_container.innerText == '') {
+        text_area.classList.remove('focused')
+      } else {
+        text_area.classList.add('focused')
+      }
+    })
+
+    input.addEventListener('keyup', (e) => {
+      if (e.code == 'Space') {
+        if (input.value !== ' ') {
+          create_span(input.value)
+        }
+        input.value = ''
+      }
+    })
+
+    function create_span(span_text) {
+      const span = document.createElement('span')
+      span.innerText = span_text
+
+      tags_container.append(span)
+
+      const tags = document.querySelectorAll('.tags span')
+      remove_tag(tags)
+    }
+
+    function remove_tag(tags) {
+      tags.forEach(tag => {
+        tag.addEventListener('click', () => tag.remove())
+      })
+    }
   </script>
 </body>
 
