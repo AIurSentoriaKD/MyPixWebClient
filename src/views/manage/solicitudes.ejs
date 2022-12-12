@@ -48,7 +48,57 @@
     </div>
     <div class="inner_reqs">
       <% if (ReqCommList.Req_To) { %>
-
+        <% if (ReqCommList.Req_To.req_id) { %>
+          <div class="req_card" style="border: 3px solid transparent !important;">
+            <div class="header">
+                <div class="author_img" style="background-image: url(/images<%=ReqCommList.Req_To.profile_pic_dir%>);">
+                </div>
+                <div class="author_info">
+                    <p class="author_name">
+                        <%= ReqCommList.Req_To.nickname %> 
+                    </p>
+                    <p class="req_date">
+                        <%= ReqCommList.Req_To.request_date %> 
+                    </p>
+                </div>
+            </div>
+            <div class="description">
+                <p>
+                    <%= ReqCommList.Req_To.requester_comment %> 
+                </p>
+            </div>
+            <div class="buttons">
+                <button class="accept">ACEPTAR</button>
+                <button class="deny">RECHAZAR</button>
+            </div>
+        </div>
+        <% } else { %> 
+          <% for( let i = 0; i < ReqCommList.Req_To.length; i++ ) { %>
+            <div class="req_card" style="border: 3px solid transparent !important;">
+              <div class="header">
+                  <div class="author_img" style="background-image: url(/images<%=ReqCommList.Req_To[i].profile_pic_dir%>);">
+                  </div>
+                  <div class="author_info">
+                      <p class="author_name">
+                          <%= ReqCommList.Req_To[i].nickname %> 
+                      </p>
+                      <p class="req_date">
+                          <%= ReqCommList.Req_To[i].request_date %> 
+                      </p>
+                  </div>
+              </div>
+              <div class="description">
+                  <p>
+                      <%= ReqCommList.Req_To[i].requester_comment %> 
+                  </p>
+              </div>
+              <div class="buttons">
+                  <button class="accept">ACEPTAR</button>
+                  <button class="deny">RECHAZAR</button>
+              </div>
+          </div>
+          <% } %>
+        <% } %>
       <% } else { %>
       <h3>NO TIENES REQUESTS PENDIENTES</h3>
       <% } %>
@@ -68,44 +118,6 @@
       <% } %>
     </div>
   </div>
-
-  <!-- Card Section -->
-
-  <section class="section">
-    <div class="container">
-      
-      <form action="">
-        <div class="card" style="border:1px solid red;">
-          <div class="card-content" style="border:1px solid blue;">
-            <div class="media">
-              <div class="media-left">
-                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image" style="border:1px solid green;">
-                <div class="media-content" style="border:1px solid purple;">
-                  <p class="title is-4">Athour Name</p>
-                  <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                </div>
-              </div>
-            </div>
-    
-            <div class="content">
-              <textarea style="resize: none;" name="name" rows="8" cols="80">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Phasellus nec iaculis mauris.</textarea>
-              <br>
-              <strong>$<input type="text" name="price" value="15.00" readonly></strong>
-            </div>
-    
-            <footer class="card-footer">
-          <button  hidden class="butttons"  type="button"><a href="#" >✓</a></button>
-          <input class="butttons" type="submit" name="veificado" value="✓">
-          <button class="butttons" type="button"><a href="#" style="  text-decoration:none;">X</a></button>
-        </footer>
-          </div>
-        </div>
-      </form>
-
-    </div>
-  </section>
 
 </body>
 

@@ -239,24 +239,26 @@ const init = async () => {
       // await follows(imagedl.pixiv, pool);
       // await imagedl.wait(2 * 1000); // 2 secs
       // obtener imagenes
-      await follows(imagedl.pixiv, pool);
-      await imagedl.wait(2 * 1000); // 2 secs
+      // await follows(imagedl.pixiv, pool);
+      // await imagedl.wait(2 * 1000); // 2 secs
       await recommended(imagedl.pixiv, pool);
       await imagedl.wait(2 * 1000); // 2 secs
       // descarga la imagen de autor y lo agrega a bd
-      await AuthorProfileUpdater(pool);
-      await imagedl.wait(2 * 1000); // 2 secs
-      // descarga la imagen de las paginas
-      await IllustPageUpdater(pool);
-      await imagedl.wait(2 * 1000); // 2 secs
-      // descarga la imagen de thumbnail
-      await IllustThumbnailUpdater(pool);
-      await imagedl.wait(2 * 1000); // 2 secs
+      // await AuthorProfileUpdater(pool);
+      // await imagedl.wait(2 * 1000); // 2 secs
+      // // descarga la imagen de las paginas
+      // await IllustPageUpdater(pool);
+      // await imagedl.wait(2 * 1000); // 2 secs
+      // // descarga la imagen de thumbnail
+      // await IllustThumbnailUpdater(pool);
+      // await imagedl.wait(2 * 1000); // 2 secs
       // genera unos views en las imagenes
       await IllustViewGenerator(pool);
       await imagedl.wait(2 * 1000); // 2 secs
       // genera likes
-      await LikesGenerator(pool);
+      for (let index = 0; index < 10; index++) {
+        await LikesGenerator(pool);
+      }
       await imagedl.wait(5 * 60 * 1000); // 5 min
       // actualiza el token para pixivapi
       await initPixiv();
@@ -266,11 +268,6 @@ const init = async () => {
 };
 
 init();
-
-async function UpdatePortraitImage(pool) {
-  let authors = await pool.request().execute("spListarArtistasSinPortada");
-
-}
 
 async function CommissionInfoGenerate(pixiv, pool) {
   // mock data de facturacion info
@@ -475,7 +472,8 @@ async function recommended(pixiv, pool) {
   console.log("Comprobando Recommended");
   const result = await pixiv.illustRecommended();
   const illusts = result.illusts;
-  for (let i = 0; i < 10; i++) {
+  console.log(illusts.length);
+  for (let i = 0; i < 30; i++) {
     console.log(
       `${i + 1}: `,
       illusts[i].id,
@@ -729,9 +727,10 @@ async function addtodatabase(illust, pool, author_added = 0) {
       se correlaciona la illust con los tags
 
   */
-  const dates = getDates(new Date(2000, 01, 22), new Date(2000, 07, 25));
+  const dates = getDates(new Date(1990, 01, 22), new Date(2000, 07, 25));
 
   const autor = illust.user;
+  const country_el = countrys.sort(() => 0.5 - Math.random())[0]
   //#region AGREGANDO AUTOR
   if (author_added == 0) {
     const response_autor = await pool
@@ -742,11 +741,11 @@ async function addtodatabase(illust, pool, author_added = 0) {
       .input("email", `${autor.account}@email.com`)
       .input("pass", autor.id) // el id entra como pass
       .input("birthdate", dates.sort(() => 0.5 - Math.random())[0])
-      .input("country", countrys.sort(() => 0.5 - Math.random())[0])
+      .input("country", country_el)
       .input("profile_pic_link", autor.profile_image_urls.medium)
       .execute("spAgregarAutor");
-    log.info(`${autor.id} - ${response_autor.recordset[0].Mensaje}`);
-    await imagedl.wait(200);
+    log.info(`${autor.id} - ${country_el} - ${response_autor.recordset[0].Mensaje}`);
+    await imagedl.wait(100);
   }
   //#endregion
 
@@ -767,7 +766,7 @@ async function addtodatabase(illust, pool, author_added = 0) {
     `${illust.id} - CE: ${response_illust.recordset[0].CodError}, ${response_illust.recordset[0].Mensaje}`
   );
   //#endregion
-  await imagedl.wait(200);
+  await imagedl.wait(100);
   if (response_illust.recordset[0].CodError == 2) {
   }
   //#region AGREGANDO INFO DE PAGINAS

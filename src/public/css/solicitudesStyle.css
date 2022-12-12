@@ -89,38 +89,64 @@ body {
 
 
 /* Card  */
-.container{
+.req_card {
+    height: 250px;
+    width: 350px;
+    margin-right: 3px;
+}
+
+.header {
+    width: 350px;
+    height: 96px;
     display: flex;
-    grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
-    grid-gap: 0.5em;
-    width: 20%;
-  }
-  
-  .card{
-    height: max-content;
-  }
-  
-  .car-content{
-    display: flex
-  }
-  
-  .butttons{
-    margin:auto;
-    border:1px solid red;
-    width:49.44%;
-    margin:auto;
-  }
-  
-  .content textarea{
-    width : 100%;
-  }
-  
-  
-  .media-left{
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(101, 124, 158);
+}
+
+.author_img {
+    width: 96px;
+    height: 96px;
+}
+.author_info{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.description {
+    width: 350px;
+    height: 104px;
+}
+.description p {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+.buttons {
+    height: 44px;
+    width: 350px;
     display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        flex-wrap: wrap;
-  }
+    flex-direction: row;
+}
+.buttons button.accept {
+    width: 50%;
+    height: 100%;
+    border: none;
+    background: conic-gradient(from 221deg at 52% 0%, rgba(0, 163, 255, 1) 0%, rgba(79, 130, 210, 1) 100%);
+    color: white;
+    cursor: pointer;
+    margin-left: 0;
+}
+.buttons button.deny {
+    width: 50%;
+    height: 100%;
+    border: none;
+    background:conic-gradient(from 221deg at 52% 0%, rgba(255, 0, 142, 1) 0%, rgba(210, 79, 136, 1) 100%);
+    color: white;
+    cursor: pointer;
+    margin-left: 0;
+}
+.buttons button.accept:hover, .buttons button.deny:hover {
+    transform: scale(1.1);
+}
 
 /* End Card */
