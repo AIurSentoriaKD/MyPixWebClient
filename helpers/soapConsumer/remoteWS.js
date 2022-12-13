@@ -9,7 +9,7 @@ const ApiClient = axios.create({
 });
 
 //const someeWS = `https://localhost:44325/wsMyPix.asmx?WSDL`;
-const someeWS = `http://www.dais-w-02.somee.com/wsAuthor.asmx?WSDL`;
+const someeWS = `http://www.dais-w-02.somee.com/wsMyPix.asmx?WSDL`;
 
 // SSL sign certificated
 // comentar para some, sin comentar para local
