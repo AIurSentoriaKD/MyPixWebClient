@@ -67,8 +67,8 @@ app.use("/submit", submit_route);
 app.use("/manage", manage_route)
 
 //OPEN SERVER
-// const PORT = process.env.PORT;
-const PORT = 1234;
+const PORT = process.env.PORT;
+//const PORT = 1234;
 
 app.listen(PORT, (req, res) => {
   console.log("App listening on port: ", PORT);
