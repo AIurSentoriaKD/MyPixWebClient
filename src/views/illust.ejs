@@ -130,9 +130,14 @@
               <!-- ME GUSTA TOGGLE -->
               <div class="col-md-3">
                 <div class="row">
-                  <h2 id="like">
-                    <p class="text-center" id="solid"><i onclick="myFunction(this)" id="mode" class="fa-solid fa-heart"></i> Me gusta</p>
-                  </h2>
+                  <% if (LoginData.author_id != data.AuthorData.author_id) { %>
+                    <h2 id="like">
+                      <p class="text-center" id="solid"><i onclick="myFunction(this)" id="mode" class="fa-solid fa-heart"></i> Me gusta</p>
+                    </h2>
+                  <% } else { %>
+                    <button>Eliminar</button>
+                    <button>Editar</button>
+                  <% } %>
                   <!-- <h4>
                     <p class="text-center">Comentar</p>
                   </h4> -->

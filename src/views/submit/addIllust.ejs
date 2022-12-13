@@ -15,17 +15,18 @@
   <%- include('../navbar', LoginData) %>
   <div class="container">
     <h3 class="text-center my-4">Publica tu obra</h3>
-    <div class="row my-4">
-      <div class="col-8">
-        <h4><i class="bi bi-upload"></i> Hablanos sobre tu obra</h4>
-        <form action="">
+    <!-- <div class="row my-4"> -->
+      <form action="/submit/submit_illust" method="POST" enctype=multipart/form-data class="row my-4">
+        <div class="col-8">
+          <h4><i class="bi bi-upload"></i> Hablanos sobre tu obra</h4>
+
           <div class="scrolls">
             <div class="">
               <div class="preview-images"></div>
             </div>
           </div>
           <div class="form-group my-3">
-            <input type="file" name="multi-files" multiple required id="input-multi-files" class="form-control-file border" />
+            <input type="file" name="multi_files" multiple required id="input-multi-files" class="form-control-file border" />
           </div>
           <div class="mb-3">
             <input name="illust_title" type="text" class="form-control" id="title-illust" placeholder="Dale un titulo a tu ilustración.">
@@ -33,95 +34,100 @@
           <div class="mb-3">
             <textarea name="illust_desc" id="" cols="30" rows="10" class="form-control" placeholder="Cuentales a los demas de que trata tu ilustración"></textarea>
           </div>
+          <input type="text" id="etiquetas" name="etiquetas" hidden>
           <div class="mb-3 text-area">
-            <span class="tags">
-            </span>
-            <br>
-            <input id="tags" type="text" class="form-control" placeholder="Agrega etiquetas a tu obra.">
+            <div id="wrapper">
+              <ul class="tags-input">
+                <li class="tags-new">
+                  <input type="text" placeholder="Agrega etiquetas">
+                </li>
+              </ul>
+            </div>
           </div>
           <div class="col-auto">
             <button type="submit" class="btn btn-primary mb-3" style="margin: 0;">PUBLICAR</button>
           </div>
-        </form>
-      </div>
-      <div class="col-4">
-        <h4><i class="bi bi-bookmark"></i> Especifica tu contenido</h4>
-        <div class="form-check form-switch my-2">
-          <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-          <label class="form-check-label" for="flexSwitchCheckDefault">¿NSFW?</label>
-        </div>
-        <div class="form-check form-switch my-2">
-          <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-          <label class="form-check-label" for="flexSwitchCheckDefault">Permitir que mi trabajo sea usado para entrenar IAs</label>
-        </div>
-        <div class="form-check form-switch my-2">
-          <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-          <label class="form-check-label" for="flexSwitchCheckDefault">Imprimible</label>
-        </div>
-        <div class="form-check form-switch my-2">
-          <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-          <label class="form-check-label" for="flexSwitchCheckDefault">Tamaño de archivo grande</label>
-        </div>
-        <label for="">¿Es la ilustración un pedido?</label>
-        <div class="my-2 text-center">
-          <div class="form-check form-check-inline">
-            <input class="form-check-input trigger" type="radio" name="peticion" id="inlineRadio1" value="req" data-rel="abc">
-            <label class="form-check-label" for="inlineRadio1">Request</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input trigger" type="radio" name="peticion" id="inlineRadio2" value="comm" data-rel="xyz">
-            <label class="form-check-label" for="inlineRadio2">Comisión</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input trigger" type="radio" name="peticion" id="inlineRadio2" value="none" checked>
-            <label class="form-check-label" for="inlineRadio2">Ninguno</label>
-          </div>
-        </div>
-        <div class="abc content">
-          <label for="">Lista de Requests</label>
-          <div class="contenido-peticion radio-group">
-            <% if (requests) { %>
-            <input class="form-control" type="hidden" id="radio-value" name="peticion_id">
-            <% if (requests.req_id) { %>
-            <div class="comm-card radio" data-value="<%=requests.req_id%>">
-              <a href="/user/<%=requests.requester_id%>" target="_blank" rel="noopener noreferrer">
-                <img src="/images<%=requests.profile_pic_dir.slice(1,requests.profile_pic_dir.length)%>" alt="">
-              </a>
-              <div class="comm-card-content">
-                <label for=""><%= requests.nickname %></label>
-                <p for=""><%= requests.requester_comment %></p>
-                <label for=""><%= requests.request_date %></label>
-              </div>
-            </div>
-            <% } else {%>
-            <% for( let i = 0; i < requests.length; i++ ) { %>
-            <div class="comm-card radio" data-value="<%=requests[i].req_id%>">
-              <a href="/user/<%=requests[i].requester_id%>" target="_blank" rel="noopener noreferrer">
-                <img src="/images<%=requests[i].profile_pic_dir.slice(1,requests[i].profile_pic_dir.length)%>" alt="">
-              </a>
-              <div class="comm-card-content">
-                <label for=""><%= requests[i].nickname %></label>
-                <p for=""><%= requests[i].requester_comment %></p>
-                <label for=""><%= requests[i].request_date %></label>
-              </div>
-            </div>
-            <% } %>
-            <% } %>
-            <% } %>
-          </div>
-        </div>
-        <div class="xyz content">
-          <label for="">Lista de Comisiones</label>
-          <div class="contenido-peticion">
-            <% if (commissions) { %>
-            <% for( let i = 0; i < commissions.length; i++ ) { %>
 
-            <% } %>
-            <% } %>
+        </div>
+        <div class="col-4">
+          <h4><i class="bi bi-bookmark"></i> Especifica tu contenido</h4>
+          <div class="form-check form-switch my-2">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="is_nsfw">
+            <label class="form-check-label" for="flexSwitchCheckDefault">¿NSFW?</label>
+          </div>
+          <div class="form-check form-switch my-2">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="ai_dataset">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Permitir que mi trabajo sea usado para entrenar IAs</label>
+          </div>
+          <div class="form-check form-switch my-2">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="printable">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Imprimible</label>
+          </div>
+          <div class="form-check form-switch my-2">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="beeg_file">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Tamaño de archivo grande</label>
+          </div>
+          <label for="">¿Es la ilustración un pedido?</label>
+          <div class="my-2 text-center">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input trigger" type="radio" name="peticion" id="inlineRadio1" value="req" data-rel="abc">
+              <label class="form-check-label" for="inlineRadio1">Request</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input trigger" type="radio" name="peticion" id="inlineRadio2" value="comm" data-rel="xyz">
+              <label class="form-check-label" for="inlineRadio2">Comisión</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input trigger" type="radio" name="peticion" id="inlineRadio2" value="none" checked>
+              <label class="form-check-label" for="inlineRadio2">Ninguno</label>
+            </div>
+          </div>
+          <div class="abc content">
+            <label for="">Lista de Requests</label>
+            <div class="contenido-peticion radio-group">
+              <% if (requests) { %>
+              <input class="form-control" type="hidden" id="radio-value" name="peticion_id">
+              <% if (requests.req_id) { %>
+              <div class="comm-card radio" data-value="<%=requests.req_id%>">
+                <a href="/user/<%=requests.requester_id%>" target="_blank" rel="noopener noreferrer">
+                  <img src="/images<%=requests.profile_pic_dir.slice(1,requests.profile_pic_dir.length)%>" alt="">
+                </a>
+                <div class="comm-card-content">
+                  <label for=""><%= requests.nickname %></label>
+                  <p for=""><%= requests.requester_comment %></p>
+                  <label for=""><%= requests.request_date %></label>
+                </div>
+              </div>
+              <% } else {%>
+              <% for( let i = 0; i < requests.length; i++ ) { %>
+              <div class="comm-card radio" data-value="<%=requests[i].req_id%>">
+                <a href="/user/<%=requests[i].requester_id%>" target="_blank" rel="noopener noreferrer">
+                  <img src="/images<%=requests[i].profile_pic_dir.slice(1,requests[i].profile_pic_dir.length)%>" alt="">
+                </a>
+                <div class="comm-card-content">
+                  <label for=""><%= requests[i].nickname %></label>
+                  <p for=""><%= requests[i].requester_comment %></p>
+                  <label for=""><%= requests[i].request_date %></label>
+                </div>
+              </div>
+              <% } %>
+              <% } %>
+              <% } %>
+            </div>
+          </div>
+          <div class="xyz content">
+            <label for="">Lista de Comisiones</label>
+            <div class="contenido-peticion">
+              <% if (commissions) { %>
+              <% for( let i = 0; i < commissions.length; i++ ) { %>
+
+              <% } %>
+              <% } %>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </form>
+    <!-- </div> -->
   </div>
 
   </div>
@@ -161,47 +167,48 @@
         imagesPreview(this, "div.preview-images");
       });
     });
-    const input = document.querySelector('#tags')
-    const text_area = document.querySelector('.text-area')
-    const tags_container = document.querySelector('.tags')
 
-    text_area.addEventListener('click', () => {
-      text_area.classList.add('focused')
-      input.focus()
-    })
+    function existingTag(text) {
+      var existing = false,
+        text = text.toLowerCase();
 
-    input.addEventListener('blur', () => {
-      if (tags_container.innerText == '') {
-        text_area.classList.remove('focused')
-      } else {
-        text_area.classList.add('focused')
-      }
-    })
-
-    input.addEventListener('keyup', (e) => {
-      if (e.code == 'Space') {
-        if (input.value !== ' ') {
-          create_span(input.value)
+      $(".tags").each(function() {
+        if ($(this).text().toLowerCase() == text) {
+          existing = true;
+          return "";
         }
-        input.value = ''
-      }
-    })
+      });
 
-    function create_span(span_text) {
-      const span = document.createElement('span')
-      span.innerText = span_text
-
-      tags_container.append(span)
-
-      const tags = document.querySelectorAll('.tags span')
-      remove_tag(tags)
+      return existing;
     }
 
-    function remove_tag(tags) {
-      tags.forEach(tag => {
-        tag.addEventListener('click', () => tag.remove())
-      })
-    }
+    $(function() {
+      $(".tags-new input").focus();
+
+      $(".tags-new input").keyup(function() {
+
+        var tag = $(this).val().trim(),
+          length = tag.length;
+
+        if ((tag.charAt(length - 1) == ',') && (tag != ",")) {
+          tag = tag.substring(0, length - 1);
+
+          if (!existingTag(tag)) {
+            $('<li class="tags"><span>' + tag + '</span><i class="fa fa-times"></i></i></li>').insertBefore($(".tags-new"));
+            $(this).val("");
+            var current_string = $('#etiquetas');
+            current_string.val(current_string.val() + "==" + tag);
+          } else {
+            $(this).val(tag);
+          }
+        }
+      });
+
+      $(document).on("click", ".tags i", function() {
+        $(this).parent("li").remove();
+      });
+
+    });
   </script>
 </body>
 

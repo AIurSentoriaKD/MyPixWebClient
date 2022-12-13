@@ -2,12 +2,28 @@ const express = require("express");
 const session = require("express-session");
 const env = require('dotenv');
 const path = require("path");
-const app = express();
 const cookieParser = require("cookie-parser");
 
+const fileUpload = require('express-fileupload');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+//const morgan = require('morgan');
+//const _ = require('lodash');
+
+const app = express();
+
+//app.use(multer());
+
 //Middleware settings
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(fileUpload());
+//add other middleware
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+//app.use(morgan('dev'));
+
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
 app.use(express.static(path.join(__dirname, "./src/public")));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "./src/views"));

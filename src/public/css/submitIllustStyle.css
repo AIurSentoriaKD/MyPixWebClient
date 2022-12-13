@@ -8,6 +8,8 @@ body {
     color: white;
 }
 
+
+
 .main__head {
     display: flex;
     align-items: center;
@@ -44,52 +46,71 @@ body {
     vertical-align: top;
 }
 
-span:not(.tags) {
-    background-color: rgba(255, 255, 255, .1);
-    padding: .3rem 1rem;
-    border-radius: 50vw;
-    margin: .3rem;
-    font-size: 1rem;
+#wrapper {
+    width: 100%;
+    height: 30px;
+}
+.tags-input {
+    list-style: none;
+    border: 1px solid #ccc;
     display: inline-block;
-    cursor: url(cursor.png), auto;
+    padding: 5px;
+    height: 26px;
+    font-size: 14px;
+    background: #f3f3f3;
+    width: 100%;
+    border-radius: 2px;
+    overflow: hidden;
 }
 
-/* input {
-    border: none;
+.tags-input li {
+    float: left;
+}
+
+.tags {
+    background: #28343d;
+    padding: 5px 20px 5px 8px;
+    border-radius: 2px;
+    margin-right: 5px;
+    position: relative;
+}
+
+.tags i {
+    right: 6px;
+    top: 3px;
+    width: 8px;
+    height: 8px;
+    content: '';
+    cursor: pointer;
+    opacity: .7;
+    font-size: 12px;
+}
+
+.tags i:hover {
+    opacity: 1;
+}
+
+.tags-new input[type="text"] {
+    border: 0;
+    margin: 0;
+    padding: 0 0 0 3px;
+    font-size: 14px;
+    margin-top: 5px;
+    background: transparent;
+}
+
+.tags-new input[type="text"]:focus {
     outline: none;
-    background-color: transparent;
-    font-size: 1rem;
-    margin-left: 0.5rem;
-    padding: .3rem 0;
-    margin-top: 1rem;
-} */
-
-.focused {
-    border-color: rgb(0, 0, 150);
-    box-shadow: 0 0 .3rem rgb(0, 0, 150);
 }
 
-.label {
-    position: absolute;
-    background-color: rgb(0, 0, 20);
-    padding: 0 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    transition: 200ms ease-in-out top;
-}
 
-.focused .label {
-    top: 0;
-}
 
 /* OPCION DESPLEGABLE DEL RADIO */
-.content
-{
+.content {
     display: none;
 }
 
-.contenido-peticion{
+.contenido-peticion {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -99,45 +120,49 @@ span:not(.tags) {
     background-color: black;
     border-radius: 5px;
 }
-.comm-card{
+
+.comm-card {
     width: 400px;
     height: 100px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    background-color:rgb(27, 29, 41);
+    background-color: rgb(27, 29, 41);
     margin-bottom: 5px;
     border: 2px solid rgb(255, 255, 255);
 }
-.comm-card img{
+
+.comm-card img {
     width: 100px;
     height: 100px;
     margin-right: 5px;
 }
-.comm-card-content{
+
+.comm-card-content {
     width: 300px;
     height: 100px;
     display: flex;
     flex-direction: column;
 }
 
-.comm-card-content label{
+.comm-card-content label {
     font-size: 1em;
 }
-.comm-card-content p{
+
+.comm-card-content p {
     margin: 0px;
 }
 
 /* RADIO DE PETICION O COMISION COMO DIV */
-.radio-group{
+.radio-group {
     position: relative;
 }
 
-.radio{
-    cursor:pointer;
+.radio {
+    cursor: pointer;
 }
 
-.radio.selected{
+.radio.selected {
     border: 2px solid turquoise;
     background-color: rgb(19, 93, 122);
 }

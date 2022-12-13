@@ -5,7 +5,7 @@ const https = require("https");
 
 const ApiClient = axios.create({
   timeout: 60000,
-  httpsAgent: new https.Agent({ keepAlive: true }),
+  httpsAgent: new https.Agent({ keepAlive: false }),
 });
 
 const someeWS = `https://localhost:44325/wsMyPix.asmx?WSDL`;
@@ -65,7 +65,7 @@ remoteWS.GetBoolean = async (payload, functionName) => {
     const resData = methodBoolParser(functionName, parsedRes);
     return resData;
   } catch (err) {
-    console.log("Error llamando el metodo: ", functionName, ", en remoteWS", err);
+    console.log("Error llamando el metodo: ", functionName, ", en remoteWS", err.message);
     return null;
   }
 }
